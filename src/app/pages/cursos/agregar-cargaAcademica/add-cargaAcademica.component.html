@@ -1,0 +1,499 @@
+<div class="container">
+  <!-- TITULO Y BUSCADOR -->
+  <div class="row">
+    <!-- Titulo -->
+    <div class="col-md-2">
+      <h4 id="titulo">{{titulo}}</h4>
+    </div>
+    <div class="bttnCurso">
+      <button id="b1" type="button" class="btn btn-info" (click)="changeView('primerAno')" value="primerAno">Primer Año
+      </button>
+      <button id="b2" type="button" class="btn btn-info" (click)="changeView('segundoAno')" value="segundoAno">Segundo
+        Año
+      </button>
+      <button id="b3" type="button" class="btn btn-info" (click)="changeView('tercerAno')" value="tercerAno">Tercer
+        Año
+      </button>
+      <button id="b4" type="button" class="btn btn-info" (click)="changeView('cuartoAno')" value="cuartoAno">Cuarto
+        Año
+      </button>
+      <button id="b5" type="button" class="btn btn-info" (click)="changeView('quintoAno')" value="quintoAno">Quinto
+        Año
+      </button>
+      <button id="b6" type="button" class="btn btn-info" (click)="changeView('sextoAno')" value="sextoAno">Sexto Año
+      </button>
+    </div>
+  </div>
+  <hr>
+
+  <div *ngIf="curser === 'primerAno'">
+    <p class="btn btn-default" data-toggle="modal" style="font-size: 20px;">{{subTitulo}}
+      <p>Primer Año</p>
+      <div>
+        <form #formCargaAcademicaOne="ngForm" id="form-cargaAcademicaOne" (ngSubmit)="onSubmit()" style=" padding-left: 30px;
+          padding-top: 15px">
+          <div class="row">
+            <div class="form-group col-md-12">
+              <label>
+                Materia
+                <span *ngIf="!materia.valid && materia.touched" class="badge badge-danger">
+                  Este campo no puede estar vacio.
+                </span>
+              </label>
+              <input type="text" class="form-control" #materia="ngModel" name="materia"
+                [(ngModel)]="cargaAcademica.materia" pattern="[a-zA-Z]*" minlength="2"
+                placeholder="Introduzca una Materia" required>
+            </div>
+            <div class="form-group col-md-6">
+              <label>
+                Nombre Profesor
+                <span *ngIf="!nombreProfesor.valid && nombreProfesor.touched" class=" badge badge-danger">
+                  Este campo no puede estar vacio.
+                </span>
+              </label>
+              <input type="text" class="form-control" #nombreProfesor="ngModel" name="nombreProfesor"
+                [(ngModel)]="cargaAcademica.nombreProfesor" pattern="[a-zA-Z]*" minlength="2"
+                placeholder="Introduzca el nombre del Profesor">
+            </div>
+            <div class="form-group col-md-6">
+              <label>
+                Apellido Profesor
+                <span *ngIf="!apellidoProfesor.valid && apellidoProfesor.touched" class="badge badge-danger">
+                  Este campo no puede estar vacio.
+                </span>
+              </label>
+              <input type="text" class="form-control" #apellidoProfesor="ngModel" name="apellidoProfesor"
+                [(ngModel)]="cargaAcademica.apellidoProfesor" pattern="[a-zA-Z]*" minlength="2"
+                placeholder="Introduzca el apellido del Profesor">
+            </div>
+            <div class="form-group col-md-6">
+              <label>
+                Horas Académicas
+                <span *ngIf="!horasAcademicas.valid && horasAcademicas.touched && horasAcademicas!==0 "
+                  class="badge badge-danger">
+                  Este campo no puede estar vacio.
+                </span>
+              </label>
+              <input type="number" class="form-control" #horasAcademicas="ngModel" name="horasAcademicas"
+                [(ngModel)]="cargaAcademica.horasAcademicas" min="1" max="4"
+                placeholder="Introduzca la cantidad de horas por semana" pattern="[+0-9]">
+            </div>
+            <div class="form-group col-md-6">
+              <label>Status</label>
+              <div class="form-group">
+                <div class="form-check-inline">
+                  <input class="form-check-input" type="radio" name="exampleRadios" id="activo" value="option1" checked>
+                  <label class="form-check-label" for="activo">
+                    Activo
+                  </label>
+                </div>
+                <div class="form-check-inline">
+                  <input class="form-check-input" type="radio" name="exampleRadios" id="inactivo" value="option2">
+                  <label class="form-check-label" for="inactivo">
+                    Inactivo
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div align="left" class="bttn">
+            <button id="botonguardar" type="submit" [disabled]="!formCargaAcademicaOne.form.valid"
+              class="btn btn-info">Guardar</button>
+            <button id="botonborrar" type="reset" class="btn btn-danger">Borrar</button>
+          </div>
+        </form>
+      </div>
+  </div>
+
+  <div *ngIf="curser === 'segundoAno'">
+    <p class="btn btn-default" data-toggle="modal" style="font-size: 20px;">{{subTitulo}}
+      <p>Segundo Año</p>
+      <div>
+        <form #formCargaAcademicaTwo="ngForm" id="form-cargaAcademicaTwo" (ngSubmit)="onSubmit()"
+          style="padding-left: 30px; padding-top: 15px">
+          <div class="row">
+            <div class="form-group col-md-12">
+              <label>
+                Materia
+                <span *ngIf="!materia.valid && materia.touched" class="badge badge-danger">
+                  Este campo no puede estar vacio.
+                </span>
+              </label>
+              <input type="text" class="form-control" #materia="ngModel" name="materia"
+                [(ngModel)]="cargaAcademica.materia" pattern="[a-zA-Z]*" minlength="2"
+                placeholder="Introduzca una Materia" required>
+            </div>
+            <div class="form-group col-md-6">
+              <label>
+                Nombre Profesor
+                <span *ngIf="!nombreProfesor.valid && nombreProfesor.touched" class=" badge badge-danger">
+                  Este campo no puede estar vacio.
+                </span>
+              </label>
+              <input type="text" class="form-control" #nombreProfesor="ngModel" name="nombreProfesor"
+                [(ngModel)]="cargaAcademica.nombreProfesor" pattern="[a-zA-Z]*" minlength="2"
+                placeholder="Introduzca el nombre del Profesor">
+            </div>
+            <div class="form-group col-md-6">
+              <label>
+                Apellido Profesor
+                <span *ngIf="!apellidoProfesor.valid && apellidoProfesor.touched" class="badge badge-danger">
+                  Este campo no puede estar vacio.
+                </span>
+              </label>
+              <input type="text" class="form-control" #apellidoProfesor="ngModel" name="apellidoProfesor"
+                [(ngModel)]="cargaAcademica.apellidoProfesor" pattern="[a-zA-Z]*" minlength="2"
+                placeholder="Introduzca el apellido del Profesor">
+            </div>
+            <div class="form-group col-md-6">
+              <label>
+                Horas Académicas
+                <span *ngIf="!horasAcademicas.valid && horasAcademicas.touched && horasAcademicas!==0 "
+                  class="badge badge-danger">
+                  Este campo no puede estar vacio.
+                </span>
+              </label>
+              <input type="number" class="form-control" #horasAcademicas="ngModel" name="horasAcademicas"
+                [(ngModel)]="cargaAcademica.horasAcademicas" min="1" max="4"
+                placeholder="Introduzca la cantidad de horas por semana" pattern="[+0-9]">
+            </div>
+            <div class="form-group col-md-6">
+              <label>Status</label>
+              <div class="form-group">
+                <div class="form-check-inline">
+                  <input class="form-check-input" type="radio" name="exampleRadios" id="activo" value="option1" checked>
+                  <label class="form-check-label" for="activo">
+                    Activo
+                  </label>
+                </div>
+                <div class="form-check-inline">
+                  <input class="form-check-input" type="radio" name="exampleRadios" id="inactivo" value="option2">
+                  <label class="form-check-label" for="inactivo">
+                    Inactivo
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div align="left" class="bttn">
+            <button id="botonguardar" [disabled]="!formCargaAcademicaTwo.form.valid" type="submit"
+              class="btn btn-info">Guardar</button>
+            <button id="botonborrar" type="reset" class="btn btn-danger">Borrar</button>
+          </div>
+        </form>
+      </div>
+  </div>
+  <div *ngIf="curser === 'tercerAno'">
+    <p class="btn btn-default" data-toggle="modal" style="font-size: 20px;">{{subTitulo}}
+      <p>Tercer Año</p>
+      <div>
+        <form #formCargaAcademicaThree="ngForm" id="form-cargaAcademicaThree" (ngSubmit)="onSubmit()"
+          style="padding-left: 30px; padding-top: 15px">
+          <div class="row">
+            <div class="form-group col-md-12">
+              <label>
+                Materia
+                <span *ngIf="!materia.valid && materia.touched" class="badge badge-danger">
+                  Este campo no puede estar vacio.
+                </span>
+              </label>
+              <input type="text" class="form-control" #materia="ngModel" name="materia"
+                [(ngModel)]="cargaAcademica.materia" pattern="[a-zA-Z]*" minlength="2"
+                placeholder="Introduzca una Materia" required>
+            </div>
+            <div class="form-group col-md-6">
+              <label>
+                Nombre Profesor
+                <span *ngIf="!nombreProfesor.valid && nombreProfesor.touched" class=" badge badge-danger">
+                  Este campo no puede estar vacio.
+                </span>
+              </label>
+              <input type="text" class="form-control" #nombreProfesor="ngModel" name="nombreProfesor"
+                [(ngModel)]="cargaAcademica.nombreProfesor" pattern="[a-zA-Z]*" minlength="2"
+                placeholder="Introduzca el nombre del Profesor">
+            </div>
+            <div class="form-group col-md-6">
+              <label>
+                Apellido Profesor
+                <span *ngIf="!apellidoProfesor.valid && apellidoProfesor.touched" class="badge badge-danger">
+                  Este campo no puede estar vacio.
+                </span>
+              </label>
+              <input type="text" class="form-control" #apellidoProfesor="ngModel" name="apellidoProfesor"
+                [(ngModel)]="cargaAcademica.apellidoProfesor" pattern="[a-zA-Z]*" minlength="2"
+                placeholder="Introduzca el apellido del Profesor">
+            </div>
+            <div class="form-group col-md-6">
+              <label>
+                Horas Académicas
+                <span *ngIf="!horasAcademicas.valid && horasAcademicas.touched && horasAcademicas!==0 "
+                  class="badge badge-danger">
+                  Este campo no puede estar vacio.
+                </span>
+              </label>
+              <input type="number" class="form-control" #horasAcademicas="ngModel" name="horasAcademicas"
+                [(ngModel)]="cargaAcademica.horasAcademicas" min="1" max="4"
+                placeholder="Introduzca la cantidad de horas por semana" pattern="[+0-9]">
+            </div>
+            <div class="form-group col-md-6">
+              <label>Status</label>
+              <div class="form-group">
+                <div class="form-check-inline">
+                  <input class="form-check-input" type="radio" name="exampleRadios" id="activo" value="option1" checked>
+                  <label class="form-check-label" for="activo">
+                    Activo
+                  </label>
+                </div>
+                <div class="form-check-inline">
+                  <input class="form-check-input" type="radio" name="exampleRadios" id="inactivo" value="option2">
+                  <label class="form-check-label" for="inactivo">
+                    Inactivo
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div align="left" class="bttn">
+            <button id="botonguardar" type="submit" [disabled]="!formCargaAcademicaThree.form.valid"
+              class="btn btn-info">Guardar</button>
+            <button id="botonborrar" type="reset" class="btn btn-danger">Borrar</button>
+          </div>
+        </form>
+      </div>
+  </div>
+  <div *ngIf="curser === 'cuartoAno'">
+    <p class="btn btn-default" data-toggle="modal" style="font-size: 20px;">{{subTitulo}}
+      <p>Cuarto Año</p>
+      <div>
+        <form #formCargaAcademicaFour="ngForm" id="form-cargaAcademicaFour" (ngSubmit)="onSubmit()"
+          style="padding-left: 30px; padding-top: 15px;">
+          <div class="row">
+            <div class="form-group col-md-12">
+              <label>
+                Materia
+                <span *ngIf="!materia.valid && materia.touched" class="badge badge-danger">
+                  Este campo no puede estar vacio.
+                </span>
+              </label>
+              <input type="text" class="form-control" #materia="ngModel" name="materia"
+                [(ngModel)]="cargaAcademica.materia" pattern="[a-zA-Z]*" minlength="2"
+                placeholder="Introduzca una Materia" required>
+            </div>
+            <div class="form-group col-md-6">
+              <label>
+                Nombre Profesor
+                <span *ngIf="!nombreProfesor.valid && nombreProfesor.touched" class=" badge badge-danger">
+                  Este campo no puede estar vacio.
+                </span>
+              </label>
+              <input type="text" class="form-control" #nombreProfesor="ngModel" name="nombreProfesor"
+                [(ngModel)]="cargaAcademica.nombreProfesor" pattern="[a-zA-Z]*" minlength="2"
+                placeholder="Introduzca el nombre del Profesor">
+            </div>
+            <div class="form-group col-md-6">
+              <label>
+                Apellido Profesor
+                <span *ngIf="!apellidoProfesor.valid && apellidoProfesor.touched" class="badge badge-danger">
+                  Este campo no puede estar vacio.
+                </span>
+              </label>
+              <input type="text" class="form-control" #apellidoProfesor="ngModel" name="apellidoProfesor"
+                [(ngModel)]="cargaAcademica.apellidoProfesor" pattern="[a-zA-Z]*" minlength="2"
+                placeholder="Introduzca el apellido del Profesor">
+            </div>
+            <div class="form-group col-md-6">
+              <label>
+                Horas Académicas
+                <span *ngIf="!horasAcademicas.valid && horasAcademicas.touched && horasAcademicas!==0 "
+                  class="badge badge-danger">
+                  Este campo no puede estar vacio.
+                </span>
+              </label>
+              <input type="number" class="form-control" #horasAcademicas="ngModel" name="horasAcademicas"
+                [(ngModel)]="cargaAcademica.horasAcademicas" min="1" max="4"
+                placeholder="Introduzca la cantidad de horas por semana" pattern="[+0-9]">
+            </div>
+            <div class="form-group col-md-6">
+              <label>Status</label>
+              <div class="form-group">
+                <div class="form-check-inline">
+                  <input class="form-check-input" type="radio" name="exampleRadios" id="activo" value="option1" checked>
+                  <label class="form-check-label" for="activo">
+                    Activo
+                  </label>
+                </div>
+                <div class="form-check-inline">
+                  <input class="form-check-input" type="radio" name="exampleRadios" id="inactivo" value="option2">
+                  <label class="form-check-label" for="inactivo">
+                    Inactivo
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div align="left" class="bttn">
+            <button id="botonguardar" type="submit" [disabled]="!formCargaAcademicaFour.form.valid"
+              class="btn btn-info">Guardar</button>
+            <button id="botonborrar" type="reset" class="btn btn-danger">Borrar</button>
+          </div>
+        </form>
+      </div>
+  </div>
+  <div *ngIf="curser === 'quintoAno'">
+    <p class="btn btn-default" data-toggle="modal" style="font-size: 20px;">{{subTitulo}}
+      <p>Quinto Año</p>
+      <div>
+        <form #formCargaAcademicaFive="ngForm" id="form-cargaAcademicaFive" (ngSubmit)="onSubmit()"
+          style="padding-left: 30px; padding-top: 15px">
+          <div class="row">
+            <div class="form-group col-md-12">
+              <label>
+                Materia
+                <span *ngIf="!materia.valid && materia.touched" class="badge badge-danger">
+                  Este campo no puede estar vacio.
+                </span>
+              </label>
+              <input type="text" class="form-control" #materia="ngModel" name="materia"
+                [(ngModel)]="cargaAcademica.materia" pattern="[a-zA-Z]*" minlength="2"
+                placeholder="Introduzca una Materia" required>
+            </div>
+            <div class="form-group col-md-6">
+              <label>
+                Nombre Profesor
+                <span *ngIf="!nombreProfesor.valid && nombreProfesor.touched" class=" badge badge-danger">
+                  Este campo no puede estar vacio.
+                </span>
+              </label>
+              <input type="text" class="form-control" #nombreProfesor="ngModel" name="nombreProfesor"
+                [(ngModel)]="cargaAcademica.nombreProfesor" pattern="[a-zA-Z]*" minlength="2"
+                placeholder="Introduzca el nombre del Profesor">
+            </div>
+            <div class="form-group col-md-6">
+              <label>
+                Apellido Profesor
+                <span *ngIf="!apellidoProfesor.valid && apellidoProfesor.touched" class="badge badge-danger">
+                  Este campo no puede estar vacio.
+                </span>
+              </label>
+              <input type="text" class="form-control" #apellidoProfesor="ngModel" name="apellidoProfesor"
+                [(ngModel)]="cargaAcademica.apellidoProfesor" pattern="[a-zA-Z]*" minlength="2"
+                placeholder="Introduzca el apellido del Profesor">
+            </div>
+            <div class="form-group col-md-6">
+              <label>
+                Horas Académicas
+                <span *ngIf="!horasAcademicas.valid && horasAcademicas.touched && horasAcademicas!==0 "
+                  class="badge badge-danger">
+                  Este campo no puede estar vacio.
+                </span>
+              </label>
+              <input type="number" class="form-control" #horasAcademicas="ngModel" name="horasAcademicas"
+                [(ngModel)]="cargaAcademica.horasAcademicas" min="1" max="4"
+                placeholder="Introduzca la cantidad de horas por semana" pattern="[+0-9]">
+            </div>
+            <div class="form-group col-md-6">
+              <label>Status</label>
+              <div class="form-group">
+                <div class="form-check-inline">
+                  <input class="form-check-input" type="radio" name="exampleRadios" id="activo" value="option1" checked>
+                  <label class="form-check-label" for="activo">
+                    Activo
+                  </label>
+                </div>
+                <div class="form-check-inline">
+                  <input class="form-check-input" type="radio" name="exampleRadios" id="inactivo" value="option2">
+                  <label class="form-check-label" for="inactivo">
+                    Inactivo
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div align="left" class="bttn">
+            <button id="botonguardar" type="submit" [disabled]="!formCargaAcademicaFive.form.valid"
+              class="btn btn-info">Guardar</button>
+            <button id="botonborrar" type="reset" class="btn btn-danger">Borrar</button>
+          </div>
+        </form>
+      </div>
+  </div>
+  <div *ngIf="curser === 'sextoAno'">
+    <p class="btn btn-default" data-toggle="modal" style="font-size: 20px;">{{subTitulo}}
+      <p>Sexto Año</p>
+      <div>
+        <form #formCargaAcademicaSix="ngForm" id="form-cargaAcademicaSix" (ngSubmit)="onSubmit()"
+          style="padding-left: 30px; padding-top: 15px">
+          <div class="row">
+            <div class="form-group col-md-12">
+              <label>
+                Materia
+                <span *ngIf="!materia.valid && materia.touched" class="badge badge-danger">
+                  Este campo no puede estar vacio.
+                </span>
+              </label>
+              <input type="text" class="form-control" #materia="ngModel" name="materia"
+                [(ngModel)]="cargaAcademica.materia" pattern="[a-zA-Z]*" minlength="2"
+                placeholder="Introduzca una Materia" required>
+            </div>
+            <div class="form-group col-md-6">
+              <label>
+                Nombre Profesor
+                <span *ngIf="!nombreProfesor.valid && nombreProfesor.touched" class=" badge badge-danger">
+                  Este campo no puede estar vacio.
+                </span>
+              </label>
+              <input type="text" class="form-control" #nombreProfesor="ngModel" name="nombreProfesor"
+                [(ngModel)]="cargaAcademica.nombreProfesor" pattern="[a-zA-Z]*" minlength="2"
+                placeholder="Introduzca el nombre del Profesor">
+            </div>
+            <div class="form-group col-md-6">
+              <label>
+                Apellido Profesor
+                <span *ngIf="!apellidoProfesor.valid && apellidoProfesor.touched" class="badge badge-danger">
+                  Este campo no puede estar vacio.
+                </span>
+              </label>
+              <input type="text" class="form-control" #apellidoProfesor="ngModel" name="apellidoProfesor"
+                [(ngModel)]="cargaAcademica.apellidoProfesor" pattern="[a-zA-Z]*" minlength="2"
+                placeholder="Introduzca el apellido del Profesor">
+            </div>
+            <div class="form-group col-md-6">
+              <label>
+                Horas Académicas
+                <span *ngIf="!horasAcademicas.valid && horasAcademicas.touched && horasAcademicas!==0 "
+                  class="badge badge-danger">
+                  Este campo no puede estar vacio.
+                </span>
+              </label>
+              <input type="number" class="form-control" #horasAcademicas="ngModel" name="horasAcademicas"
+                [(ngModel)]="cargaAcademica.horasAcademicas" min="1" max="4"
+                placeholder="Introduzca la cantidad de horas por semana" pattern="[+0-9]">
+            </div>
+            <div class="form-group col-md-6">
+              <label>Status</label>
+              <div class="form-group">
+                <div class="form-check-inline">
+                  <input class="form-check-input" type="radio" name="exampleRadios" id="activo" value="option1" checked>
+                  <label class="form-check-label" for="activo">
+                    Activo
+                  </label>
+                </div>
+                <div class="form-check-inline">
+                  <input class="form-check-input" type="radio" name="exampleRadios" id="inactivo" value="option2">
+                  <label class="form-check-label" for="inactivo">
+                    Inactivo
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div align="left" class="bttn">
+            <button id="botonguardar" type="submit" [disabled]="!formCargaAcademicaSix.form.valid"
+              class="btn btn-info">Guardar</button>
+            <button id="botonborrar" type="reset" class="btn btn-danger">Borrar</button>
+          </div>
+        </form>
+      </div>
+  </div>
+</div>

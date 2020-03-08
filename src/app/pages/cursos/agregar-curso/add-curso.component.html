@@ -1,0 +1,102 @@
+<div class="container">
+  <!-- TITULO Y BUSCADOR -->
+  <div class="row">
+    <!-- Titulo -->
+    <div class="col-md-2">
+      <h4 id="titulo">{{titulo}}</h4>
+    </div>
+  </div>
+  <hr>
+  <hr>
+
+  <p id="subtitulo" class="btn btn-default" data-toggle="modal">{{subTitulo}}</p><br>
+
+  <form #formCurso="ngForm" id="form-curso" name="formCurso" (ngSubmit)="onSubmit()"
+    style="padding-left: 30px; padding-top: 15px">
+    <div class="row">
+      <div class="form-group col-md-10">
+        <label>
+          Nombre del Curso
+          <span *ngIf="!nombre.valid && nombre.touched" class="badge badge-danger">
+            Este campo no puede estar vacio.
+          </span>
+        </label>
+        <input type="text" class="form-control" #nombre="ngModel" name="nombre" [(ngModel)]="cursos.nombre"
+          pattern="^[a-zA-Zñ]*" minlength="2" placeholder="Introduzca el nombre del Curso" required>
+      </div>
+      <div class="form-group col-md-6">
+        <label>
+          Dias Académicos
+        </label>
+        <div class="form-group">
+          <div class="form-check-inline">
+            <input class="form-check-input" type="checkbox" #diaLunes="ngModel" name="diaLunes"
+              [(ngModel)]="cursos.diasAcademicos" value="Lunes" checked>
+            <label class="form-check-label" for="diaLunes">
+              Lunes
+            </label>
+          </div>
+          <div class="form-check-inline">
+            <input class="form-check-input" type="checkbox" #diaMartes="ngModel" name="diaMartes"
+              [(ngModel)]="cursos.diasAcademicos" value="martes" checked>
+            <label class="form-check-label" for="diaMartes">
+              Martes
+            </label>
+          </div>
+          <div class="form-check-inline">
+            <input class="form-check-input" type="checkbox" #diaMiercoles="ngModel" name="diaMiercoles"
+              [(ngModel)]="cursos.diasAcademicos" value="Miercoles" checked>
+            <label class="form-check-label" for="diaMiercoles">
+              Miercoles
+            </label>
+          </div>
+          <div class="form-check-inline">
+            <input class="form-check-input" type="checkbox" #diaJueves="ngModel" name="diaJueves"
+              [(ngModel)]="cursos.diasAcademicos" value="Jueves" checked>
+            <label class="form-check-label" for="diaJueves">
+              Jueves
+            </label>
+          </div>
+          <div class="form-check-inline">
+            <input class="form-check-input" type="checkbox" #diaViernes="ngModel" name="diaViernes"
+              [(ngModel)]="cursos.diasAcademicos" value="Viernes" checked>
+            <label class="form-check-label" for="diaViernes">
+              Viernes
+            </label>
+          </div>
+        </div>
+        <div class="form-group col-md-6">
+          <label>Status</label>
+          <div class="form-group">
+            <div class="form-check-inline">
+              <input class="form-check-input" type="radio" name="exampleRadios" id="activo" value="activo"
+                #activo="ngModel" name="activo" [(ngModel)]="cursos.status" checked required>
+              <label class="form-check-label" for="activo">
+                Activo
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <input class="form-check-input" type="radio" name="exampleRadios" id="inactivo" value="inactivo"
+                #inactivo="ngModel" name="inactivo" [(ngModel)]="cursos.status">
+              <label class="form-check-label" for="inactivo">
+                Inactivo
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group col-md-10">
+          <label for="descripcion">Descripción <b>(Opcional)</b></label>
+          <textarea class="form-control" id="descripcion" rows="5"
+            placeholder="Realize una breve descripción sobre la materia.." #descripcion="ngModel" name="descripcion"
+            [(ngModel)]="cursos.descripcion"></textarea>
+        </div>
+      </div>
+      <div align="left" class="bttn">
+        <button id="botonguardar" type="submit" (click)="recargarPagina()" [disabled]="!formCurso.form.valid"
+          class="btn btn-info">Guardar</button>
+        <button id="botonborrar" type="reset" class="btn btn-danger">Borrar</button>
+      </div>
+    </div>
+  </form>
+
+</div>

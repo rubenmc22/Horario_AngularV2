@@ -1,0 +1,253 @@
+<div class="container">
+  <!-- TITULO Y BUSCADOR -->
+  <div class="row">
+    <!-- Titulo -->
+    <div class="col-md-2">
+      <h4 id="titulo">{{titulo}}</h4>
+    </div>
+    <div class="bttnCurso">
+      <button id="b1" type="button" class="btn btn-info" (click)="changeView('primerAno')" value="primerAno">Primer Año
+      </button>
+      <button id="b2" type="button" class="btn btn-info" (click)="changeView('segundoAno')" value="segundoAno">Segundo
+        Año
+      </button>
+      <button id="b3" type="button" class="btn btn-info" (click)="changeView('tercerAno')" value="tercerAno">Tercer
+        Año
+      </button>
+      <button id="b4" type="button" class="btn btn-info" (click)="changeView('cuartoAno')" value="cuartoAno">Cuarto
+        Año
+      </button>
+      <button id="b5" type="button" class="btn btn-info" (click)="changeView('quintoAno')" value="quintoAno">Quinto
+        Año
+      </button>
+      <button id="b6" type="button" class="btn btn-info" (click)="changeView('sextoAno')" value="sextoAno">Sexto Año
+      </button>
+    </div>
+  </div>
+  <hr>
+
+  <div *ngIf="curser === 'primerAno'">
+
+    <p class="btn btn-default" data-toggle="modal" style="font-size: 20px;">{{subTitulo}}
+      <p>Primer Año</p>
+      <div class="table-responsive-xl">
+        <table class="table table-striped table-hover">
+          <thead class="thead-dark">
+            <tr align="center">
+              <th class="id">Id</th>
+              <th class="materia">Materia</th>
+              <th class="nombre">Nombre de Profesor</th>
+              <th class="apellido">Apellido de Profesor</th>
+              <th class="hora">Horas Académicas</th>
+              <th class="estatus">Estatus</th>
+              <th class="accion">Acción</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let cargasAcademicas of cargaAcademica" align="center">
+            <tr>
+              <td>{{ cargasAcademicas.id }}</td>
+              <td>{{ cargasAcademicas.materia }}</td>
+              <td>{{ cargasAcademicas.nombreProfesor }}</td>
+              <td>{{ cargasAcademicas.apellidoProfesor }}</td>
+              <td>{{ cargasAcademicas.horasAcademicas }}</td>
+              <td>{{ cargasAcademicas.status }}</td>
+              <td>
+                <span class="imgEdit">
+                  <img src="assets/Images/editar.png" style="height: 24px">
+                </span>
+                <span class="imgDelete">
+                  <img src="assets/Images/eliminar.png" style="height: 24px;">
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+
+  <div *ngIf="curser === 'segundoAno'">
+    <p class="btn btn-default" data-toggle="modal" style="font-size: 20px;">{{subTitulo}}
+      <p>Segundo Año</p>
+      <div class="table-responsive-xl">
+        <table class="table table-striped table-hover">
+          <thead class="thead-dark">
+            <tr align="center">
+              <th class="id">Id</th>
+              <th class="materia">Materia</th>
+              <th class="nombre">Nombre de Profesor</th>
+              <th class="apellido">Apellido de Profesor</th>
+              <th class="hora">Horas Académicas</th>
+              <th class="estatus">Estatus</th>
+              <th class="accion">Acción</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let cargasAcademicas of cargaAcademica" align="center">
+            <tr>
+              <td>{{ cargasAcademicas.id }}</td>
+              <td>{{ cargasAcademicas.materia }}</td>
+              <td>{{ cargasAcademicas.nombreProfesor }}</td>
+              <td>{{ cargasAcademicas.apellidoProfesor }}</td>
+              <td>{{ cargasAcademicas.horasAcademicas }}</td>
+              <td>{{ cargasAcademicas.status }}</td>
+              <td>
+                <span class="imgEdit">
+                  <img src="assets/Images/editar.png" style="height: 24px;">
+                </span>
+                <span class="imgDelete">
+                  <img src="assets/Images/eliminar.png" style="height: 24px;">
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+  <div *ngIf="curser === 'tercerAno'">
+    <p class="btn btn-default" data-toggle="modal" style="font-size: 20px;">{{subTitulo}}
+      <p>Tercer Año</p>
+      <div class="table-responsive-xl">
+        <table class="table table-striped table-hover">
+          <thead class="thead-dark">
+            <tr align="center">
+              <th class="id">Id</th>
+              <th class="materia">Materia</th>
+              <th class="nombre">Nombre de Profesor</th>
+              <th class="apellido">Apellido de Profesor</th>
+              <th class="hora">Horas Académicas</th>
+              <th class="estatus">Estatus</th>
+              <th class="accion">Acción</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let cargasAcademicas of cargaAcademica" align="center">
+            <tr>
+              <td>{{ cargasAcademicas.id }}</td>
+              <td>{{ cargasAcademicas.materia }}</td>
+              <td>{{ cargasAcademicas.nombreProfesor }}</td>
+              <td>{{ cargasAcademicas.apellidoProfesor }}</td>
+              <td>{{ cargasAcademicas.horasAcademicas }}</td>
+              <td>{{ cargasAcademicas.status }}</td>
+              <td>
+                <span class="imgEdit">
+                  <img src="assets/Images/editar.png" style="height: 24px;">
+                </span>
+                <span class="imgDelete">
+                  <img src="assets/Images/eliminar.png" style="height: 24px;">
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+  <div *ngIf="curser === 'cuartoAno'">
+    <p class="btn btn-default" data-toggle="modal" style="font-size: 20px;">{{subTitulo}}
+      <p>Cuarto Año</p>
+      <div class="table-responsive-xl">
+        <table class="table table-striped table-hover">
+          <thead class="thead-dark">
+            <tr align="center">
+              <th class="id">Id</th>
+              <th class="materia">Materia</th>
+              <th class="nombre">Nombre de Profesor</th>
+              <th class="apellido">Apellido de Profesor</th>
+              <th class="hora">Horas Académicas</th>
+              <th class="estatus">Estatus</th>
+              <th class="accion">Acción</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let cargasAcademicas of cargaAcademica" align="center">
+            <tr>
+              <td>{{ cargasAcademicas.id }}</td>
+              <td>{{ cargasAcademicas.materia }}</td>
+              <td>{{ cargasAcademicas.nombreProfesor }}</td>
+              <td>{{ cargasAcademicas.apellidoProfesor }}</td>
+              <td>{{ cargasAcademicas.horasAcademicas }}</td>
+              <td>{{ cargasAcademicas.status }}</td>
+              <td>
+                <span class="imgEdit">
+                  <img src="assets/Images/editar.png" style="height: 24px;">
+                </span>
+                <span class="imgDelete">
+                  <img src="assets/Images/eliminar.png" style="height: 24px;">
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+  <div *ngIf="curser === 'quintoAno'">
+    <p class="btn btn-default" data-toggle="modal" style="font-size: 20px;">{{subTitulo}}
+      <p>Quinto Año</p>
+      <div class="table-responsive-xl">
+        <table class="table table-striped table-hover">
+          <thead class="thead-dark">
+            <tr align="center">
+              <th class="id">Id</th>
+              <th class="materia">Materia</th>
+              <th class="nombre">Nombre de Profesor</th>
+              <th class="apellido">Apellido de Profesor</th>
+              <th class="hora">Horas Académicas</th>
+              <th class="estatus">Estatus</th>
+              <th class="accion">Acción</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let cargasAcademicas of cargaAcademica" align="center">
+            <tr>
+              <td>{{ cargasAcademicas.id }}</td>
+              <td>{{ cargasAcademicas.materia }}</td>
+              <td>{{ cargasAcademicas.nombreProfesor }}</td>
+              <td>{{ cargasAcademicas.apellidoProfesor }}</td>
+              <td>{{ cargasAcademicas.horasAcademicas }}</td>
+              <td>{{ cargasAcademicas.status }}</td>
+              <td>
+                <span class="imgEdit">
+                  <img src="assets/Images/editar.png" style="height: 24px;">
+                </span>
+                <span class="imgDelete">
+                  <img src="assets/Images/eliminar.png" style="height: 24px;">
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+  <div *ngIf="curser === 'sextoAno'">
+    <p class="btn btn-default" data-toggle="modal" style="font-size: 20px;">{{subTitulo}}
+      <p>Sexto Año</p>
+      <div class="table-responsive-xl">
+        <table class="table table-striped table-hover">
+          <thead class="thead-dark">
+            <tr align="center">
+              <th class="id">Id</th>
+              <th class="materia">Materia</th>
+              <th class="nombre">Nombre de Profesor</th>
+              <th class="apellido">Apellido de Profesor</th>
+              <th class="hora">Horas Académicas</th>
+              <th class="estatus">Estatus</th>
+              <th class="accion">Acción</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let cargasAcademicas of cargaAcademica" align="center">
+            <tr>
+              <td>{{ cargasAcademicas.id }}</td>
+              <td>{{ cargasAcademicas.materia }}</td>
+              <td>{{ cargasAcademicas.nombreProfesor }}</td>
+              <td>{{ cargasAcademicas.apellidoProfesor }}</td>
+              <td>{{ cargasAcademicas.horasAcademicas }}</td>
+              <td>{{ cargasAcademicas.status }}</td>
+              <td>
+                <span class="imgEdit">
+                  <img src="assets/Images/editar.png" style="height: 24px;">
+                </span>
+                <span class="imgDelete">
+                  <img src="assets/Images/eliminar.png" style="height: 24px;">
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+</div>

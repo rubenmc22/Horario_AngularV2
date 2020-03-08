@@ -1,0 +1,92 @@
+<div class="container">
+  <!-- TITULO Y BUSCADOR -->
+  <div class="row">
+    <!-- Titulo -->
+    <div class="col-md-2">
+      <h4 id="titulo">{{titulo}}</h4>
+    </div>
+  </div>
+  <hr>
+
+  <p id="subtitulo" class="btn btn-default" data-toggle="modal">{{subTitulo}}</p><br>
+
+  <form #formProfesores="ngForm" id="form-profesores" (ngSubmit)="onSubmit()"
+    style="padding-left: 30px; padding-top: 15px">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>
+          Nombre
+          <span *ngIf="!nombre.valid && nombre.touched" class="badge badge-danger">
+            Este campo no puede estar vacio.
+          </span>
+        </label>
+        <input type="text" class="form-control" #nombre="ngModel" name="nombre" [(ngModel)]="profesor.nombre"
+          pattern="[a-zA-Z]*" minlength="2" placeholder="Introduzca el nombre del Profesor" required>
+      </div>
+      <div class="form-group col-md-6">
+        <label>
+          Apellido
+          <span *ngIf="!apellido.valid && apellido.touched" class="badge badge-danger">
+            Este campo no puede estar vacio.
+          </span>
+        </label>
+        <input type="text" class="form-control" #apellido="ngModel" name="apellido" [(ngModel)]="profesor.apellido"
+          pattern="[a-zA-Z]*" minlength="2" placeholder="Introduzca el apellido del Profesor" required>
+      </div>
+      <div class="form-group col-md-6">
+        <label>
+          Cedula
+          <span *ngIf="!cedula.valid && cedula.touched" class="badge badge-danger">
+            Este campo no puede estar vacio.
+          </span>
+        </label>
+        <input type="text" class="form-control" #cedula="ngModel" name="cedula" [(ngModel)]="profesor.cedula"
+          pattern="[0-9]*" minlength="6" maxlength="8" placeholder="Introduzca la cedula del Profesor" required>
+      </div>
+      <div class="form-group col-md-6">
+        <label>
+          Teléfono
+          <span *ngIf="!telefono.valid && telefono.touched" class="badge badge-danger">
+            Este campo no puede estar vacio.
+          </span>
+        </label>
+        <input type="text" class="form-control" #telefono="ngModel" name="telefono" [(ngModel)]="profesor.telefono"
+          pattern="[0-9]*" minlength="11" maxlength="11" placeholder="Introduzca el telefono del Profesor" required>
+      </div>
+      <div class="form-group col-md-6">
+        <label>
+          Email
+          <span *ngIf="!email.valid && email.touched" class="badge badge-danger">
+            Este campo no puede estar vacio.
+          </span>
+        </label>
+        <input type="email" class="form-control" #email="ngModel" name="email" [(ngModel)]="profesor.email"
+          pattern="[a-zA-Z0-9@.-_]*" minlength="5" placeholder="Introduzca el email del Profesor" required>
+      </div>
+      <div class="form-group col-md-6">
+        <label>Status</label>
+        <div class="form-group">
+          <div class="form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="activo" value="activo" checked>
+            <label class="form-check-label" for="activo">
+              Activo
+            </label>
+          </div>
+          <div class="form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="inactivo" value="inactivo">
+            <label class="form-check-label" for="inactivo">
+              Inactivo
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div align="left" class="bttn">
+      <button id="botonguardar" type="submit" class="btn btn-info"
+        [disabled]="!formProfesores.form.valid">Guardar</button>
+      <button id="botonborrar" type="reset" class="btn btn-danger">Borrar</button>
+    </div>
+
+  </form>
+
+</div>
