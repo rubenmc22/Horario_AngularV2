@@ -3,14 +3,14 @@ import { ProfesorInterface } from './interfaces/profesorInterface';
 export class Profesor implements ProfesorInterface {
 
     public id: number;
-
+       public nombre: string;
+        public apellido: string;
+        public cedula: number;
+        public telefono: number;
+        public email: string;
+        public status: boolean;
     constructor(
-        public nombre: string,
-        public apellido: string,
-        public cedula: number,
-        public telefono: number,
-        public email: string,
-        public status: boolean,
+
     ) {
         this.nombre = '';
         this.apellido = '';

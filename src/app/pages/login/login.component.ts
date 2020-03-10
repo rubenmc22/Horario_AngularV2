@@ -24,17 +24,17 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loginService.login(24367965, '1456932').subscribe(
+  /*  this.loginService.login(24367965, '1456932').subscribe(
       res => {
         console.log('PRUEBA LOGIN' + res);
-      });
+      });*/
   }
 
   logIn(user: number, pass: string, event: Event) {
     event.preventDefault(); // Avoid default action for the submit button of the login form
 
     // Calls service to login user to the api rest
-    this.loginService.login(user, pass).subscribe(
+   /*this.loginService.login(user, pass).subscribe(
       res => {
         console.log(res);
         window.alert('You have been successfully registered!');
@@ -48,12 +48,15 @@ export class LoginComponent implements OnInit {
       },
 
       () => this.navigate()
-    );
+    );*/
+       if(this.loginService.login(user, pass)){
+          this.navigate();
+       }
 
   }
 
   navigate() {
-    this.route.navigateByUrl('/dashboard');
+  //  this.route.navigate(['/dashboard']);
   }
 
 }
