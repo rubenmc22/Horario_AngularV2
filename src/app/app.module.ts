@@ -29,8 +29,7 @@ import {MateriaService} from './services/materiaService';
 import {UserService} from './services/userService';
 
 const appRoutes: Routes = [
-  { path: '', component: HomeComponent },
-  {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
+  {path: '', redirectTo: 'login', pathMatch: 'full'},
   { path: 'dashboard', component: DashboardComponent },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
