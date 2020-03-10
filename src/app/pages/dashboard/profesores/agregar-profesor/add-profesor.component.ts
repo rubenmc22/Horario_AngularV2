@@ -22,7 +22,7 @@ export class ProfesoresAddComponent implements OnInit {
   ) {
     this.titulo = 'Profesores';
     this.subTitulo = 'Agregar nuevo Profesores';
-    this.profesor = new Profesor('', '', 0, 0, '', true);
+    this.profesor = new Profesor();
   }
 
   ngOnInit() {

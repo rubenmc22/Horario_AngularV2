@@ -23,11 +23,20 @@ export class LoginService {
     }));
   }*/
 
-  login(user: number, pass: string) {
-    return this.http.post(this.baseUrl + '/', {
+  login(user: number, pass: string): boolean {
+
+             const headers = new HttpHeaders({
+                 'Access-Control-Allow-Origin': '*',
+                 'Content-Type': 'application/json'
+             });
+
+       return true;
+   /* return this.http.post(this.baseUrl + '/', {
      cedula: user,
      password : pass,
-    });
+     headers
+    });*/
+
   }
 
  /* register(usuario: any, pass: string, rPass: string) {
