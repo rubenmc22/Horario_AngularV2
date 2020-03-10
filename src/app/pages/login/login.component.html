@@ -15,7 +15,7 @@
 </head>
 <!--Coded with love by Mutiullah Samim-->
 
-<body>
+<body >
   <div class="content">
     <div class="container h-100">
       <div class="d-flex justify-content-center h-100">
@@ -48,7 +48,7 @@
                 </div>
               </div>
               <div class="d-flex justify-content-center mt-3 login_container">
-                <button type="submit" [disabled]="!formLogin.form.valid" (click)="logIn(user.value, pass.value, $event)"
+                <button type="submit" [disabled]="!formLogin.form.valid" (click)="logIn(Number(user.value), pass.value, $event)"
                   class="btn btn-primary" style="background-color: rgb(0, 70, 122); width: 160px;">Entrar</button>
               </div>
             </form>

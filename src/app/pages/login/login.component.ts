@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
     this.loginService.login(user, pass).subscribe(
       res => {
         console.log(res);
+        window.alert('You have been successfully registered!');
         const valor: Users = { user };
         this.userService.setUserLoggedIn(valor);
 
