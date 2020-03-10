@@ -1,6 +1,6 @@
 export interface CargaAcademicaInterface {
     id: number;
-    materia: string;
+    nombre: string;
     nombreProfesor: string;
     apellidoProfesor: string;
     horasAcademicas: number;

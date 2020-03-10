@@ -5,13 +5,13 @@ export class CargaAcademica implements CargaAcademicaInterface {
     public id: number;
 
     constructor(
-        public materia: string,
+        public nombre: string,
         public nombreProfesor: string,
         public apellidoProfesor: string,
         public horasAcademicas: number,
         public status: boolean
     ) {
-        this.materia = '';
+        this.nombre = '';
         this.nombreProfesor = '';
         this.apellidoProfesor = '';
         this.horasAcademicas = 0;

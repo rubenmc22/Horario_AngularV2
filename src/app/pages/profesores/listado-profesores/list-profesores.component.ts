@@ -18,7 +18,7 @@ export class ProfesoresListComponent implements OnInit {
   constructor(
     private route: Router,
     private router: ActivatedRoute,
-    private profesorService: ProfesorService,
+    private profesorService: ProfesorService
   ) {
     this.titulo = 'Profesores';
     this.subTitulo = 'Listado de Profesores';

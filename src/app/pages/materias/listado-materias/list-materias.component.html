@@ -16,7 +16,7 @@
     </div>
 
     <div *ngIf="materia">
-      <table class="table table-striped table-hover">
+      <table class="table table-striped table-hover" >
         <thead class="thead-dark">
           <tr align="center">
             <th class="id">Id</th>
@@ -26,8 +26,8 @@
             <th class="accion">Acción</th>
           </tr>
         </thead>
-        <tbody *ngFor="let materias of materia" align="center">
-          <tr>
+        <tbody align="center" >
+          <tr *ngFor="let materias of materia">
             <td>{{ materias.id }}</td>
             <td>{{ materias.nombre }}</td>
             <td>{{ materias.descripcion }}</td>

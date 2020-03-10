@@ -6,13 +6,14 @@ export class ModificarUsuario implements ModificarUsuarioInterface {
 
     constructor(
         public usuario: number,
-        public contraseña: string,
-        public verificarContraseña: string,
+        public pass: string,
+        public rPass: string,
         public status: boolean
     ) {
         this.usuario = 0;
-        this.contraseña = '';
-        this.verificarContraseña = '';
+        this.pass = '';
+        this.rPass = '';
+        this.status = true;
 
     }
 

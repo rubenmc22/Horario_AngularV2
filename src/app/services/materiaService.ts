@@ -22,7 +22,7 @@ export class MateriaService {
     // CRUD Hibernate
     getMateria() {
         return this.http.get<Materia[]>(
-            this.url + '/api/v1/materias', {
+            this.url + '/api/v1/asignaturas', {
             observe: 'response',
             responseType: 'json',
         });
@@ -30,7 +30,7 @@ export class MateriaService {
 
     getMateriaId() {
         return this.http.get<Materia[]>(
-            this.url + '/api/v1/materias/{id}', {
+            this.url + '/api/v1/asignaturas/{id}', {
             observe: 'response',
             responseType: 'json',
         });
@@ -43,7 +43,7 @@ export class MateriaService {
             'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/json'
         });
-        return this.http.post<Materia>(this.url + '/api/v1/materias',
+        return this.http.post<Materia>(this.url + '/api/v1/asignaturas',
             params, {
             headers
         });

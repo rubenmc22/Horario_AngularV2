@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { CargaAcademicaService } from '../../../services/cargaAcademicaService';
-import { CargaAcademica } from '../../../entities/cargaAcademica';
+import {Component, OnInit} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
+import {CargaAcademicaService} from '../../../services/cargaAcademicaService';
+import {CargaAcademica} from '../../../entities/cargaAcademica';
 
 
 @Component({
@@ -34,13 +34,14 @@ export class CargaAcademicaListComponent implements OnInit {
         } else {
           // this.productos.push(result.body);
           this.cargaAcademica = result.body; // Matriz
+          console.log(this.cargaAcademica);
+          console.log('RESULT:' + result.body);
         }
       },
       error => {
         console.log(error);
       }
     );
-    console.log(this.cargaAcademica);
   }
 
   changeView(curso) {

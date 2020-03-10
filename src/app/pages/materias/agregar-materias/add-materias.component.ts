@@ -21,8 +21,8 @@ export class MateriasAddComponent implements OnInit {
     private materiaService: MateriaService
   ) {
     this.titulo = 'Materias';
-    this, this.subTitulo = 'Listado de Materias';
-    this.materia = new Materia('', '', true);
+    this.subTitulo = 'Listado de Materias';
+    this.materia = new Materia('', '',   true);
   }
 
   ngOnInit() {

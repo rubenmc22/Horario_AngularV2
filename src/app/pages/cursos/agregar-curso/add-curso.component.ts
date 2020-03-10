@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
-import { CursoService } from '../../../services/cursoService';
-import { Curso } from '../../../entities/cursos';
+import {Component, OnInit} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
+import {FormBuilder, FormGroup, FormArray, FormControl, Validators} from '@angular/forms';
+import {CursoService} from '../../../services/cursoService';
+import {Curso} from '../../../entities/cursos';
 
 @Component({
   selector: 'app-curso-add',
@@ -20,7 +20,6 @@ export class CursoAddComponent implements OnInit {
     private route: Router,
     private router: ActivatedRoute,
     private cursoService: CursoService,
-
   ) {
     this.titulo = 'Curso';
     this.subTitulo = 'Agregar Curso';
@@ -28,9 +27,8 @@ export class CursoAddComponent implements OnInit {
   }
 
   ngOnInit() {
-
-
   }
+
   onSubmit() {
     console.log(this.cursos);
     return this.cursoService.postCurso(this.cursos).subscribe(
@@ -43,12 +41,4 @@ export class CursoAddComponent implements OnInit {
       }
     );
   }
-  recargarPagina() {
-    location.reload()
-  }
-
-
-
-
-
 }

@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 // Componentes
 import { CargaAcademica } from '../entities/cargaAcademica';
 import { Global } from './global';
+import {Materia} from '../entities/materia';
 
 @Injectable()
 export class CargaAcademicaService {
@@ -18,11 +19,10 @@ export class CargaAcademicaService {
     /*-------------------------------------------------------------------------------------------------------
     ------------------------------------Metodos CRUD Hibernate----------------------------------------------
     -------------------------------------------------------------------------------------------------------*/
-
     // CRUD Hibernate
     getCargaAcademica() {
         return this.http.get<CargaAcademica[]>(
-            this.url + '/', {
+            this.url + '/api/v1/cargas_academicas', {
             observe: 'response',
             responseType: 'json',
         });
@@ -30,7 +30,7 @@ export class CargaAcademicaService {
 
     getCargaAcademicaId() {
         return this.http.get<CargaAcademica[]>(
-            this.url + '//{id}', {
+            this.url + '/api/v1/cargas_academicas/{id}', {
             observe: 'response',
             responseType: 'json',
         });
@@ -43,7 +43,7 @@ export class CargaAcademicaService {
             'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/json'
         });
-        return this.http.post<CargaAcademica>(this.url + '/',
+        return this.http.post<CargaAcademica>(this.url + '/api/v1/cargas_academicas',
             params, {
             headers
         });

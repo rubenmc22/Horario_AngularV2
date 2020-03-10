@@ -22,7 +22,7 @@ export class ProfesorService {
     // CRUD Hibernate
     getProfesores() {
         return this.http.get<Profesor[]>(
-            this.url + '/api/v1/profesores', {
+            this.url + '/api/v1/docentes', {
             observe: 'response',
             responseType: 'json',
         });
@@ -30,7 +30,7 @@ export class ProfesorService {
 
     getProfesorId() {
         return this.http.get<Profesor[]>(
-            this.url + '/api/v1/profesores/{id}', {
+            this.url + '/api/v1/docentes/{id}', {
             observe: 'response',
             responseType: 'json',
         });
@@ -43,7 +43,7 @@ export class ProfesorService {
             'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/json'
         });
-        return this.http.post<Profesor>(this.url + '/api/v1/profesores',
+        return this.http.post<Profesor>(this.url + '/api/v1/docentes',
             params, {
             headers
         });
