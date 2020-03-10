@@ -39,5 +39,15 @@ export class MateriasListComponent implements OnInit {
     );
 
   }
+  deleteUser(id) {
+    this.materiaService.getDeleteId(id).subscribe(result => {
+          console.log(result);
+      },
+      error => {
+        console.error(error.error);
+        window.alert(error.error);
+      }
+    );
+  }
 }
 

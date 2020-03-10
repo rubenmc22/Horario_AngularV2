@@ -10,7 +10,7 @@ export class HomeComponent implements OnInit {
   public titulo;
 
   constructor() {
-    this.titulo = 'Dashboard';
+    this.titulo = 'Principal';
   }
 
   ngOnInit() {

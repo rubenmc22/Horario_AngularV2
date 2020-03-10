@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { ProfesorService } from '../../../../services/profesorService';
-import { Profesor } from '../../../../entities/profesor';
+import {Component, OnInit} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
+import {ProfesorService} from '../../../../services/profesorService';
+import {Profesor} from '../../../../entities/profesor';
 
 @Component({
   selector: 'app-profesores-add',
@@ -34,7 +34,8 @@ export class ProfesoresAddComponent implements OnInit {
     return this.profesorService.postProfesor(this.profesor).subscribe(
       result => {
         // this.producto.push(result);
-        this.profesor = result; // Matriz
+        this.profesor = result;
+        console.log(result); // Matriz
       },
       error => {
         console.log(error);

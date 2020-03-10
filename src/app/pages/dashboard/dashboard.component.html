@@ -94,7 +94,7 @@
 
                 <br><br><br><br><br><br><br><br><br><br><br>
                 <li>
-                    <a href="#" align="center">Desconectarse</a>
+                    <a type="button" *ngIf="currentUser" (click)="logout()" align="center">Desconectarse</a>
                 </li>
             </ul>
 

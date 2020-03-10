@@ -4,6 +4,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 // Componentes
 import { Materia } from '../entities/materia';
 import { Global } from './global';
+import {Observable} from 'rxjs';
+import {Profesor} from '../entities/profesor';
 
 @Injectable()
 export class MateriaService {
@@ -53,9 +55,13 @@ export class MateriaService {
 
     }
 
-    deleteMateria() {
-
-    }
+  getDeleteId(id): Observable<Materia> {
+    const headers = new HttpHeaders({
+      'Access-Control-Allow-Origin': '*',
+      'Content-Type': 'application/json'
+    });
+    return this.http.delete<Materia>(this.url + '/api/v1/asignaturas/' + id);
+  }
 }
     /*-------------------------------------------------------------------------------------------------------
 ------------------------------------Finish CRUD Hibernate----------------------------------------------

@@ -41,4 +41,15 @@ export class CursoListComponent implements OnInit {
     console.log(this.cursos);
   }
 
+  deleteUser(id) {
+    this.cursoService.getDeleteId(id).subscribe(result => {
+
+      },
+      error => {
+        console.error(error.error);
+        window.alert(error.error);
+      }
+    );
+  }
+
 }

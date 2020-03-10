@@ -1,65 +1,66 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 // Componentes
-import { Profesor } from '../entities/profesor';
-import { Global } from './global';
+import {Profesor} from '../entities/profesor';
+import {Global} from './global';
+import {Observable} from 'rxjs';
+import {catchError, tap} from 'rxjs/operators';
 
 @Injectable()
 export class ProfesorService {
-    public url: string;
+  public url: string;
 
-    constructor(
-        public http: HttpClient,
-    ) {
-        this.url = Global.url;
-    }
+  constructor(
+    public http: HttpClient,
+  ) {
+    this.url = Global.url;
+  }
 
-    /*-------------------------------------------------------------------------------------------------------
-    ------------------------------------Metodos CRUD Hibernate----------------------------------------------
-    -------------------------------------------------------------------------------------------------------*/
+  /*-------------------------------------------------------------------------------------------------------
+  ------------------------------------Metodos CRUD Hibernate----------------------------------------------
+  -------------------------------------------------------------------------------------------------------*/
 
-    // CRUD Hibernate
-    getProfesores() {
-        return this.http.get<Profesor[]>(
-            this.url + '/api/v1/docentes', {
-            observe: 'response',
-            responseType: 'json',
-        });
-    }
+  // CRUD Hibernate
+  getProfesores() {
+    return this.http.get<Profesor[]>(
+      this.url + '/api/v1/docentes', {
+        observe: 'response',
+        responseType: 'json',
+      });
+  }
 
-    getProfesorId() {
-        return this.http.get<Profesor[]>(
-            this.url + '/api/v1/docentes/{id}', {
-            observe: 'response',
-            responseType: 'json',
-        });
-    }
+  getProfesorId() {
+    return this.http.get<Profesor[]>(
+      this.url + '/api/v1/docentes/{id}', {
+        observe: 'response',
+        responseType: 'json',
+      });
+  }
 
-    postProfesor(profesor: Profesor) {
-        const json = JSON.stringify(profesor);
-        const params = json;
-        const headers = new HttpHeaders({
-            'Access-Control-Allow-Origin': '*',
-            'Content-Type': 'application/json'
-        });
-        return this.http.post<Profesor>(this.url + '/api/v1/docentes',
-            params, {
-            headers
-        });
-    }
+  postProfesor(profesor: Profesor) {
+    const json = JSON.stringify(profesor);
+    const params = json;
+    const headers = new HttpHeaders({
+      'Access-Control-Allow-Origin': '*',
+      'Content-Type': 'application/json'
+    });
+    return this.http.post<Profesor>(this.url + '/api/v1/docentes',
+      params, {
+        headers
+      });
+  }
 
-    updateMateria() {
-
-    }
-
-    deleteMateria() {
-
-    }
+  getDeleteId(id): Observable<Profesor> {
+    const headers = new HttpHeaders({
+      'Access-Control-Allow-Origin': '*',
+      'Content-Type': 'application/json'
+    });
+    return this.http.delete<Profesor>(this.url + '/api/v1/docentes/' + id);
+  }
+  
 }
-    /*-------------------------------------------------------------------------------------------------------
+
+/*-------------------------------------------------------------------------------------------------------
 ------------------------------------Finish CRUD Hibernate----------------------------------------------
 -------------------------------------------------------------------------------------------------------*/
-
-
-
