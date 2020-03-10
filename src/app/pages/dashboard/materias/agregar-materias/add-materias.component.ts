@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { MateriaService } from '../../../../services/materiaService';
-import { Materia } from '../../../../entities/materia';
+import {Component, OnInit} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
+import {MateriaService} from '../../../../services/materiaService';
+import {Materia} from '../../../../entities/materia';
 
 @Component({
   selector: 'app-materias-add',
@@ -40,5 +40,11 @@ export class MateriasAddComponent implements OnInit {
         console.log(error);
       }
     );
+    
   }
+
+  refresh() {
+    location.reload();
+  }
+
 }

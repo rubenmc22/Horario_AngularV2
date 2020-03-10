@@ -1,3 +1,4 @@
+
 <div class="container">
   <!-- TITULO Y BUSCADOR -->
   <div class="row">
@@ -50,7 +51,7 @@
     </div>
     <div align="left" class="bttn">
       <button id="botonguardar" type="submit" [disabled]="!formMaterias.form.valid"
-        class="btn btn-info">Guardar</button>
+        class="btn btn-info" (click)="refresh()">Guardar</button>
       <button id="botonborrar" type="reset" class="btn btn-danger">Borrar</button>
     </div>
 

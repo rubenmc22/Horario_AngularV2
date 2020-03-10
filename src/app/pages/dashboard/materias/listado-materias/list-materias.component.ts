@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { MateriaService } from '../../../../services/materiaService';
-import { Materia } from '../../../../entities/materia';
+import {Component, OnInit} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
+import {MateriaService} from '../../../../services/materiaService';
+import {Materia} from '../../../../entities/materia';
 
 @Component({
   selector: 'app-materias-list',
@@ -39,15 +39,20 @@ export class MateriasListComponent implements OnInit {
     );
 
   }
+
   deleteUser(id) {
     this.materiaService.getDeleteId(id).subscribe(result => {
-          console.log(result);
+        console.log(result);
       },
       error => {
         console.error(error.error);
-        window.alert(error.error);
       }
     );
+  }
+
+  refresh() {
+    location.reload();
+    window.alert('Informacion eliminada');
   }
 }
 

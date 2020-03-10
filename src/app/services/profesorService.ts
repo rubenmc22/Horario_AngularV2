@@ -58,7 +58,7 @@ export class ProfesorService {
     });
     return this.http.delete<Profesor>(this.url + '/api/v1/docentes/' + id);
   }
-  
+
 }
 
 /*-------------------------------------------------------------------------------------------------------

@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { CargaAcademicaService } from '../../../../services/cargaAcademicaService';
+import {Component, OnInit} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
+import {CargaAcademicaService} from '../../../../services/cargaAcademicaService';
 import {CursoService} from '../../../../services/cursoService';
 import {ProfesorService} from '../../../../services/profesorService';
 import {MateriaService} from '../../../../services/materiaService';
 import {Curso} from '../../../../entities/cursos';
 import {Profesor} from '../../../../entities/profesor';
 import {CargaAcademica} from '../../../../entities/cargaAcademica';
-import {Materia} from '../../../../entities/materia'
+import {Materia} from '../../../../entities/materia';
 
 @Component({
   selector: 'app-cargacademica-add',
@@ -21,8 +21,8 @@ export class CargaAcademicaAddComponent implements OnInit {
   public subTitulo: string;
   public cargaAcademica: CargaAcademica;
   public curser: '';
-  public profesores: Profesor[]=[];
-  public docente : Profesor = new Profesor();
+  public profesores: Profesor[] = [];
+  public docente: Profesor = new Profesor();
   public cursos: Curso[] = [];
   public materias: Materia[] = [];
 
@@ -30,7 +30,7 @@ export class CargaAcademicaAddComponent implements OnInit {
     private route: Router,
     private router: ActivatedRoute,
     private cargaAcademicaService: CargaAcademicaService,
-    private cursoService:CursoService,
+    private cursoService: CursoService,
     private profesorService: ProfesorService,
     private materiaService: MateriaService
   ) {
@@ -39,34 +39,34 @@ export class CargaAcademicaAddComponent implements OnInit {
     this.cargaAcademica = new CargaAcademica('', '', '', 0, true);
 
     this.cursoService.getCursos().subscribe(
-          result => {
-            // this.producto.push(result);
-            this.cursos = result.body; // Matriz
-            console.log(this.cursos);
-          },
-          error => {
-            console.log(error);
-          }
-        );
+      result => {
+        // this.producto.push(result);
+        this.cursos = result.body; // Matriz
+        console.log(this.cursos);
+      },
+      error => {
+        console.log(error);
+      }
+    );
 
-        this.profesorService.getProfesores().subscribe(
-          result => {
-             this.profesores = result.body;
-             console.log(this.profesores);
-          },
-          error => {
-            console.log(error);
-          }
-        );
+    this.profesorService.getProfesores().subscribe(
+      result => {
+        this.profesores = result.body;
+        console.log(this.profesores);
+      },
+      error => {
+        console.log(error);
+      }
+    );
 
-       this.materiaService.getMateria().subscribe(
-               result => {
-                  this.materias = result.body;
-               },
-               error => {
-                 console.log(error);
-               }
-             );
+    this.materiaService.getMateria().subscribe(
+      result => {
+        this.materias = result.body;
+      },
+      error => {
+        console.log(error);
+      }
+    );
 
   }
 
@@ -86,10 +86,12 @@ export class CargaAcademicaAddComponent implements OnInit {
       }
     );
   }
-  changeView(curso) {
-    this.curser = curso;
+
+  refresh() {
+    location.reload();
   }
-  apellido(profesor){
-     this.docente = this.profesores[profesor]
+
+  apellido(profesor) {
+    this.docente = this.profesores[profesor];
   }
 }

@@ -41,4 +41,8 @@ export class CursoAddComponent implements OnInit {
       }
     );
   }
+
+  refresh() {
+    location.reload();
+  }
 }

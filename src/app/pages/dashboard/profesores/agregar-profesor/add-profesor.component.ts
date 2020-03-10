@@ -28,7 +28,7 @@ export class ProfesoresAddComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit() {
+  onSubmits() {
     console.log(this.profesor);
 
     return this.profesorService.postProfesor(this.profesor).subscribe(
@@ -41,5 +41,9 @@ export class ProfesoresAddComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+  refresh() {
+    window.alert('Informacion almacenada')
+    location.reload();;
   }
 }

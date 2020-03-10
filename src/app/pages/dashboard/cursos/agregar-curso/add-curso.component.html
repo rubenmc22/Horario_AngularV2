@@ -22,7 +22,7 @@
           </span>
         </label>
         <input type="text" class="form-control" #nombre="ngModel" name="nombre" [(ngModel)]="cursos.nombre"
-          pattern="^[a-zA-Zñ]*" minlength="2" placeholder="Introduzca el nombre del Curso" required>
+          pattern="^[a-zA-Zñ\s]*" minlength="2" placeholder="Introduzca el nombre del Curso" required>
       </div>
       <div class="form-group col-md-6">
         <label>
@@ -92,7 +92,7 @@
         </div>
       </div>
       <div align="left" class="bttn">
-        <button id="botonguardar" type="submit" (click)="recargarPagina()" [disabled]="!formCurso.form.valid"
+        <button id="botonguardar" type="submit" (click)="refresh()"  [disabled]="!formCurso.form.valid"
           class="btn btn-info">Guardar</button>
         <button id="botonborrar" type="reset" class="btn btn-danger">Borrar</button>
       </div>

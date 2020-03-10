@@ -56,5 +56,10 @@ export class ProfesoresListComponent implements OnInit {
     );
   }
 
+  refresh() {
+    location.reload();
+    window.alert('Informacion Eliminada');
+  }
+
 }
 

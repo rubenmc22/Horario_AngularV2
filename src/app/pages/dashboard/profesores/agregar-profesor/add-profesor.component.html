@@ -10,7 +10,7 @@
 
   <p id="subtitulo" class="btn btn-default" data-toggle="modal">{{subTitulo}}</p><br>
 
-  <form #formProfesores="ngForm" id="form-profesores" (ngSubmit)="onSubmit()"
+  <form #formProfesores="ngForm" id="form-profesores" (ngSubmit)="onSubmits()"
     style="padding-left: 30px; padding-top: 15px">
     <div class="form-row">
       <div class="form-group col-md-6">
@@ -21,7 +21,7 @@
           </span>
         </label>
         <input type="text" class="form-control" #nombre="ngModel" name="nombre" [(ngModel)]="profesor.nombre"
-          pattern="[a-zA-Z]*" minlength="2" placeholder="Introduzca el nombre del Profesor" required>
+          pattern="[a-zA-Z\s]*" minlength="2" placeholder="Introduzca el nombre del Profesor" required>
       </div>
       <div class="form-group col-md-6">
         <label>
@@ -31,7 +31,7 @@
           </span>
         </label>
         <input type="text" class="form-control" #apellido="ngModel" name="apellido" [(ngModel)]="profesor.apellido"
-          pattern="[a-zA-Z]*" minlength="2" placeholder="Introduzca el apellido del Profesor" required>
+          pattern="[a-zA-Z\s]*" minlength="2" placeholder="Introduzca el apellido del Profesor" required>
       </div>
       <div class="form-group col-md-6">
         <label>
@@ -83,7 +83,7 @@
     </div>
     <div align="left" class="bttn">
       <button id="botonguardar" type="submit" class="btn btn-info"
-        [disabled]="!formProfesores.form.valid">Guardar</button>
+        [disabled]="!formProfesores.form.valid" (click)="refresh()">Guardar</button>
       <button id="botonborrar" type="reset" class="btn btn-danger">Borrar</button>
     </div>
 
