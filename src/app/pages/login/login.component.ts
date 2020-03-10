@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {Router, ActivatedRoute, Params} from '@angular/router';
-import {LoginService} from '../../services/loginService';
-import {UserService} from '../../services/userService';
-import {Users} from '../../entities/user';
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import { LoginService } from '../../services/loginService';
+import { UserService } from '../../services/userService';
+import { Users } from '../../entities/user';
 
 
 @Component({
@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
     this.loginService.login(user, pass).subscribe(
       res => {
         console.log(res);
-        const valor: Users = {user};
+        const valor: Users = { user };
         this.userService.setUserLoggedIn(valor);
 
       },
@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
   }
 
   navigate() {
-    this.route.navigateByUrl('/home');
+    this.route.navigateByUrl('/dashboard');
   }
 
 }

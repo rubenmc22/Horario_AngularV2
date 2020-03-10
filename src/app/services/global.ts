@@ -1,3 +1,3 @@
 export let Global = {
-  url: 'http://localhost:8080/horario',
+  url: 'http://localhost:9191/horario',
 };
