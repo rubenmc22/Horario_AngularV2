@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
       res => {
         console.log('PRUEBA LOGIN' + res);
       });*/
+
   }
 
   logIn(user: number, pass: string, event: Event) {
@@ -55,7 +56,7 @@ export class LoginComponent implements OnInit {
   }
 
   navigate() {
-  //  this.route.navigate(['/dashboard']);
+    this.route.navigate(['../dashboard']);
   }
 
 }
