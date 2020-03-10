@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {Router} from '@angular/router';
 import {Global} from '../services/global';
+import {Users} from '../entities/user';
 
 @Injectable({
   providedIn: 'root'
@@ -23,35 +24,32 @@ export class LoginService {
     }));
   }*/
 
-  login(user: number, pass: string): boolean {
+  login(user: string, pass: string) {
 
-             const headers = new HttpHeaders({
-                 'Access-Control-Allow-Origin': '*',
-                 'Content-Type': 'application/json'
-             });
-
-       return true;
-   /* return this.http.post(this.baseUrl + '/', {
-     cedula: user,
-     password : pass,
-     headers
-    });*/
-
+    const headers = new HttpHeaders({
+      'Access-Control-Allow-Origin': '*',
+      'Content-Type': 'application/json'
+    });
+    return this.http.post(this.baseUrl + '/api/v1/login', {
+      cedula: user,
+      password: pass,
+      headers
+    });
   }
 
- /* register(usuario: any, pass: string, rPass: string) {
-    const url = this.baseUrl + 'register';
-    return this.http.post<{ access_token; string }>(url, {usuario, pass, rPass}).pipe(tap(res => {
-      this.login(usuario, pass);
-    }));
-  }
+  /* register(usuario: any, pass: string, rPass: string) {
+     const url = this.baseUrl + 'register';
+     return this.http.post<{ access_token; string }>(url, {usuario, pass, rPass}).pipe(tap(res => {
+       this.login(usuario, pass);
+     }));
+   }
 
-  logout() {
-    localStorage.removeItem('access_token');
-    this.router.navigate(['/login']);
-  }
+   logout() {
+     localStorage.removeItem('access_token');
+     this.router.navigate(['/login']);
+   }
 
-  public get loggedIn(): boolean {
-    return localStorage.getItem('access_token') !== null;
-  }*/
+   public get loggedIn(): boolean {
+     return localStorage.getItem('access_token') !== null;
+   }*/
 }

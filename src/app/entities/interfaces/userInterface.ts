@@ -1,4 +1,5 @@
 export interface UserInterface {
-  user: number;
+  user: string;
+  pass: string;
 
 }

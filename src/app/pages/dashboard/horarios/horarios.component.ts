@@ -22,7 +22,7 @@ export class HorariosComponent implements OnInit {
     private horarioService: HorarioService
   ) {
     this.titulo = 'Horarios';
-    this.subTitulo = 'Procesar Horarios'
+    this.subTitulo = 'Procesar Horarios';
   }
 
   ngOnInit() {
