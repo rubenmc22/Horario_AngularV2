@@ -34,9 +34,18 @@ export class LoginComponent implements OnInit {
   logIn(user: string, pass: string, event: Event) {
     event.preventDefault(); // Avoid default action for the submit button of the login form
 
-    if (this.loginService.login(user, pass)) {
+   /* if (this.loginService.login(user, pass)) {
       this.navigate();
-    }
+    }*/
+    this.loginService.login(user, pass).subscribe(
+      result => {
+        console.log(result);
+        this.navigate();
+      },
+      error => {
+        console.log(error);
+      }
+    );
 
   }
 

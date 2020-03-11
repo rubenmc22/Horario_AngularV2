@@ -2,7 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {FormBuilder, FormGroup, FormArray, FormControl, Validators} from '@angular/forms';
 import {CursoService} from '../../../../services/cursoService';
+
 import {Curso} from '../../../../entities/cursos';
+import {UserService} from '../../../../services/userService';
 
 @Component({
   selector: 'app-curso-add',
@@ -20,6 +22,7 @@ export class CursoAddComponent implements OnInit {
     private route: Router,
     private router: ActivatedRoute,
     private cursoService: CursoService,
+    private userService: UserService
   ) {
     this.titulo = 'Curso';
     this.subTitulo = 'Agregar Curso';

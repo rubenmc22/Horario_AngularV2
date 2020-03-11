@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CursoService } from '../../../../services/cursoService';
 import { Curso } from '../../../../entities/cursos';
+import {UserService} from '../../../../services/userService';
 
 @Component({
   selector: 'app-curso-list',
@@ -18,7 +19,8 @@ export class CursoListComponent implements OnInit {
   constructor(
     private route: Router,
     private router: ActivatedRoute,
-    private cursoService: CursoService
+    private cursoService: CursoService,
+    private userService: UserService
   ) {
     this.titulo = 'Curso';
     this.subTitulo = 'Listado de Cursos';

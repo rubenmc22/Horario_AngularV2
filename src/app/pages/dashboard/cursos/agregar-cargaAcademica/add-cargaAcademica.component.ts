@@ -8,6 +8,7 @@ import {Curso} from '../../../../entities/cursos';
 import {Profesor} from '../../../../entities/profesor';
 import {CargaAcademica} from '../../../../entities/cargaAcademica';
 import {Materia} from '../../../../entities/materia';
+import {UserService} from '../../../../services/userService';
 
 @Component({
   selector: 'app-cargacademica-add',
@@ -32,7 +33,8 @@ export class CargaAcademicaAddComponent implements OnInit {
     private cargaAcademicaService: CargaAcademicaService,
     private cursoService: CursoService,
     private profesorService: ProfesorService,
-    private materiaService: MateriaService
+    private materiaService: MateriaService,
+    private userService: UserService
   ) {
     this.titulo = 'Carga Academica';
     this, this.subTitulo = 'Agregar Carga Academica';
@@ -94,4 +96,9 @@ export class CargaAcademicaAddComponent implements OnInit {
   apellido(profesor) {
     this.docente = this.profesores[profesor];
   }
+  logout() {
+    this.userService.logout();
+    this.userService.currentUserValue;
+  }
+
 }

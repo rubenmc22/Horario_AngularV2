@@ -1,7 +1,109 @@
+<nav id="navbar" class="col-lg-12">
+  <ul>
+    <li id="titulo">U.E INSTITUTO ELENA DE BUENO</li>
+  </ul>
+</nav>
+<div id="content">
+
+  <div class="wrapper">
+    <!-- Sidebar -->
+    <nav id="sidebar">
+      <div class="sidebar-header">
+        <img src="assets/Images/logo.jpg" style="height: 200px; width: 200px;">
+      </div>
+
+      <ul class="list-unstyled components">
+        <p align="center">Menú</p>
+
+        <!-- <li>
+            <a [routerLink]="['/login']" [routerLinkActive]="['desactivado']">Login</a>
+        </li>-->
+        <li>
+          <a [routerLink]="['/home']" [routerLinkActive]="['activado']">Home</a>
+        </li>
+        <li class="active">
+          <a href="#Materias" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            Materias
+          </a>
+          <ul class="collapse list-unstyled" id="Materias">
+            <li>
+              <a [routerLink]="['/add-materia']" [routerLinkActive]="['activado']">Agregar Materia</a>
+            </li>
+            <li>
+              <a [routerLink]="['/list-materias']" [routerLinkActive]="['activado']">Listado de
+                Materias</a>
+            </li>
+          </ul>
+        </li>
+        <li class="active">
+          <a href="#profesores" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            Profesores
+          </a>
+          <ul class="collapse list-unstyled" id="profesores">
+            <li>
+              <a [routerLink]="['/add-profesor']" [routerLinkActive]="['activado']">Agregar Profesor</a>
+            </li>
+            <li>
+              <a [routerLink]="['/list-profesores']" [routerLinkActive]="['activado']">Listado de
+                Profesores</a>
+            </li>
+          </ul>
+        </li>
+        <li class="active">
+          <a href="#cargaAcademica" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            Curso
+          </a>
+          <ul class="collapse list-unstyled" id="cargaAcademica">
+            <li>
+              <a [routerLink]="['/add-curso']" [routerLinkActive]="['activado']">Agregar Curso</a>
+            </li>
+            <li>
+              <a [routerLink]="['/list-cursos']" [routerLinkActive]="['activado']">Ver Cursos</a>
+            </li>
+            <li>
+              <a [routerLink]="['/add-cargaAcademica']" [routerLinkActive]="['activado']">Agregar Carga
+                Académica</a>
+            </li>
+            <li>
+              <a [routerLink]="['/list-cargaAcademica']" [routerLinkActive]="['activado']">Ver Carga
+                Académica</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a [routerLink]="['/horarios']" [routerLinkActive]="['activado']">Horarios</a>
+        </li>
+        <li class="active">
+          <a href="#administracion" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+            Administración
+          </a>
+          <ul class="collapse list-unstyled" id="administracion">
+            <li>
+              <a [routerLink]="['/modificar_user']" [routerLinkActive]="['activado']">Modificar
+                Usuario</a>
+            </li>
+            <li>
+              <a href="#">2</a>
+            </li>
+            <li>
+              <a href="#">3</a>
+            </li>
+          </ul>
+        </li>
+
+        <br><br><br><br><br><br><br><br><br><br><br>
+        <li>
+          <a type="button" *ngIf="currentUser" (click)="logout()" align="center">Desconectarse</a>
+        </li>
+      </ul>
+
+    </nav>
+
 <h1>{{titulo}}</h1>
 
 <div style="margin-left: 100px" align="center">
   <img src="assets/Images/home.jpg"  style="height: 24px; max-width: 90%; width: 700px; height: 800px;">
 
 </div>
-
+  </div>
+</div>

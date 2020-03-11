@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {MateriaService} from '../../../../services/materiaService';
 import {Materia} from '../../../../entities/materia';
+import {UserService} from '../../../../services/userService';
 
 @Component({
   selector: 'app-materias-list',
@@ -19,6 +20,7 @@ export class MateriasListComponent implements OnInit {
     private route: Router,
     private router: ActivatedRoute,
     private materiaService: MateriaService,
+    private userService: UserService,
   ) {
     this.titulo = 'Materias';
     this.subtitulo = 'Listado de Materias';
@@ -53,6 +55,11 @@ export class MateriasListComponent implements OnInit {
   refresh() {
     location.reload();
     window.alert('Informacion eliminada');
+  }
+
+  logout() {
+    this.userService.logout();
+    this.userService.currentUserValue;
   }
 }
 

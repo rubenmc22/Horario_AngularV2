@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {ProfesorService} from '../../../../services/profesorService';
 import {Profesor} from '../../../../entities/profesor';
+import {UserService} from '../../../../services/userService';
 
 @Component({
   selector: 'app-profesores-add',
@@ -18,7 +19,8 @@ export class ProfesoresAddComponent implements OnInit {
   constructor(
     private route: Router,
     private router: ActivatedRoute,
-    private profesorService: ProfesorService
+    private profesorService: ProfesorService,
+    private userService: UserService
   ) {
     this.titulo = 'Profesores';
     this.subTitulo = 'Agregar nuevo Profesores';
@@ -29,21 +31,22 @@ export class ProfesoresAddComponent implements OnInit {
   }
 
   onSubmits() {
-    console.log(this.profesor);
 
     return this.profesorService.postProfesor(this.profesor).subscribe(
       result => {
         // this.producto.push(result);
         this.profesor = result;
-        console.log(result); // Matriz
+        console.log(result);
       },
       error => {
         console.log(error);
       }
     );
   }
-  refresh() {
-    window.alert('Informacion almacenada')
-    location.reload();;
+
+  refresh(): void {
+    window.alert('Informacion almacenada');
+    location.reload();
+
   }
 }
