@@ -4,6 +4,6 @@ export interface ProfesorInterface {
     apellido: string;
     cedula: number;
     telefono: number;
-    email: string;
+    correo: string;
     status: boolean;
 }

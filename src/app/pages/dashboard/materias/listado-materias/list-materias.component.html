@@ -100,52 +100,54 @@
     </nav>
 
 
-<div class="container">
-  <!-- TITULO Y BUSCADOR -->
-  <div class="row">
-    <!-- Titulo -->
-    <div class="col-md-2">
-      <h4 id="titulo">{{titulo}}</h4>
+    <div class="container">
+      <!-- TITULO Y BUSCADOR -->
+      <div class="row">
+        <!-- Titulo -->
+        <div class="col-md-2">
+          <h4 id="titulo">{{titulo}}</h4>
+        </div>
+      </div>
+      <hr>
+      <hr>
+
+      <p id="subtitulo" class="btn btn-default" data-toggle="modal">{{subtitulo}}</p>
+
+      <div class="table-responsive-xl">
+        <div *ngIf="!materia">
+          <p>Cargando lista de Materias..</p>
+        </div>
+
+        <div *ngIf="materia">
+          <table class="table table-striped table-hover">
+            <thead class="thead-dark">
+              <tr align="center">
+
+                <th class="name">Nombre</th>
+                <th class="description">Descripción</th>
+                <th class="estatus">Estatus</th>
+                <th class="accion">Acción</th>
+              </tr>
+            </thead>
+            <tbody align="center">
+              <tr *ngFor="let materias of materia">
+                <td>{{ materias.nombre }}</td>
+                <td>{{ materias.descripcion }}</td>
+                <td>{{ materias.status }}</td>
+                <td>
+                  <span class="imgEdit">
+                    <img src="assets/Images/editar.png" style="height: 24px">
+                  </span>
+                  <span class="imgDelete">
+                    <img (click)="deleteUser(materias.id)" (click)="refresh()" src="assets/Images/eliminar.png"
+                      style="height: 24px;">
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
-  </div>
-  <hr>
-
-  <p id="subtitulo" class="btn btn-default" data-toggle="modal">{{subtitulo}}</p>
-
-  <div class="table-responsive-xl">
-    <div *ngIf="!materia">
-      <p>Cargando lista de Materias..</p>
-    </div>
-
-    <div *ngIf="materia">
-      <table class="table table-striped table-hover" >
-        <thead class="thead-dark">
-          <tr align="center">
-
-            <th class="name">Nombre</th>
-            <th class="description">Descripción</th>
-            <th class="estatus">Estatus</th>
-            <th class="accion">Acción</th>
-          </tr>
-        </thead>
-        <tbody align="center" >
-          <tr *ngFor="let materias of materia">
-            <td>{{ materias.nombre }}</td>
-            <td>{{ materias.descripcion }}</td>
-            <td>{{ materias.status }}</td>
-            <td>
-              <span class="imgEdit">
-                <img src="assets/Images/editar.png" style="height: 24px">
-              </span>
-              <span class="imgDelete">
-                <img (click)="deleteUser(materias.id)" (click)="refresh()" src="assets/Images/eliminar.png" style="height: 24px;">
-              </span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
   </div>
 </div>

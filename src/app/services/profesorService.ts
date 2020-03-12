@@ -1,11 +1,10 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 // Componentes
-import {Profesor} from '../entities/profesor';
-import {Global} from './global';
-import {Observable} from 'rxjs';
-import {catchError, tap} from 'rxjs/operators';
+import { Profesor } from '../entities/profesor';
+import { Global } from './global';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class ProfesorService {
@@ -25,17 +24,17 @@ export class ProfesorService {
   getProfesores() {
     return this.http.get<Profesor[]>(
       this.url + '/api/v1/docentes', {
-        observe: 'response',
-        responseType: 'json',
-      });
+      observe: 'response',
+      responseType: 'json',
+    });
   }
 
   getProfesorId() {
     return this.http.get<Profesor[]>(
       this.url + '/api/v1/docentes/{id}', {
-        observe: 'response',
-        responseType: 'json',
-      });
+      observe: 'response',
+      responseType: 'json',
+    });
   }
 
   postProfesor(profesor: Profesor) {
@@ -47,8 +46,8 @@ export class ProfesorService {
     });
     return this.http.post<Profesor>(this.url + '/api/v1/docentes',
       params, {
-        headers
-      });
+      headers
+    });
   }
 
   getDeleteId(id): Observable<Profesor> {

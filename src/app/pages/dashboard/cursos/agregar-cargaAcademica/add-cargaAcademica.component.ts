@@ -1,14 +1,14 @@
-import {Component, OnInit} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
-import {CargaAcademicaService} from '../../../../services/cargaAcademicaService';
-import {CursoService} from '../../../../services/cursoService';
-import {ProfesorService} from '../../../../services/profesorService';
-import {MateriaService} from '../../../../services/materiaService';
-import {Curso} from '../../../../entities/cursos';
-import {Profesor} from '../../../../entities/profesor';
-import {CargaAcademica} from '../../../../entities/cargaAcademica';
-import {Materia} from '../../../../entities/materia';
-import {UserService} from '../../../../services/userService';
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { CargaAcademicaService } from '../../../../services/cargaAcademicaService';
+import { CursoService } from '../../../../services/cursoService';
+import { ProfesorService } from '../../../../services/profesorService';
+import { MateriaService } from '../../../../services/materiaService';
+import { Curso } from '../../../../entities/cursos';
+import { Profesor } from '../../../../entities/profesor';
+import { CargaAcademica } from '../../../../entities/cargaAcademica';
+import { Materia } from '../../../../entities/materia';
+import { UserService } from '../../../../services/userService';
 
 @Component({
   selector: 'app-cargacademica-add',
@@ -21,9 +21,8 @@ export class CargaAcademicaAddComponent implements OnInit {
   public titulo: string;
   public subTitulo: string;
   public cargaAcademica: CargaAcademica;
-  public curser: '';
   public profesores: Profesor[] = [];
-  public docente: Profesor = new Profesor();
+  public docente: Profesor = new Profesor('');
   public cursos: Curso[] = [];
   public materias: Materia[] = [];
 

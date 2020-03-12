@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
-import {ProfesorService} from '../../../../services/profesorService';
-import {Profesor} from '../../../../entities/profesor';
-import {UserService} from '../../../../services/userService';
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ProfesorService } from '../../../../services/profesorService';
+import { Profesor } from '../../../../entities/profesor';
+import { UserService } from '../../../../services/userService';
 
 @Component({
   selector: 'app-profesores-add',
@@ -23,29 +23,35 @@ export class ProfesoresAddComponent implements OnInit {
     private userService: UserService
   ) {
     this.titulo = 'Profesores';
-    this.subTitulo = 'Agregar nuevo Profesores';
-    this.profesor = new Profesor();
+    this.subTitulo = 'Agregar nuevo Profesor';
+    this.profesor = new Profesor('');
   }
 
   ngOnInit() {
   }
 
   onSubmits() {
-
     return this.profesorService.postProfesor(this.profesor).subscribe(
       result => {
         // this.producto.push(result);
-        this.profesor = result;
-        console.log(result);
+        if (result.correo !== null) {
+          this.profesor = result;
+          console.log(result);
+          window.alert('Información Guardada.');
+        } else {
+          console.log(result);
+          console.log('ES NULL: ' + result);
+        }
+
       },
       error => {
-        console.log(error);
+        console.log(error.error);
+        window.alert(error.error);
       }
     );
   }
 
   refresh(): void {
-    window.alert('Informacion almacenada');
     location.reload();
 
   }

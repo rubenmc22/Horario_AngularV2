@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
-import {MateriaService} from '../../../../services/materiaService';
-import {Materia} from '../../../../entities/materia';
-import {UserService} from '../../../../services/userService';
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { MateriaService } from '../../../../services/materiaService';
+import { Materia } from '../../../../entities/materia';
+import { UserService } from '../../../../services/userService';
 
 @Component({
   selector: 'app-materias-add',
@@ -37,9 +37,10 @@ export class MateriasAddComponent implements OnInit {
       result => {
         // this.producto.push(result);
         this.materia = result; // Matriz
+        window.alert('Informacion Guardada.')
       },
       error => {
-        console.log(error);
+        console.log(error.error);
       }
     );
 

@@ -1,4 +1,4 @@
-import {ProfesorInterface} from './interfaces/profesorInterface';
+import { ProfesorInterface } from './interfaces/profesorInterface';
 
 export class Profesor implements ProfesorInterface {
 
@@ -7,15 +7,14 @@ export class Profesor implements ProfesorInterface {
   public apellido: string;
   public cedula: number;
   public telefono: number;
-  public email: string;
   public status: boolean;
 
-  constructor() {
+  constructor(public correo: string) {
     this.nombre = '';
     this.apellido = '';
     this.cedula = null;
     this.telefono = null;
-    this.email = '';
+    this.correo = '';
     this.status = true;
   }
 }

@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {Router, ActivatedRoute, Params} from '@angular/router';
-import {LoginService} from '../../services/loginService';
-import {UserService} from '../../services/userService';
-import {Users} from '../../entities/user';
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import { LoginService } from '../../services/loginService';
+import { UserService } from '../../services/userService';
+import { Users } from '../../entities/user';
 
 
 @Component({
@@ -24,26 +24,21 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    /*  this.loginService.login(24367965, '1456932').subscribe(
-        res => {
-          console.log('PRUEBA LOGIN' + res);
-        });*/
-
   }
 
   logIn(user: string, pass: string, event: Event) {
     event.preventDefault(); // Avoid default action for the submit button of the login form
 
-   /* if (this.loginService.login(user, pass)) {
-      this.navigate();
-    }*/
     this.loginService.login(user, pass).subscribe(
       result => {
         console.log(result);
+        alert('Ingreso Correcto..');
         this.navigate();
       },
       error => {
         console.log(error);
+        alert(error.error);
+        location.reload();
       }
     );
 

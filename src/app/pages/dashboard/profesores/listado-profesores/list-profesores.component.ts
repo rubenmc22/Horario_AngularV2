@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
-import {ProfesorService} from '../../../../services/profesorService';
-import {Profesor} from '../../../../entities/profesor';
-import {UserService} from '../../../../services/userService';
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ProfesorService } from '../../../../services/profesorService';
+import { Profesor } from '../../../../entities/profesor';
+import { UserService } from '../../../../services/userService';
 
 @Component({
   selector: 'app-profesores-list',
@@ -46,22 +46,21 @@ export class ProfesoresListComponent implements OnInit {
     console.log(this.profesor);
   }
 
-
   deleteUser(id) {
-    this.profesorService.getDeleteId(id).subscribe(result => {
-
+    const result = window.confirm('¿Esta seguro que desea eliminar este campo? Este Profesor podria estar asociado a una carga academica.');
+    if (result) {
+      this.profesorService.getDeleteId(id).subscribe(result => {
+        window.alert('Registro Eliminado');
       },
-      error => {
-        console.error(error.error);
-        window.alert(error.error);
-      }
-    );
+        error => {
+          console.error(error.error);
+          window.alert(error.error);
+        }
+      );
+    }
   }
 
   refresh() {
     location.reload();
-    window.alert('Informacion Eliminada');
   }
-
-}
-
+} 
