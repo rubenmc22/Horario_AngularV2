@@ -1,8 +1,10 @@
-import { UserInterface } from './interfaces/userInterface';
+import {UserInterface} from './interfaces/userInterface';
 
 export class Users implements UserInterface {
 
-    public user: number;
+  public user: string;
+  public pass: string;
+  public rpass: string;
 
 
 }

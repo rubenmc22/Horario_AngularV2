@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HorarioService } from '../../../services/horarioService';
 import { Horario } from '../../../entities/horarios';
+import {UserService} from '../../../services/userService';
 
 
 @Component({
@@ -19,10 +20,11 @@ export class HorariosComponent implements OnInit {
   constructor(
     private route: Router,
     private router: ActivatedRoute,
-    private horarioService: HorarioService
+    private horarioService: HorarioService,
+    private userService: UserService
   ) {
     this.titulo = 'Horarios';
-    this.subTitulo = 'Procesar Horarios'
+    this.subTitulo = 'Procesar Horarios';
   }
 
   ngOnInit() {

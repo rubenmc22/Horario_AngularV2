@@ -5,6 +5,7 @@ import { ModificarUsuarioService } from '../../../../services/modificarUserServi
 import { ModificarUsuario } from '../../../../entities/modificarUser';
 import { LoginService } from '../../../../services/loginService';
 import { Users } from '../../../../entities/user';
+import {UserService} from '../../../../services/userService';
 
 @Component({
   selector: 'app-administracion',
@@ -23,7 +24,8 @@ export class ModificacionUserComponent implements OnInit {
     private route: Router,
     private router: ActivatedRoute,
     private modificarUsuarioService: ModificarUsuarioService,
-    private adminService: LoginService
+    private adminService: LoginService,
+    private userService: UserService
   ) {
     this.titulo = 'Administración';
     this.subTitulo = 'Modificar Usuario de Login';
@@ -58,6 +60,9 @@ export class ModificacionUserComponent implements OnInit {
     // let pass = this.form.pass.value;
     // let rPass = this.rPass;
   }
-
+  logout() {
+    this.userService.logout();
+    this.userService.currentUserValue;
+  }
 
 }

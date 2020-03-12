@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { ProfesorService } from '../../../../services/profesorService';
-import { Profesor } from '../../../../entities/profesor';
+import {Component, OnInit} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
+import {ProfesorService} from '../../../../services/profesorService';
+import {Profesor} from '../../../../entities/profesor';
+import {UserService} from '../../../../services/userService';
 
 @Component({
   selector: 'app-profesores-list',
@@ -11,18 +12,21 @@ import { Profesor } from '../../../../entities/profesor';
 })
 export class ProfesoresListComponent implements OnInit {
 
-  public titulo: string;
-  public subTitulo: string;
-  public profesor: Profesor[] = [];
-
   constructor(
     private route: Router,
     private router: ActivatedRoute,
-    private profesorService: ProfesorService
+    private profesorService: ProfesorService,
+    private userService: UserService
   ) {
     this.titulo = 'Profesores';
     this.subTitulo = 'Listado de Profesores';
   }
+
+  public titulo: string;
+  public subTitulo: string;
+  public profesor: Profesor[] = [];
+
+
   ngOnInit() {
     console.log('Se cargo el componente Profesores list');
 
@@ -41,5 +45,23 @@ export class ProfesoresListComponent implements OnInit {
     );
     console.log(this.profesor);
   }
+
+
+  deleteUser(id) {
+    this.profesorService.getDeleteId(id).subscribe(result => {
+
+      },
+      error => {
+        console.error(error.error);
+        window.alert(error.error);
+      }
+    );
+  }
+
+  refresh() {
+    location.reload();
+    window.alert('Informacion Eliminada');
+  }
+
 }
 

@@ -20,7 +20,7 @@ import { ModificacionUserComponent } from './pages/dashboard/administracion/modi
 const appRoutes: Routes = [
   {path: '', component: LoginComponent},
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'login', component: LoginComponent },
+ // { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'horarios', component: HorariosComponent },
   { path: 'add-profesor', component: ProfesoresAddComponent },

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { CargaAcademicaService } from '../../../../services/cargaAcademicaService';
-import { CargaAcademica } from '../../../../entities/cargaAcademica';
+import {Component, OnInit} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
+import {CargaAcademicaService} from '../../../../services/cargaAcademicaService';
+import {CargaAcademica} from '../../../../entities/cargaAcademica';
+import {UserService} from '../../../../services/userService';
 
 
 @Component({
@@ -20,7 +21,8 @@ export class CargaAcademicaListComponent implements OnInit {
   constructor(
     private route: Router,
     private router: ActivatedRoute,
-    private cargaAcademicaService: CargaAcademicaService
+    private cargaAcademicaService: CargaAcademicaService,
+    private userService: UserService
   ) {
     this.titulo = 'Curso';
     this.subTitulo = 'Agregar Carga Académica';
@@ -44,7 +46,15 @@ export class CargaAcademicaListComponent implements OnInit {
     );
   }
 
-  changeView(curso) {
-    this.curser = curso;
+  deleteUser(id) {
+    this.cargaAcademicaService.getDeleteId(id).subscribe(result => {
+
+      },
+      error => {
+        console.error(error.error);
+        window.alert(error.error);
+      }
+    );
   }
+
 }
