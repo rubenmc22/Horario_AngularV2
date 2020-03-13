@@ -128,49 +128,49 @@
             </label>
             <div class="form-group">
               <div class="form-check-inline">
-                <input class="form-check-input" [(ngModel)]="cursos.diasAcademicos[0]" #lunes="ngModel" type="checkbox"
+                <input class="form-check-input"  (click)="setDay(0,$event)"  type="checkbox"
                        id="lunes" name="lunes" value="lunes" checked>
                 <label class="form-check-label" for="lunes">
                   Lunes
                 </label>
               </div>
               <div class="form-check-inline">
-                <input class="form-check-input" [(ngModel)]="cursos.diasAcademicos[1]" #martes="ngModel" type="checkbox"
+                <input class="form-check-input"  (click)="setDay(1,$event)" type="checkbox"
                        id="martes" name="martes" value="martes">
                 <label class="form-check-label" for="martes">
                   Martes
                 </label>
               </div>
               <div class="form-check-inline">
-                <input class="form-check-input" [(ngModel)]="cursos.diasAcademicos[2]" type="checkbox" name="miercoles"
+                <input class="form-check-input" (click)="setDay(2,$event)" type="checkbox" name="miercoles"
                        id="miercoles" value="miercoles">
                 <label class="form-check-label" for="miercoles">
                   Miercoles
                 </label>
               </div>
               <div class="form-check-inline">
-                <input class="form-check-input" [(ngModel)]="cursos.diasAcademicos[3]" type="checkbox" name="jueves"
+                <input class="form-check-input" (click)="setDay(3,$event)" type="checkbox" name="jueves"
                        id="jueves" value="jueves">
                 <label class="form-check-label" for="jueves">
                   Jueves
                 </label>
               </div>
               <div class="form-check-inline">
-                <input class="form-check-input" [(ngModel)]="cursos.diasAcademicos[4]" type="checkbox" name="viernes"
+                <input class="form-check-input" (click)="setDay(4,$event)" type="checkbox" name="viernes"
                        id="viernes" value="viernes">
                 <label class="form-check-label" for="viernes">
                   Viernes
                 </label>
               </div>
               <div class="form-check-inline">
-                <input class="form-check-input" [(ngModel)]="cursos.diasAcademicos[5]" type="checkbox" name="sabado"
+                <input class="form-check-input" (click)="setDay(5,$event)" type="checkbox" name="sabado"
                        id="sabado" value="sabado">
                 <label class="form-check-label" for="sabado">
                   Sabado
                 </label>
               </div>
               <div class="form-check-inline">
-                <input class="form-check-input" [(ngModel)]="cursos.diasAcademicos[6]" type="checkbox" name="domingo"
+                <input class="form-check-input" (click)="setDay(6,$event)" type="checkbox" name="domingo"
                        id="domingo" value="domingo">
                 <label class="form-check-label" for="domingo">
                   Domingo
