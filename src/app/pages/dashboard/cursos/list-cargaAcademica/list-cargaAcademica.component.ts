@@ -24,8 +24,8 @@ export class CargaAcademicaListComponent implements OnInit {
     private cargaAcademicaService: CargaAcademicaService,
     private userService: UserService
   ) {
-    this.titulo = 'Curso';
-    this.subTitulo = 'Agregar Carga Académica';
+    this.titulo = 'Carga Académica';
+    this.subTitulo = 'Ver Carga Académica';
   }
 
   ngOnInit() {

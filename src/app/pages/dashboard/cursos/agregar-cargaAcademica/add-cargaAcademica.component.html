@@ -14,10 +14,6 @@
 
       <ul class="list-unstyled components">
         <p align="center">Menú</p>
-
-        <!-- <li>
-            <a [routerLink]="['/login']" [routerLinkActive]="['desactivado']">Login</a>
-        </li>-->
         <li>
           <a [routerLink]="['/home']" [routerLinkActive]="['activado']">Home</a>
         </li>
@@ -99,71 +95,69 @@
 
     </nav>
 
-<div class="container">
-  <!-- TITULO Y BUSCADOR -->
-  <div class="row">
-    <!-- Titulo -->
-    <div class="col-md-2">
-      <h4 id="titulo">{{titulo}}</h4>
-    </div>
-  </div>
-  <hr>
+    <div class="container">
+      <!-- TITULO Y BUSCADOR -->
+      <div class="row">
+        <!-- Titulo -->
+        <div class="col-md-2">
+          <h4 id="">{{titulo}}</h4>
+        </div>
+      </div>
+      <hr>
+      <hr>
 
-
-    <p class="btn btn-default" data-toggle="modal" style="font-size: 20px;">{{subTitulo}}
-      <p>Primer Año</p>
+      <p class="btn btn-default" data-toggle="modal" style="font-size: 20px;">{{subTitulo}}
       <div>
         <form #formCargaAcademicaOne="ngForm" id="form-cargaAcademicaOne" (ngSubmit)="onSubmit()" style=" padding-left: 30px;
           padding-top: 15px">
           <div class="row">
-            <div class="form-group col-md-12">
-              <label>
+            <div class="form-group col-md-6">
+              <label for="nombre">
                 Materia
-              </label>
-              <select name="nombre" #nombre="ngModel" [(ngModel)]="cargaAcademica.nombre">
-                <option *ngFor="let materia of materias" value="materia.id" >{{ materia.nombre }}</option>
+              </label><br>
+              <select name="nombre" #nombre="ngModel" id="nombre" [(ngModel)]="cargaAcademica.nombre"
+                      style="width:440px; height: 35px">
+                <option *ngFor="let materia of materias" [value]="materia.id">{{ materia.nombre }}</option>
+              </select>
+            </div>
+            <div class="form-group col-md-6">
+              <label>Curso</label><br>
+              <select name="cursosAct" #cursosAct="ngModel" [(ngModel)]="cargaAcademica.cursosAct"
+                      style="width:440px; height: 35px">
+                <option *ngFor="let curso of cursos" [value]="curso.id">{{ curso.nombre }}</option>
               </select>
             </div>
             <div class="form-group col-md-6">
               <label>
                 Nombre Profesor
-              </label>
-              <select name="profesor" #profesor="ngModel" [(ngModel)]="cargaAcademica.nombreProfesor" (change)="apellido($event.target.selectedIndex)">
-                <option *ngFor="let profesor of profesores" value="profesor.id" >{{ profesor.nombre }}</option>
+              </label><br>
+              <select name="profesor" #profesor="ngModel" [(ngModel)]="cargaAcademica.nombreProfesor"
+                      style="width:440px; height: 35px"
+                      (change)="apellido($event.target.selectedIndex)">
+                <option *ngFor="let profesor of profesores" [value]="profesor.id">{{ profesor.nombre }}</option>
               </select>
-             <!-- <input type="text" class="form-control" #nombreProfesor="ngModel" name="nombreProfesor"
-                [(ngModel)]="cargaAcademica.nombreProfesor" pattern="[a-zA-Z]*" minlength="2"
-                placeholder="Introduzca el nombre del Profesor"> -->
             </div>
             <div class="form-group col-md-6">
               <label>
                 Apellido Profesor
-                <span *ngIf="!apellidoProfesor.valid && apellidoProfesor.touched" class="badge badge-danger">
-                  Este campo no puede estar vacio.
-                </span>
-              </label>
+              </label><br>
               <input type="text" class="form-control" #apellidoProfesor="ngModel" name="apellidoProfesor"
-                [(ngModel)]="cargaAcademica.apellidoProfesor" pattern="[a-zA-Z]*" minlength="2"
-                placeholder="Introduzca el apellido del Profesor" [(value)]="docente.apellido">
+                     [(ngModel)]="cargaAcademica.apellidoProfesor" pattern="[a-zA-Z]*" minlength="2"
+                     placeholder="Apellido del Profesor" [value]="docente.apellido" readonly>
             </div>
             <div class="form-group col-md-6">
               <label>
                 Horas Académicas
-                <span *ngIf="!horasAcademicas.valid && horasAcademicas.touched && horasAcademicas!==0"
-                  class="badge badge-danger">
+                <span *ngIf="!horasAcademicas.valid && horasAcademicas.touched"
+                      class="badge badge-danger">
                   Este campo no puede estar vacio.
                 </span>
               </label>
               <input type="number" class="form-control" #horasAcademicas="ngModel" name="horasAcademicas"
-                [(ngModel)]="cargaAcademica.horasAcademicas" min="1" max="4"
-                placeholder="Introduzca la cantidad de horas por semana" pattern="[+0-9]">
+                     [(ngModel)]="cargaAcademica.horasAcademicas" min="1" max="6"
+                     placeholder="Introduzca la cantidad de horas por semana" pattern="[+0-9]">
             </div>
-            <div class="form-group col-md-6">
-                  <label>Curso</label>
-                     <select>
-                           <option *ngFor="let curso of cursos" value="curso.id">{{ curso.nombre }}</option>
-                     </select>
-            </div>
+
             <div class="form-group col-md-6">
               <label>Status</label>
               <div class="form-group">
@@ -184,11 +178,12 @@
           </div>
           <div align="left" class="bttn">
             <button id="botonguardar" type="submit" [disabled]="!formCargaAcademicaOne.form.valid"
-              class="btn btn-info" (click)="refresh()">Guardar</button>
+                    class="btn btn-info" >Guardar
+            </button>
             <button id="botonborrar" type="reset" class="btn btn-danger">Borrar</button>
           </div>
         </form>
       </div>
-  </div>
+    </div>
   </div>
 </div>

@@ -14,10 +14,6 @@
 
       <ul class="list-unstyled components">
         <p align="center">Menú</p>
-
-        <!-- <li>
-            <a [routerLink]="['/login']" [routerLinkActive]="['desactivado']">Login</a>
-        </li>-->
         <li>
           <a [routerLink]="['/home']" [routerLinkActive]="['activado']">Home</a>
         </li>
@@ -99,53 +95,51 @@
 
     </nav>
 
-<div class="container">
-  <!-- TITULO Y BUSCADOR -->
-  <div class="row">
-    <!-- Titulo -->
-    <div class="col-md-2">
-      <h4 id="titulo">{{titulo}}</h4>
-    </div>
+    <div class="container">
+      <!-- TITULO Y BUSCADOR -->
+      <div class="row">
+        <!-- Titulo -->
+        <div class="col-md-2">
+          <h4 id="titulo">{{titulo}}</h4>
+        </div>
 
-  </div>
-  <hr>
+      </div>
+      <hr>
 
-  <p class="btn btn-default" data-toggle="modal" style="font-size: 20px;">{{subTitulo}}
-  <p>Todos los cursos</p>
-  <div class="table-responsive-xl">
-    <table class="table table-striped table-hover">
-      <thead class="thead-dark">
-      <tr align="center">
-        <th class="id">Id</th>
-        <th class="materia">Materia</th>
-        <th class="nombre">Nombre de Profesor</th>
-        <th class="apellido">Apellido de Profesor</th>
-        <th class="hora">Horas Académicas</th>
-        <th class="estatus">Estatus</th>
-        <th class="accion">Acción</th>
-      </tr>
-      </thead>
-      <tbody *ngFor="let cargasAcademicas of cargaAcademica" align="center">
-      <tr>
-        <td>{{ cargasAcademicas.id }}</td>
-        <td>{{ cargasAcademicas.nombre }}</td>
-        <td>{{ cargasAcademicas.nombreProfesor }}</td>
-        <td>{{ cargasAcademicas.apellidoProfesor }}</td>
-        <td>{{ cargasAcademicas.horasAcademicas }}</td>
-        <td>{{ cargasAcademicas.status }}</td>
-        <td>
+      <p class="btn btn-default" data-toggle="modal" style="font-size: 20px;">{{subTitulo}}
+      <p>Todos los cursos</p>
+      <div class="table-responsive-xl">
+        <table class="table table-striped table-hover">
+          <thead class="thead-dark">
+          <tr align="center">
+            <th class="materia">Materia</th>
+            <th class="nombre">Nombre de Profesor</th>
+            <th class="apellido">Apellido de Profesor</th>
+            <th class="hora">Horas Académicas</th>
+            <th class="estatus">Estatus</th>
+            <th class="accion">Acción</th>
+          </tr>
+          </thead>
+          <tbody *ngFor="let cargasAcademicas of cargaAcademica" align="center">
+          <tr>
+            <td>{{ cargasAcademicas.nombre }}</td>
+            <td>{{ cargasAcademicas.nombreProfesor }}</td>
+            <td>{{ cargasAcademicas.apellidoProfesor }}</td>
+            <td>{{ cargasAcademicas.horasAcademicas }}</td>
+            <td>{{ cargasAcademicas.status }}</td>
+            <td>
                 <span class="imgEdit">
                   <img src="assets/Images/editar.png" style="height: 24px">
                 </span>
-          <span class="imgDelete">
+              <span class="imgDelete">
                   <img (click)="deleteUser(cargasAcademicas.id)" src="assets/Images/eliminar.png" style="height: 24px;">
                 </span>
-        </td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
 

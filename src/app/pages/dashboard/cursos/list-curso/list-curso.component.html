@@ -104,19 +104,18 @@
   <div class="row">
     <!-- Titulo -->
     <div class="col-md-2">
-      <h4 id="titulo">{{titulo}}</h4>
+      <h4 id="">{{tituloCurso}}</h4>
     </div>
   </div>
   <hr>
   <hr>
 
-  <p id="subtitulo" class="btn btn-default" data-toggle="modal">{{subtitulo}}</p>
+  <p id="subtitulo" class="btn btn-default" data-toggle="modal">{{subTituloCurso}}</p>
 
   <div class="table-responsive-xl">
     <table class="table table-striped table-hover">
       <thead class="thead-dark">
         <tr align="center">
-          <th class="id">Id</th>
           <th class="name">Nombre</th>
           <th class="description">Descripción</th>
           <th class="description">Dias Académicos</th>
@@ -126,7 +125,6 @@
       </thead>
       <tbody *ngFor="let curso of cursos" align="center">
         <tr>
-          <td>{{ curso.id }}</td>
           <td>{{ curso.nombre }}</td>
           <td>{{ curso.descripcion }}</td>
           <td>{{ curso.diasAcademicos }}</td>

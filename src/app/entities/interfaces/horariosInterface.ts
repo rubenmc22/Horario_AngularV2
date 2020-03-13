@@ -1,8 +1,9 @@
 export interface HorarioInterface {
   id: number;
-  profesor: String;
-  materia: String;
-  dia: String;
-  hora: String;
+  profesor: string;
+  materia: string;
+  dia: string;
+  hora: string;
+  cursoAct: string;
   status: boolean;
 }

@@ -14,10 +14,6 @@
 
       <ul class="list-unstyled components">
         <p align="center">Menú</p>
-
-        <!-- <li>
-            <a [routerLink]="['/login']" [routerLinkActive]="['desactivado']">Login</a>
-        </li>-->
         <li>
           <a [routerLink]="['/home']" [routerLinkActive]="['activado']">Home</a>
         </li>
@@ -98,45 +94,43 @@
       </ul>
 
     </nav>
-<div class="container">
-    <!-- TITULO Y BUSCADOR -->
-    <div class="row">
+    <div class="container">
+      <!-- TITULO Y BUSCADOR -->
+      <div class="row">
         <!-- Titulo -->
         <div class="col-md-2">
-            <h4 id="titulo">{{titulo}}</h4>
+          <h4 id="">{{titulo}}</h4>
         </div>
-    </div>
-    <hr>
+        <div>
+          <label for="nombre">
+            Cursos
+          </label><br>
+          <button id="generarHorario" type="button" (click)="generarHorario()" class="btn btn-primary ">Generar
+            Horario
+          </button>
+          <select name="nombre" #nombre="ngModel" id="nombre" [(ngModel)]="horario.cursoAct" align="right"
+                  style="width:150px; height: 35px">
+            <option *ngFor="let curso of cursos" [value]="curso.id">{{ curso.nombre }}</option>
+          </select>
+        </div>
+      </div>
+      <hr>
+      <hr>
 
-    <p id="subtitulo" class="btn btn-default" data-toggle="modal">{{subTitulo}}</p><br>
-    <table class="table table-hover" style="border-style: none;">
-        <tbody align="center">
-            <tr>
-                <td>Primer Año</td>
-                <td><button id="primerAño" type="button" (click)="generarHorario()" class="btn btn-primary ">Generar
-                        Horario</button></td>
-            </tr>
-            <tr>
-                <td>Segundo Año</td>
-                <td><button id="segundoAño" type="button" (click)="generarHorario()" class="btn btn-primary ">Generar
-                        Horario</button></td>
-            </tr>
-            <tr>
-                <td>Tercer Año</td>
-                <td><button id="tercerAño" type="button" (click)="generarHorario()" class="btn btn-primary ">Generar
-                        Horario</button></td>
-            </tr>
-            <tr>
-                <td>Cuarto Año</td>
-                <td><button id="CuartoAño" type="button" (click)="generarHorario()" class="btn btn-primary ">Generar
-                        Horario</button></td>
-            </tr>
-            <tr>
-                <td>Quinto Año</td>
-                <td><button id="quintoAño" type="button" (click)="generarHorario()" class="btn btn-primary ">Generar
-                        Horario</button></td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+      <p id="subtitulo" class="btn btn-default" data-toggle="modal">{{subTitulo}}</p><br>
+
+      <p>Primer Año</p>
+      <div>
+        <button id="primerAño" type="button" (click)="generarHorario()" class="btn btn-primary ">Generar
+          Horario
+        </button>
+        <button id="pdf" type="button" (click)="generarPDF()" class="btn btn-primary ">Generar
+          PDF
+        </button>
+      </div>
+
+      <table class="table-hover">
+
+      </table>
+    </div>
   </div>

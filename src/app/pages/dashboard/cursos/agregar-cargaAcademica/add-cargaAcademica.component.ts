@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { CargaAcademicaService } from '../../../../services/cargaAcademicaService';
-import { CursoService } from '../../../../services/cursoService';
-import { ProfesorService } from '../../../../services/profesorService';
-import { MateriaService } from '../../../../services/materiaService';
-import { Curso } from '../../../../entities/cursos';
-import { Profesor } from '../../../../entities/profesor';
-import { CargaAcademica } from '../../../../entities/cargaAcademica';
-import { Materia } from '../../../../entities/materia';
-import { UserService } from '../../../../services/userService';
+import {Component, OnInit} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
+import {CargaAcademicaService} from '../../../../services/cargaAcademicaService';
+import {CursoService} from '../../../../services/cursoService';
+import {ProfesorService} from '../../../../services/profesorService';
+import {MateriaService} from '../../../../services/materiaService';
+import {Curso} from '../../../../entities/cursos';
+import {Profesor} from '../../../../entities/profesor';
+import {CargaAcademica} from '../../../../entities/cargaAcademica';
+import {Materia} from '../../../../entities/materia';
+import {UserService} from '../../../../services/userService';
 
 @Component({
   selector: 'app-cargacademica-add',
@@ -36,8 +36,8 @@ export class CargaAcademicaAddComponent implements OnInit {
     private userService: UserService
   ) {
     this.titulo = 'Carga Academica';
-    this, this.subTitulo = 'Agregar Carga Academica';
-    this.cargaAcademica = new CargaAcademica('', '', '', 0, true);
+    this.subTitulo = 'Agregar Carga Academica';
+    this.cargaAcademica = new CargaAcademica('', '', '', 1, '', true);
 
     this.cursoService.getCursos().subscribe(
       result => {
@@ -81,6 +81,7 @@ export class CargaAcademicaAddComponent implements OnInit {
       result => {
         // this.producto.push(result);
         this.cargaAcademica = result; // Matriz
+        console.log(result);
       },
       error => {
         console.log(error);
@@ -95,6 +96,7 @@ export class CargaAcademicaAddComponent implements OnInit {
   apellido(profesor) {
     this.docente = this.profesores[profesor];
   }
+
   logout() {
     this.userService.logout();
     this.userService.currentUserValue;

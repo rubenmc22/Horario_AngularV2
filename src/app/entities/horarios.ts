@@ -9,12 +9,14 @@ export class Horario implements HorarioInterface {
     public materia: string,
     public dia: string,
     public hora: string,
+    public cursoAct: string,
     public status: boolean,
   ) {
     this.profesor = '';
     this.materia = '';
     this.dia = '';
     this.hora = '';
+    this.cursoAct = '';
     this.status = true;
   }
 }

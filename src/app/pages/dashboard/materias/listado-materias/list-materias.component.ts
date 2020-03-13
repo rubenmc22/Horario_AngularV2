@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { MateriaService } from '../../../../services/materiaService';
-import { Materia } from '../../../../entities/materia';
-import { UserService } from '../../../../services/userService';
+import {Component, OnInit} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
+import {MateriaService} from '../../../../services/materiaService';
+import {Materia} from '../../../../entities/materia';
+import {UserService} from '../../../../services/userService';
 
 @Component({
   selector: 'app-materias-list',
@@ -43,13 +43,13 @@ export class MateriasListComponent implements OnInit {
   }
 
   deleteUser(id) {
-    const result = window.confirm('¿Esta seguro que desea eliminar este campo? Esta Materia podria estar asociada a una carga academica.');
-    if (result) {
+    const confirm = window.confirm('¿Esta seguro que desea eliminar este campo? Esta Materia podría estar asociada a una carga academica.');
+    if (confirm) {
       this.materiaService.getDeleteId(id).subscribe(result => {
-        console.log(result);
-        window.alert('Informacion eliminada');
-        location.reload();
-      },
+          console.log(result);
+          window.alert('El campo seleccionado ha sido eliminado correctamente.');
+          location.reload();
+        },
         error => {
           console.error(error.error);
         }

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { CursoService } from '../../../../services/cursoService';
-import { Curso } from '../../../../entities/cursos';
+import {Component, OnInit} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
+import {CursoService} from '../../../../services/cursoService';
+import {Curso} from '../../../../entities/cursos';
 import {UserService} from '../../../../services/userService';
 
 @Component({
@@ -12,8 +12,8 @@ import {UserService} from '../../../../services/userService';
 })
 export class CursoListComponent implements OnInit {
 
-  public titulo: string;
-  public subTitulo: string;
+  public tituloCurso: string;
+  public subTituloCurso: string;
   public cursos: Curso[] = [];
 
   constructor(
@@ -22,8 +22,8 @@ export class CursoListComponent implements OnInit {
     private cursoService: CursoService,
     private userService: UserService
   ) {
-    this.titulo = 'Curso';
-    this.subTitulo = 'Listado de Cursos';
+    this.tituloCurso = 'Cursos';
+    this.subTituloCurso = 'Listado de Cursos';
   }
 
   ngOnInit() {
@@ -44,14 +44,23 @@ export class CursoListComponent implements OnInit {
   }
 
   deleteUser(id) {
-    this.cursoService.getDeleteId(id).subscribe(result => {
-
-      },
-      error => {
-        console.error(error.error);
-        window.alert(error.error);
-      }
-    );
+    const confirm = window.confirm('¿Esta seguro que desea eliminar este campo? Este Curso podría estar asociado a una carga academica.');
+    if (confirm) {
+      this.cursoService.getDeleteId(id).subscribe(result => {
+          window.alert('El campo seleccionado ha sido eliminado correctamente.');
+          this.refresh();
+        },
+        error => {
+          console.error(error.error);
+          window.alert(error.error);
+        }
+      );
+    }
   }
+
+  refresh() {
+    location.reload();
+  }
+
 
 }

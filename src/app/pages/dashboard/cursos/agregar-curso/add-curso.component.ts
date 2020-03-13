@@ -14,8 +14,8 @@ import {UserService} from '../../../../services/userService';
 })
 export class CursoAddComponent implements OnInit {
 
-  public titulo: string;
-  public subTitulo: string;
+  public tituloCurso: string;
+  public subTituloCurso: string;
   public cursos: Curso;
 
   constructor(
@@ -24,10 +24,11 @@ export class CursoAddComponent implements OnInit {
     private cursoService: CursoService,
     private userService: UserService
   ) {
-    this.titulo = 'Curso';
-    this.subTitulo = 'Agregar Curso';
-    this.cursos = new Curso('', '', [], true);
+    this.tituloCurso = 'Curso';
+    this.subTituloCurso = 'Agregar Curso';
+    this.cursos = new Curso('', '', ['', '', '', '', '', '', ''], true);
   }
+
 
   ngOnInit() {
   }
@@ -38,14 +39,18 @@ export class CursoAddComponent implements OnInit {
       result => {
         // this.producto.push(result);
         this.cursos = result; // Matriz
+        console.log(this.cursos);
+        window.alert('Informacion Almacenada.');
+        this.refresh();
       },
       error => {
         console.log(error);
+        console.log(error.error);
       }
     );
   }
 
   refresh() {
-
+    location.reload();
   }
 }
