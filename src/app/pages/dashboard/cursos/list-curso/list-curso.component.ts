@@ -63,4 +63,34 @@ export class CursoListComponent implements OnInit {
   }
 
 
+  printDays(dias: number[]): string {
+    let diasStr = '';
+    dias.forEach((id) => {
+      switch (id) {
+        case 1:
+          diasStr += 'Lunes,';
+          break;
+        case 2:
+          diasStr += ' Martes,';
+          break;
+        case 3:
+          diasStr += ' Miercoles,';
+          break;
+        case 4:
+          diasStr += ' Jueves,';
+          break;
+        case 5:
+          diasStr += ' Viernes,';
+          break;
+        case 6:
+          diasStr += ' Sabado,';
+          break;
+        default:
+          diasStr += ' Domingo,';
+          break;
+      }
+    });
+    diasStr = diasStr.substr(0, diasStr.length - 1);
+    return diasStr;
+  }
 }
