@@ -95,42 +95,87 @@
 
     </nav>
     <div class="container">
-      <!-- TITULO Y BUSCADOR -->
+      <!-- Titulo -->
+
       <div class="row">
-        <!-- Titulo -->
         <div class="col-md-2">
-          <h4 id="">{{titulo}}</h4>
+          <h4 id="tit">{{titulo}}</h4>
         </div>
-        <div>
-          <label for="nombre">
+        <div id="selectCursos" class="col-md-2">
+          <button type="button" (click)="generarHorario()" class="btn btn-primary" style="height: 40px; width: 180px;">
+            Generar Horario
+          </button>
+        </div>
+        <div id="select" class=" col-md-2">
+          <label for="cursoAct">
             Cursos
           </label><br>
-          <button id="generarHorario" type="button" (click)="generarHorario()" class="btn btn-primary ">Generar
-            Horario
-          </button>
-          <select name="nombre" #nombre="ngModel" id="nombre" [(ngModel)]="horario.cursoAct" align="right"
-                  style="width:150px; height: 35px">
+          <select name="cursoAct" #cursoAct="ngModel" id="cursoAct" [(ngModel)]="horario.cursoAct"
+                  style="width:190px; height: 35px">
             <option *ngFor="let curso of cursos" [value]="curso.id">{{ curso.nombre }}</option>
           </select>
         </div>
       </div>
       <hr>
-      <hr>
-
       <p id="subtitulo" class="btn btn-default" data-toggle="modal">{{subTitulo}}</p><br>
 
-      <p>Primer Año</p>
-      <div>
-        <button id="primerAño" type="button" (click)="generarHorario()" class="btn btn-primary ">Generar
-          Horario
-        </button>
-        <button id="pdf" type="button" (click)="generarPDF()" class="btn btn-primary ">Generar
-          PDF
-        </button>
+      <div class="table-responsive-xl">
+        <div *ngFor="let curso of cursos">
+          <div>
+            <p>{{curso.nombre}}</p>
+            <table class="table table-striped table-hover">
+              <thead class="thead-dark">
+              <tr>
+                <td thead class="thead-dark">Horas</td>
+                <td>Lunes</td>
+                <td>Martes</td>
+                <td>Miercoles</td>
+                <td>Jueves</td>
+                <td>Viernes</td>
+                <td>Sabado</td>
+                <td>Domingo</td>
+              </tr>
+              </thead>
+
+              <tbody>
+              <tr>
+                <td> 7:00 AM</td>
+                <td>Materia</td>
+                <td>Materia</td>
+                <td>Materia</td>
+                <td>Materia</td>
+                <td>Materia</td>
+                <td>Materia</td>
+              </tr>
+              <tr>
+                <td> 8:00 AM</td>
+                <td>Materia</td>
+                <td>Materia</td>
+                <td>Materia</td>
+                <td>Materia</td>
+                <td>Materia</td>
+                <td>Materia</td>
+                <td>Materia</td>
+              </tr>
+              <tr>
+                <td> 9:00 AM</td>
+                <td>Materia</td>
+                <td>Materia</td>
+                <td>Materia</td>
+                <td>Materia</td>
+                <td>Materia</td>
+                <td>Materia</td>
+                <td>Materia</td>
+
+              </tr>
+
+              </tbody>
+
+            </table>
+          </div>
+
+        </div>
       </div>
-
-      <table class="table-hover">
-
-      </table>
     </div>
   </div>
+</div>
