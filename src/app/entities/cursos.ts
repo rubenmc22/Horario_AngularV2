@@ -7,12 +7,12 @@ export class Curso implements CursosInterface {
   constructor(
     public nombre: string,
     public descripcion: string,
-    public diasAcademicos: string[],
+    public dias: number[],
     public status: boolean
   ) {
     this.nombre = '';
     this.descripcion = '';
-    this.diasAcademicos = ['x', 'y', 'z', 'w', 'r', 's', 't'];
+    this.dias = [];
     this.status = true;
   }
 

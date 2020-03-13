@@ -5,6 +5,7 @@ import {CursoService} from '../../../../services/cursoService';
 
 import {Curso} from '../../../../entities/cursos';
 import {UserService} from '../../../../services/userService';
+import {forEachComment} from "tslint";
 
 @Component({
   selector: 'app-curso-add',
@@ -26,7 +27,7 @@ export class CursoAddComponent implements OnInit {
   ) {
     this.tituloCurso = 'Curso';
     this.subTituloCurso = 'Agregar Curso';
-    this.cursos = new Curso('', '', ['', '', '', '', '', '', ''], true);
+    this.cursos = new Curso('', '', [], true);
   }
 
 
@@ -41,13 +42,25 @@ export class CursoAddComponent implements OnInit {
         this.cursos = result; // Matriz
         console.log(this.cursos);
         window.alert('Informacion Almacenada.');
-        this.refresh();
+         this.refresh();
       },
       error => {
         console.log(error);
         console.log(error.error);
       }
     );
+  }
+
+  setDay(id: number, item) {
+
+    if (item.currentTarget.checked) {
+      this.cursos.dias.push(id + 1);
+    } else {
+      const index = this.cursos.dias.indexOf(id + 1);
+      if (index > -1)
+        this.cursos.dias.splice(index, 1);
+    }
+    console.log(this.cursos.dias);
   }
 
   refresh() {
