@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 // Componentes
 import { Horario } from '../entities/horarios';
 import { Global } from './global';
+import { Curso } from '../entities/cursos';
 
 @Injectable()
 export class HorarioService {
@@ -28,9 +29,17 @@ export class HorarioService {
         });
     }
 
-    getHorarioId() {
+    getHorarioId(id) {
         return this.http.get<Horario[]>(
-            this.url + '/api/v1/horarios/{id}', {
+            this.url + '/api/v1/horarios/' + id, {
+            observe: 'response',
+            responseType: 'json',
+        });
+    }
+
+    getHorarioPorCurso(id) {
+        return this.http.get<Horario[]>(
+            this.url + '/api/v1/horarios/curso/' + id, {
             observe: 'response',
             responseType: 'json',
         });
@@ -49,6 +58,18 @@ export class HorarioService {
         });
     }
 
+    postHorarioPorCurso(id) {
+        /* const json = JSON.stringify(horario);
+         const params = json;*/
+        const headers = new HttpHeaders({
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/json'
+        });
+        return this.http.post<Horario>(this.url + '/api/v1/horarios/generar/' + id,
+            headers, {
+        });
+    }
+
     updateHorario() {
 
     }
@@ -57,7 +78,8 @@ export class HorarioService {
 
     }
 }
-    /*-------------------------------------------------------------------------------------------------------
+
+/*-------------------------------------------------------------------------------------------------------
 ------------------------------------Finish CRUD Hibernate----------------------------------------------
 -------------------------------------------------------------------------------------------------------*/
 

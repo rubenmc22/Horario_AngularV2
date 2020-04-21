@@ -103,12 +103,18 @@
       <!-- TITULO Y BUSCADOR -->
       <div class="row">
         <!-- Titulo -->
-        <div class="col-md-2">
-          <h4 id="titulo">{{titulo}}</h4>
+        <div class="col-md-4">
+          <h4 id="titulo"><b>{{titulo}}</b></h4>
+        </div>
+        <div id="botonAgregar" class="col-md-2">
+          <button type="button" (click)="agregarProfesor()" class="btn btn-success" style="height: 40px; width: 180px;">
+            Agregar
+          </button>
         </div>
       </div>
       <hr>
-      <hr>
+
+
 
       <p id="subtitulo" class="btn btn-default" data-toggle="modal">{{subTitulo}}</p>
 

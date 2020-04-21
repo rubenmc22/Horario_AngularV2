@@ -1,6 +1,7 @@
 export interface ModificarUsuarioInterface {
     id: number;
-    usuario: number;
+    usuario: string;
+    email: string;
     pass: string;
     rPass: string;
 }

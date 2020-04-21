@@ -21,34 +21,13 @@
         <li>
           <a [routerLink]="['/home']" [routerLinkActive]="['activado']">Home</a>
         </li>
-        <li class="active">
-          <a href="#Materias" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-            Materias
-          </a>
-          <ul class="collapse list-unstyled" id="Materias">
-            <li>
-              <a [routerLink]="['/add-materia']" [routerLinkActive]="['activado']">Agregar Materia</a>
-            </li>
-            <li>
-              <a [routerLink]="['/list-materias']" [routerLinkActive]="['activado']">Listado de
-                Materias</a>
-            </li>
-          </ul>
+        <li>
+          <a [routerLink]="['/list-materias']" [routerLinkActive]="['activado']">Materias</a>
         </li>
-        <li class="active">
-          <a href="#profesores" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-            Profesores
-          </a>
-          <ul class="collapse list-unstyled" id="profesores">
-            <li>
-              <a [routerLink]="['/add-profesor']" [routerLinkActive]="['activado']">Agregar Profesor</a>
-            </li>
-            <li>
-              <a [routerLink]="['/list-profesores']" [routerLinkActive]="['activado']">Listado de
-                Profesores</a>
-            </li>
-          </ul>
+        <li>
+          <a [routerLink]="['/list-profesores']" [routerLinkActive]="['activado']">Profesores</a>
         </li>
+
         <li class="active">
           <a href="#cargaAcademica" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
             Curso
@@ -104,14 +83,18 @@
       <!-- TITULO Y BUSCADOR -->
       <div class="row">
         <!-- Titulo -->
-        <div class="col-md-2">
-          <h4 id="titulo">{{titulo}}</h4>
+        <div class="col-md-4">
+          <h4 id="titulo"><b>Materias</b></h4>
+        </div>
+        <div id="botonAgregar" class="col-md-2">
+          <button type="button" (click)="agregarMateria()" class="btn btn-success" style="height: 40px; width: 180px;">
+            Agregar
+          </button>
         </div>
       </div>
       <hr>
-      <hr>
 
-      <p id="subtitulo" class="btn btn-default" data-toggle="modal">{{subtitulo}}</p>
+      <p id="subtitulo" class="btn btn-default" data-toggle="modal">{{subTitulo}}</p>
 
       <div class="table-responsive-xl">
         <div *ngIf="!materia">
@@ -136,10 +119,12 @@
                 <td>{{ materias.status }}</td>
                 <td>
                   <span class="imgEdit">
-                    <img src="assets/Images/editar.png" style="height: 24px">
+                    <img src="assets/Images/editar.png"
+                      (click)="updateMateria(materias.id, materias.nombre, materias.descripcion, materias.status)"
+                      style="height: 24px">
                   </span>
                   <span class="imgDelete">
-                    <img (click)="deleteUser(materias.id)" (click)="refresh()" src="assets/Images/eliminar.png"
+                    <img (click)="deleteMateria(materias.id)" (click)="refresh()" src="assets/Images/eliminar.png"
                       style="height: 24px;">
                   </span>
                 </td>

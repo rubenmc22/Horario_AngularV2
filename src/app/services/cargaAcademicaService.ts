@@ -4,9 +4,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 // Componentes
 import { CargaAcademica } from '../entities/cargaAcademica';
 import { Global } from './global';
-import {Materia} from '../entities/materia';
-import {Observable} from 'rxjs';
-import {Profesor} from '../entities/profesor';
+import { Materia } from '../entities/materia';
+import { Observable } from 'rxjs';
+import { Profesor } from '../entities/profesor';
 
 @Injectable()
 export class CargaAcademicaService {
@@ -39,6 +39,7 @@ export class CargaAcademicaService {
     }
 
     postCargaAcademica(cargaAcademica: CargaAcademica) {
+        // debugger;
         const json = JSON.stringify(cargaAcademica);
         const params = json;
         const headers = new HttpHeaders({
@@ -55,13 +56,13 @@ export class CargaAcademicaService {
 
     }
 
-  getDeleteId(id): Observable<CargaAcademica> {
-    const headers = new HttpHeaders({
-      'Access-Control-Allow-Origin': '*',
-      'Content-Type': 'application/json'
-    });
-    return this.http.delete<CargaAcademica>(this.url + '/api/v1/cargas_academicas/' + id);
-  }
+    getDeleteId(id): Observable<CargaAcademica> {
+        const headers = new HttpHeaders({
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/json'
+        });
+        return this.http.delete<CargaAcademica>(this.url + '/api/v1/cargas_academicas/' + id);
+    }
 }
     /*-------------------------------------------------------------------------------------------------------
 ------------------------------------Finish CRUD Hibernate----------------------------------------------

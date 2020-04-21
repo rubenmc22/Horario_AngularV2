@@ -22,7 +22,7 @@ export class ProfesoresAddComponent implements OnInit {
     private profesorService: ProfesorService,
     private userService: UserService
   ) {
-    this.titulo = 'Profesores';
+    this.titulo = 'Profesor';
     this.subTitulo = 'Agregar nuevo Profesor';
     this.profesor = new Profesor('');
   }
@@ -38,6 +38,7 @@ export class ProfesoresAddComponent implements OnInit {
           this.profesor = result;
           console.log(result);
           window.alert('Información Guardada.');
+          this.refresh();
         } else {
           console.log(result);
           console.log('ES NULL: ' + result);
@@ -52,7 +53,10 @@ export class ProfesoresAddComponent implements OnInit {
   }
 
   refresh(): void {
-    location.reload();
+    this.route.navigate(['../list-profesores']);
+  }
 
+  irAtras() {
+    this.route.navigate(['../list-profesores']);
   }
 }

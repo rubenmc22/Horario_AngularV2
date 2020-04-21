@@ -1,9 +1,11 @@
 export interface CargaAcademicaInterface {
   id: number;
-  nombre: string;
-  nombreProfesor: string;
-  apellidoProfesor: string;
-  horasAcademicas: number;
-  cursosAct: string;
-  status: boolean;
+  asignatura: number;
+  detalleAsignatura: string;
+  docente: number;
+  detalleDocente: string;
+  curso: number;
+  detalleCurso: string;
+  horas: number;
+  estatus: string;
 }

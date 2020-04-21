@@ -1,14 +1,14 @@
-import {Component, OnInit} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
-import {CargaAcademicaService} from '../../../../services/cargaAcademicaService';
-import {CursoService} from '../../../../services/cursoService';
-import {ProfesorService} from '../../../../services/profesorService';
-import {MateriaService} from '../../../../services/materiaService';
-import {Curso} from '../../../../entities/cursos';
-import {Profesor} from '../../../../entities/profesor';
-import {CargaAcademica} from '../../../../entities/cargaAcademica';
-import {Materia} from '../../../../entities/materia';
-import {UserService} from '../../../../services/userService';
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { CargaAcademicaService } from '../../../../services/cargaAcademicaService';
+import { CursoService } from '../../../../services/cursoService';
+import { ProfesorService } from '../../../../services/profesorService';
+import { MateriaService } from '../../../../services/materiaService';
+import { Curso } from '../../../../entities/cursos';
+import { Profesor } from '../../../../entities/profesor';
+import { CargaAcademica } from '../../../../entities/cargaAcademica';
+import { Materia } from '../../../../entities/materia';
+import { UserService } from '../../../../services/userService';
 
 @Component({
   selector: 'app-cargacademica-add',
@@ -37,7 +37,7 @@ export class CargaAcademicaAddComponent implements OnInit {
   ) {
     this.titulo = 'Carga Academica';
     this.subTitulo = 'Agregar Carga Academica';
-    this.cargaAcademica = new CargaAcademica('', '', '', 1, '', true);
+    this.cargaAcademica = new CargaAcademica(0, '', 0, '', 0, '', 1, '');
 
     this.cursoService.getCursos().subscribe(
       result => {
@@ -75,16 +75,14 @@ export class CargaAcademicaAddComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.cargaAcademica);
-
     return this.cargaAcademicaService.postCargaAcademica(this.cargaAcademica).subscribe(
       result => {
-        // this.producto.push(result);
-        this.cargaAcademica = result; // Matriz
-        console.log(result);
+        this.cargaAcademica = result;
+        console.log(this.cargaAcademica)
       },
       error => {
         console.log(error);
+        window.alert(error.error);
       }
     );
   }

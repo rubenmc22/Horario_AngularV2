@@ -1,9 +1,11 @@
 export interface HorarioInterface {
   id: number;
-  profesor: string;
-  materia: string;
+  docente: string;
+  asignatura: string;
+  bloqueHorario: number;
+  inicioBloque: string;
+  finBloque: string;
   dia: string;
-  hora: string;
-  cursoAct: string;
+  curso: string;
   status: boolean;
 }

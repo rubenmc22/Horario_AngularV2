@@ -27,9 +27,6 @@
           </a>
           <ul class="collapse list-unstyled" id="Materias">
             <li>
-              <a [routerLink]="['/add-materia']" [routerLinkActive]="['activado']">Agregar Materia</a>
-            </li>
-            <li>
               <a [routerLink]="['/list-materias']" [routerLinkActive]="['activado']">Listado de
                 Materias</a>
             </li>
@@ -105,7 +102,12 @@
       <div class="row">
         <!-- Titulo -->
         <div class="col-md-2">
-          <h4 id="titulo">Materias</h4>
+          <h4 id="titulo"><b>Materia</b></h4>
+        </div>
+        <div id="botonAgregar" class="col-md-2">
+          <button type="button" (click)="irAtras()" class="btn btn-danger" style="height: 40px; width: 180px;">
+            Cancelar
+          </button>
         </div>
       </div>
       <hr>
@@ -115,7 +117,7 @@
       <form #formMaterias="ngForm" id="form-materias" (ngSubmit)="onSubmit()"
         style="padding-left: 30px; padding-top: 15px">
         <div class="row">
-          <div class="form-group col-md-10">
+          <div class="form-group col-md-6">
             <label>
               Materia
               <span *ngIf="!nombre.valid && nombre.touched" class="badge badge-danger">
@@ -152,8 +154,8 @@
           </div>
         </div>
         <div align="left" class="bttn">
-          <button id="botonguardar" type="submit" [disabled]="!formMaterias.form.valid" class="btn btn-info"
-            (click)="refresh()">Guardar</button>
+          <button id="botonguardar" type="submit" [disabled]="!formMaterias.form.valid"
+            class="btn btn-info">Guardar</button>
           <button id="botonborrar" type="reset" class="btn btn-danger">Borrar</button>
         </div>
 

@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
-import {MateriaService} from '../../../../services/materiaService';
-import {Materia} from '../../../../entities/materia';
-import {UserService} from '../../../../services/userService';
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { MateriaService } from '../../../../services/materiaService';
+import { Materia } from '../../../../entities/materia';
+import { UserService } from '../../../../services/userService';
 
 @Component({
   selector: 'app-materias-list',
@@ -13,7 +13,7 @@ import {UserService} from '../../../../services/userService';
 export class MateriasListComponent implements OnInit {
 
   public titulo: string;
-  public subtitulo: string;
+  public subTitulo: string;
   public materia: Materia[] = [];
 
   constructor(
@@ -23,12 +23,11 @@ export class MateriasListComponent implements OnInit {
     private userService: UserService,
   ) {
     this.titulo = 'Materias';
-    this.subtitulo = 'Listado de Materias';
+    this.subTitulo = 'Listado de Materias';
   }
 
   ngOnInit() {
     console.log('Se cargo el componente Materia List)');
-
     this.materiaService.getMateria().subscribe(
       result => {
         // this.productos.push(result.body);
@@ -42,14 +41,28 @@ export class MateriasListComponent implements OnInit {
 
   }
 
-  deleteUser(id) {
+  updateMateria(id, nombre, descripcion, status) {
+    this.route.navigate(['../add-materia']);
+
+    this.materiaService.getMateriaId(id).subscribe(
+      result => {
+        this.materia = result.body; // Matriz
+        console.log(result.body);
+      },
+      error => {
+        console.log(error);
+      })
+  }
+
+
+  deleteMateria(id) {
     const confirm = window.confirm('¿Esta seguro que desea eliminar este campo? Esta Materia podría estar asociada a una carga academica.');
     if (confirm) {
       this.materiaService.getDeleteId(id).subscribe(result => {
-          console.log(result);
-          window.alert('El campo seleccionado ha sido eliminado correctamente.');
-          location.reload();
-        },
+        console.log(result);
+        window.alert('El campo seleccionado ha sido eliminado correctamente.');
+        location.reload();
+      },
         error => {
           console.error(error.error);
         }
@@ -57,9 +70,17 @@ export class MateriasListComponent implements OnInit {
     }
   }
 
+  refresh() {
+    location.reload();
+  }
+
   logout() {
     this.userService.logout();
     this.userService.currentUserValue;
+  }
+
+  agregarMateria() {
+    this.route.navigate(['../add-materia']);
   }
 }
 

@@ -33,7 +33,7 @@
                   <span class="input-group-text"><i class="fas fa-user"></i></span>
                 </div>
                 <input type="text" name="user" #user class="form-control input_user" placeholder="Introduzca su cedula"
-                  pattern="+[0-9]" minlength="6" maxlength="8" required>
+                  pattern="+[0-9]*" minlength="6" maxlength="8" required>
               </div>
               <div class="input-group mb-2">
                 <div class="input-group-append">
@@ -52,6 +52,13 @@
                 <button type="submit" [disabled]="!formLogin.form.valid" (click)="logIn(user.value, pass.value, $event)"
                   class="btn btn-primary" style="background-color: rgb(0, 70, 122); width: 160px;">Entrar
                 </button>
+              </div>
+              <div class="mt-4">
+                <div class="d-flex justify-content-center links">
+                  ¿No tienes una cuenta? <button type="menu" (click)="navigateRegistro()" class="ml-2"
+                    class="btn-alert">Registrate</button>
+                </div>
+
               </div>
             </form>
           </div>

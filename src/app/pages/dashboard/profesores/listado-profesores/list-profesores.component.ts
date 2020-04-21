@@ -51,6 +51,7 @@ export class ProfesoresListComponent implements OnInit {
     if (result) {
       this.profesorService.getDeleteId(id).subscribe(result => {
         window.alert('Registro Eliminado');
+        this.refresh();
       },
         error => {
           console.error(error.error);
@@ -62,5 +63,10 @@ export class ProfesoresListComponent implements OnInit {
 
   refresh() {
     location.reload();
+  }
+
+  agregarProfesor() {
+    this.route.navigate(['../add-profesor']);
+
   }
 } 

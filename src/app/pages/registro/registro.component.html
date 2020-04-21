@@ -1,0 +1,68 @@
+<div class="container">
+  <!-- TITULO Y BUSCADOR -->
+  <div class="row">
+    <!-- Titulo -->
+    <div class="col-md-4">
+      <h4>Registro de Usuarios</h4>
+    </div>
+  </div>
+  <hr>
+  <hr>
+
+  <p id="subtitulo" class="btn btn-default" data-toggle="modal">Registrar un Nuevo Usuario</p><br>
+
+  <form #formRegistro="ngForm" (ngSubmit)="onSubmits(usuario.password, usuario.rPassword)"
+    style="padding-left: 30px; padding-top: 15px">
+    <div class="row">
+      <div class="form-group col-md-6">
+        <label>
+          Usuario
+          <span *ngIf="!user.valid && user.touched" class="badge badge-danger">
+            Este campo no puede estar vacio.
+          </span>
+        </label>
+        <input type="text" class="form-control" id="user" #user="ngModel" name="user" [(ngModel)]="usuario.cedula"
+          pattern="[0-9]+" minlength="6" maxlength="8" placeholder="Introduzca su cedula..">
+      </div>
+      <div class="form-group col-md-6">
+        <label>
+          Correo Electronico
+          <span *ngIf="!email.valid && email.touched" class="badge badge-danger">
+            Este campo no puede estar vacio.
+          </span>
+        </label>
+        <input type="email" class="form-control" id="email" #email="ngModel" name="email" [(ngModel)]="usuario.email"
+          pattern="[a-zA-Z0-9@.]*" minlength="6" placeholder="Introduzca su email..">
+      </div>
+      <div class="form-group col-md-6">
+        <label>
+          Contraseña
+          <span *ngIf="!clave.valid && clave.touched" class="badge badge-danger">
+            Este campo no puede estar vacio.
+          </span>
+        </label>
+        <input type="password" class="form-control" id="clave" #clave="ngModel" name="clave"
+          [(ngModel)]="usuario.password" pattern="[a-zA-Z0-9@.]*" minlength="6"
+          placeholder="Introduzca su contraseña..">
+      </div>
+
+      <div class="form-group col-md-6">
+        <label>
+          Verificar Contraseña
+          <span *ngIf="!rPassword.valid && rPassword.touched" class="badge badge-danger">
+            Este campo no puede estar vacio.
+          </span>
+        </label>
+        <input type="password" class="form-control" id="rPassword" #rPassword="ngModel" name="rPassword"
+          [(ngModel)]="usuario.rPassword" pattern="[a-zA-Z0-9]*" minlength="8" required
+          placeholder="Introduzca nuevamente su contraseña">
+      </div>
+
+      <div align="left" class="bttn">
+        <button id="botonguardar" type="submit" [disabled]="!formRegistro.form.valid"
+          class="btn btn-primary">Registrar</button>
+        <button id="botonborrar" type="reset" class="btn btn-danger" (click)="navigateLogin()">Cancelar</button>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import {RouterModule,Routes} from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+
+
 
 // Rutas
 import { routing, appRoutingProviders } from './app.routing';
@@ -9,6 +11,7 @@ import { routing, appRoutingProviders } from './app.routing';
 // Componentes
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { RegistroComponent } from './pages/registro/registro.component';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/dashboard/home/home.component';
 import { MateriasAddComponent } from './pages/dashboard/materias/agregar-materias/add-materias.component';
@@ -27,11 +30,13 @@ import { CursoService } from './services/cursoService';
 import { ProfesorService } from './services/profesorService';
 import { MateriaService } from './services/materiaService';
 import { UserService } from './services/userService';
+import { BloqueHorarioService } from './services/bloqueHorarioService';
 
 const appRoutes: Routes = [
-  {path: '', redirectTo: 'login', pathMatch: 'full'},
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'registro-user', component: RegistroComponent },
   { path: 'home', component: HomeComponent },
   { path: 'horarios', component: HorariosComponent },
   { path: 'add-profesor', component: ProfesoresAddComponent },
@@ -45,7 +50,6 @@ const appRoutes: Routes = [
   { path: 'modificar_user', component: ModificacionUserComponent },
   // {path: '**', component: ErrorCompnent}
 ]
-
 
 @NgModule({
   declarations: [
@@ -63,6 +67,7 @@ const appRoutes: Routes = [
     CargaAcademicaListComponent,
     CursoAddComponent,
     CursoListComponent,
+    RegistroComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,8 +76,8 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot(
-                appRoutes,
-            ),
+      appRoutes,
+    ),
 
   ],
   providers: [
@@ -81,6 +86,7 @@ const appRoutes: Routes = [
     ProfesorService,
     MateriaService,
     UserService,
+    BloqueHorarioService,
   ],
   bootstrap: [AppComponent]
 })

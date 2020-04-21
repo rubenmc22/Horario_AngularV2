@@ -1,11 +1,10 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 // Componentes
-import {Materia} from '../entities/materia';
-import {Global} from './global';
-import {Observable} from 'rxjs';
-import {Profesor} from '../entities/profesor';
+import { Materia } from '../entities/materia';
+import { Global } from './global';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class MateriaService {
@@ -25,17 +24,17 @@ export class MateriaService {
   getMateria() {
     return this.http.get<Materia[]>(
       this.url + '/api/v1/asignaturas', {
-        observe: 'response',
-        responseType: 'json',
-      });
+      observe: 'response',
+      responseType: 'json',
+    });
   }
 
-  getMateriaId() {
+  getMateriaId(id) {
     return this.http.get<Materia[]>(
-      this.url + '/api/v1/asignaturas/{id}', {
-        observe: 'response',
-        responseType: 'json',
-      });
+      this.url + '/api/v1/asignaturas/' + id, {
+      observe: 'response',
+      responseType: 'json',
+    });
   }
 
   postMateria(materia: Materia) {
@@ -47,12 +46,21 @@ export class MateriaService {
     });
     return this.http.post<Materia>(this.url + '/api/v1/asignaturas',
       params, {
-        headers
-      });
+      headers
+    });
   }
 
-  updateMateria() {
-
+  updateMateria(materia: Materia) {
+    const json = JSON.stringify(materia);
+    const params = json;
+    const headers = new HttpHeaders({
+      'Access-Control-Allow-Origin': '*',
+      'Content-Type': 'application/json'
+    });
+    return this.http.put<Materia>(this.url + '/api/v1/asignaturas' + materia.id,
+      params, {
+      headers
+    });
   }
 
   getDeleteId(id): Observable<Materia> {

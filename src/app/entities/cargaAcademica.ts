@@ -5,19 +5,23 @@ export class CargaAcademica implements CargaAcademicaInterface {
     public id: number;
 
     constructor(
-        public nombre: string,
-        public nombreProfesor: string,
-        public apellidoProfesor: string,
-        public horasAcademicas: number,
-        public cursosAct: string,
-        public status: boolean
+        public asignatura: number,
+        public detalleAsignatura: string,
+        public docente: number,
+        public detalleDocente: string,
+        public curso: number,
+        public detalleCurso: string,
+        public horas: number,
+        public estatus: string
     ) {
-        this.nombre = '';
-        this.nombreProfesor = '';
-        this.apellidoProfesor = '';
-        this.horasAcademicas = 1;
-        this.cursosAct = '';
-        this.status = true;
+        this.asignatura = 0;
+        this.detalleAsignatura = '';
+        this.docente = 0;
+        this.detalleDocente = '';
+        this.curso = 0;
+        this.detalleCurso = '';
+        this.horas = 1;
+        this.estatus = '';
     }
 
 }

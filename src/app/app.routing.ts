@@ -15,12 +15,13 @@ import { CargaAcademicaListComponent } from './pages/dashboard/cursos/list-carga
 import { CursoAddComponent } from './pages/dashboard/cursos/agregar-curso/add-curso.component';
 import { CursoListComponent } from './pages/dashboard/cursos/list-curso/list-curso.component';
 import { ModificacionUserComponent } from './pages/dashboard/administracion/modificacion_user/modificacion-user.component';
-
+import { RegistroComponent } from './pages/registro/registro.component';
 
 const appRoutes: Routes = [
-  {path: '', component: LoginComponent},
+  { path: '', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent },
- // { path: 'login', component: LoginComponent },
+  // { path: 'login', component: LoginComponent },
+  { path: 'registro-user', component: RegistroComponent },
   { path: 'home', component: HomeComponent },
   { path: 'horarios', component: HorariosComponent },
   { path: 'add-profesor', component: ProfesoresAddComponent },

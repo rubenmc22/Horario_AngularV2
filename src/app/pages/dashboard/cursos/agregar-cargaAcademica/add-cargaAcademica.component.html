@@ -99,7 +99,7 @@
       <!-- TITULO Y BUSCADOR -->
       <div class="row">
         <!-- Titulo -->
-        <div class="col-md-2">
+        <div class="col-md-4">
           <h4 id="">{{titulo}}</h4>
         </div>
       </div>
@@ -107,83 +107,90 @@
       <hr>
 
       <p class="btn btn-default" data-toggle="modal" style="font-size: 20px;">{{subTitulo}}
-      <div>
-        <form #formCargaAcademicaOne="ngForm" id="form-cargaAcademicaOne" (ngSubmit)="onSubmit()" style=" padding-left: 30px;
+        <div>
+          <form #formCargaAcademicaOne="ngForm" id="form-cargaAcademicaOne" (ngSubmit)="onSubmit()" style=" padding-left: 30px;
           padding-top: 15px">
-          <div class="row">
-            <div class="form-group col-md-6">
-              <label for="nombre">
-                Materia
-              </label><br>
-              <select name="nombre" #nombre="ngModel" id="nombre" [(ngModel)]="cargaAcademica.nombre"
-                      style="width:440px; height: 35px">
-                <option *ngFor="let materia of materias" [value]="materia.id">{{ materia.nombre }}</option>
-              </select>
-            </div>
-            <div class="form-group col-md-6">
-              <label>Curso</label><br>
-              <select name="cursosAct" #cursosAct="ngModel" [(ngModel)]="cargaAcademica.cursosAct"
-                      style="width:440px; height: 35px">
-                <option *ngFor="let curso of cursos" [value]="curso.id">{{ curso.nombre }}</option>
-              </select>
-            </div>
-            <div class="form-group col-md-6">
-              <label>
-                Nombre Profesor
-              </label><br>
-              <select name="profesor" #profesor="ngModel" [(ngModel)]="cargaAcademica.nombreProfesor"
-                      style="width:440px; height: 35px"
-                      (change)="apellido($event.target.selectedIndex)">
-                <option *ngFor="let profesor of profesores" [value]="profesor.id">{{ profesor.nombre }}</option>
-              </select>
-            </div>
-            <div class="form-group col-md-6">
-              <label>
-                Apellido Profesor
-              </label><br>
-              <input type="text" class="form-control" #apellidoProfesor="ngModel" name="apellidoProfesor"
-                     [(ngModel)]="cargaAcademica.apellidoProfesor" pattern="[a-zA-Z]*" minlength="2"
-                     placeholder="Apellido del Profesor" [value]="docente.apellido" readonly>
-            </div>
-            <div class="form-group col-md-6">
-              <label>
-                Horas Académicas
-                <span *ngIf="!horasAcademicas.valid && horasAcademicas.touched"
-                      class="badge badge-danger">
-                  Este campo no puede estar vacio.
-                </span>
-              </label>
-              <input type="number" class="form-control" #horasAcademicas="ngModel" name="horasAcademicas"
-                     [(ngModel)]="cargaAcademica.horasAcademicas" min="1" max="6"
-                     placeholder="Introduzca la cantidad de horas por semana" pattern="[+0-9]">
-            </div>
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label for="nombre">
+                  Materia
+                  <span *ngIf="!nombre.valid && nombre.touched" class="badge badge-danger">
+                    Este campo no puede estar vacio.
+                  </span>
+                </label><br>
+                <select name="nombre" class="form-control" #nombre="ngModel" id="nombre"
+                  [(ngModel)]="cargaAcademica.asignatura" style="width:440px; height: 35px" pattern="[a-zA-Z0-9]">
+                  <option [value]=""> </option>
+                  <option *ngFor="let materia of materias" [value]="materia.id">{{ materia.nombre }}</option>
+                </select>
+              </div>
+              <div class="form-group col-md-6">
+                <label>Curso</label><br>
+                <select name="cursosAct" #cursosAct="ngModel" [(ngModel)]="cargaAcademica.curso"
+                  style="width:440px; height: 35px">
+                  <option [value]=""> </option>
+                  <option *ngFor="let curso of cursos" [value]="curso.id">{{ curso.nombre }}</option>
+                </select>
+              </div>
+              <div class="form-group col-md-6">
+                <label>
+                  Nombre Profesor
+                </label><br>
+                <select name="profesor" #profesor="ngModel" [(ngModel)]="cargaAcademica.docente"
+                  style="width:440px; height: 35px" (change)="apellido($event.target.selectedIndex)">
+                  <option [value]=""> </option>
+                  <option *ngFor="let profesor of profesores" [value]="profesor.id">{{ profesor.nombre }}</option>
+                </select>
+              </div>
+              <div class="form-group col-md-6">
+                <label>
+                  Apellido Profesor
+                </label><br>
+                <input type="text" class="form-control" #apellidoProf="ngModel" name="apellidoProf"
+                  [(ngModel)]="cargaAcademica.apellidoProfesor" pattern="[a-zA-Z]*" minlength="2"
+                  placeholder="Apellido del Profesor" style="width:440px; height: 35px" [value]="docente.apellido"
+                  readonly>
+              </div>
+              <div class="form-group col-md-6">
+                <label>
+                  Horas Académicas
+                  <span *ngIf="!horasAcademicas.valid && horasAcademicas.touched" class="badge badge-danger">
+                    Este campo no puede estar vacio.
+                  </span>
+                </label>
+                <input type="number" class="form-control" #horasAcademicas="ngModel" name="horasAcademicas"
+                  [(ngModel)]="cargaAcademica.horas" min="1" max="6"
+                  placeholder="Introduzca la cantidad de horas por semana" pattern="[+0-9]">
+              </div>
 
-            <div class="form-group col-md-6">
-              <label>Status</label>
-              <div class="form-group">
-                <div class="form-check-inline">
-                  <input class="form-check-input" type="radio" name="exampleRadios" id="activo" value="option1" checked>
-                  <label class="form-check-label" for="activo">
-                    Activo
-                  </label>
-                </div>
-                <div class="form-check-inline">
-                  <input class="form-check-input" type="radio" name="exampleRadios" id="inactivo" value="option2">
-                  <label class="form-check-label" for="inactivo">
-                    Inactivo
-                  </label>
+              <div class="form-group col-md-6">
+                <label>Status</label>
+                <div class="form-group">
+                  <div class="form-check-inline">
+                    <input class="form-check-input" type="radio" name="typeActivo" id="typeActivo" value="Activo"
+                      [(ngModel)]="cargaAcademica.estatus" checked>
+                    <label class="form-check-label" for="typeActivo">
+                      Activo
+                    </label>
+                  </div>
+                  <div class="form-check-inline">
+                    <input class="form-check-input" type="radio" name="typeInactivo" id="typeInactivo" value="Inactivo"
+                      [(ngModel)]="cargaAcademica.estatus" unckecked>
+                    <label class="form-check-label" for="{{(cargaAcademica.estatus)?'Activo:Inactivo'}">
+                      Inactivo
+                    </label>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div align="left" class="bttn">
-            <button id="botonguardar" type="submit" [disabled]="!formCargaAcademicaOne.form.valid"
-                    class="btn btn-info" >Guardar
-            </button>
-            <button id="botonborrar" type="reset" class="btn btn-danger">Borrar</button>
-          </div>
-        </form>
-      </div>
+            <div align="left" class="bttn">
+              <button id="botonguardar" type="submit" [disabled]="!formCargaAcademicaOne.form.valid"
+                class="btn btn-info">Guardar
+              </button>
+              <button id="botonborrar" type="reset" class="btn btn-danger">Borrar</button>
+            </div>
+          </form>
+        </div>
     </div>
   </div>
 </div>

@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 // Componentes
-import { ModificarUsuario } from '../entities/modificarUser';
+import { BloqueHorarios } from '../entities/bloqueHorario';
 import { Global } from './global';
+import { Observable } from 'rxjs';
 
 @Injectable()
-export class ModificarUsuarioService {
+export class BloqueHorarioService {
     public url: string;
 
     constructor(
@@ -20,53 +21,67 @@ export class ModificarUsuarioService {
     -------------------------------------------------------------------------------------------------------*/
 
     // CRUD Hibernate
-    getModificarUsuario() {
-        return this.http.get<ModificarUsuario[]>(
-            this.url + '/', {
+
+    getBloquesHorario() {
+        return this.http.get<BloqueHorarios[]>(
+            this.url + '/api/v1/horas', {
             observe: 'response',
             responseType: 'json',
         });
     }
 
-    getModificarUsuarioId() {
-        return this.http.get<ModificarUsuario[]>(
-            this.url + '//{id}', {
+    getBloqueHorarioPorId(id) {
+        return this.http.get<BloqueHorarios[]>(
+            this.url + '/api/v1/horas/' + id, {
             observe: 'response',
             responseType: 'json',
         });
     }
 
-    postModificarUsuario(modificarUsuario: ModificarUsuario) {
-        const json = JSON.stringify(modificarUsuario);
+    getBloqueHorarioCursoPorDia(idCurso, dia) {
+        return this.http.get<BloqueHorarios[]>(
+            this.url + '/api/v1/horas/curso/' + idCurso + '/dia/' + dia, {
+            observe: 'response',
+            responseType: 'json',
+        });
+    }
+
+    postBloqueHorario(bloqueHorario: BloqueHorarios) {
+        const json = JSON.stringify(bloqueHorario);
         const params = json;
         const headers = new HttpHeaders({
             'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/json'
         });
-        return this.http.post<ModificarUsuario>(this.url + '/',
+        return this.http.post<BloqueHorarios>(this.url + '/api/v1/horas',
             params, {
             headers
         });
     }
 
-    updateUser(modificarUsuario: ModificarUsuario, usuario: string) {
-        const json = JSON.stringify(modificarUsuario);
+
+    updateBloqueHorario(bloqueHorario: BloqueHorarios) {
+        const json = JSON.stringify(bloqueHorario);
         const params = json;
         const headers = new HttpHeaders({
             'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/json'
         });
-        return this.http.put<ModificarUsuario>(this.url + '/api/v1/usuarios/' + usuario,
+        return this.http.put<BloqueHorarios>(this.url + '/api/v1/horas/' + bloqueHorario.id,
             params, {
             headers
         });
     }
 
-    deleteModificarUsuario() {
-
+    deleteBloqueHorario(id): Observable<BloqueHorarios> {
+        const headers = new HttpHeaders({
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/json'
+        });
+        return this.http.delete<BloqueHorarios>(this.url + '/api/v1/horas/' + id);
     }
 }
-    /*-------------------------------------------------------------------------------------------------------
+/*-------------------------------------------------------------------------------------------------------
 ------------------------------------Finish CRUD Hibernate----------------------------------------------
 -------------------------------------------------------------------------------------------------------*/
 

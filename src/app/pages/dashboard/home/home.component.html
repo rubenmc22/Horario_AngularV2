@@ -14,23 +14,17 @@
 
       <ul class="list-unstyled components">
         <p align="center">Menú</p>
+
+        <!-- <li>
+            <a [routerLink]="['/login']" [routerLinkActive]="['desactivado']">Login</a>
+        </li>-->
         <li>
           <a [routerLink]="['/home']" [routerLinkActive]="['activado']">Home</a>
         </li>
-        <li class="active">
-          <a href="#Materias" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-            Materias
-          </a>
-          <ul class="collapse list-unstyled" id="Materias">
-            <li>
-              <a [routerLink]="['/add-materia']" [routerLinkActive]="['activado']">Agregar Materia</a>
-            </li>
-            <li>
-              <a [routerLink]="['/list-materias']" [routerLinkActive]="['activado']">Listado de
-                Materias</a>
-            </li>
-          </ul>
+        <li>
+          <a [routerLink]="['/list-materias']" [routerLinkActive]="['activado']">Materias</a>
         </li>
+
         <li class="active">
           <a href="#profesores" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
             Profesores

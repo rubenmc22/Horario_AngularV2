@@ -1,6 +1,8 @@
 export interface UserInterface {
-  user: string;
-  pass: string;
-  rpass: string;
+  id: number;
+  cedula: string;
+  email: string;
+  password: string;
+  rPassword: string;
 
 }

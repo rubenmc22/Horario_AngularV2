@@ -104,7 +104,12 @@
       <div class="row">
         <!-- Titulo -->
         <div class="col-md-2">
-          <h4 id="titulo">{{titulo}}</h4>
+          <h4 id="titulo"><b>{{titulo}}</b></h4>
+        </div>
+        <div id="botonAgregar" class="col-md-2">
+          <button type="button" (click)="irAtras()" class="btn btn-danger" style="height: 40px; width: 180px;">
+            Cancelar
+          </button>
         </div>
       </div>
       <hr>
@@ -184,8 +189,8 @@
           </div>
         </div>
         <div align="left" class="bttn">
-          <button id="botonguardar" type="submit" class="btn btn-info" [disabled]="!formProfesores.form.valid"
-            (click)="refresh()">Guardar</button>
+          <button id="botonguardar" type="submit" class="btn btn-info"
+            [disabled]="!formProfesores.form.valid">Guardar</button>
           <button id="botonborrar" type="reset" class="btn btn-danger">Borrar</button>
         </div>
 

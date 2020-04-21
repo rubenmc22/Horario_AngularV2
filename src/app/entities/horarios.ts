@@ -1,22 +1,27 @@
-import {HorarioInterface} from './interfaces/horariosInterface';
+import { HorarioInterface } from './interfaces/horariosInterface';
 
 export class Horario implements HorarioInterface {
 
   public id: number;
+  public cargaAcademica: string;
+  public docente: string;
+  public asignatura: string;
+  public curso: string;
+  public bloqueHorario: number;
+  public inicioBloque: string;
+  public finBloque: string;
+  public dia: string;
+  public status: boolean;
 
-  constructor(
-    public profesor: string,
-    public materia: string,
-    public dia: string,
-    public hora: string,
-    public cursoAct: string,
-    public status: boolean,
-  ) {
-    this.profesor = '';
-    this.materia = '';
+  constructor() {
+    this.cargaAcademica = '';
+    this.docente = '';
+    this.asignatura = '';
+    this.bloqueHorario = 0;
+    this.finBloque = '';
+    this.inicioBloque = '';
     this.dia = '';
-    this.hora = '';
-    this.cursoAct = '';
+    this.curso = '';
     this.status = true;
   }
 }

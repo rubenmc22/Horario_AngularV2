@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
-import {CargaAcademicaService} from '../../../../services/cargaAcademicaService';
-import {CargaAcademica} from '../../../../entities/cargaAcademica';
-import {UserService} from '../../../../services/userService';
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { CargaAcademicaService } from '../../../../services/cargaAcademicaService';
+import { CargaAcademica } from '../../../../entities/cargaAcademica';
+import { UserService } from '../../../../services/userService';
 
 
 @Component({
@@ -37,7 +37,6 @@ export class CargaAcademicaListComponent implements OnInit {
           // this.productos.push(result.body);
           this.cargaAcademica = result.body; // Matriz
           console.log(this.cargaAcademica);
-          console.log('RESULT:' + result.body);
         }
       },
       error => {
@@ -49,7 +48,7 @@ export class CargaAcademicaListComponent implements OnInit {
   deleteUser(id) {
     this.cargaAcademicaService.getDeleteId(id).subscribe(result => {
 
-      },
+    },
       error => {
         console.error(error.error);
         window.alert(error.error);
