@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { CargaAcademicaService } from '../../../../services/cargaAcademicaService';
 import { CargaAcademica } from '../../../../entities/cargaAcademica';
 import { UserService } from '../../../../services/userService';
+import { AuthenticationService } from 'src/app/services/authenticationService';
 
 
 @Component({
@@ -22,7 +23,8 @@ export class CargaAcademicaListComponent implements OnInit {
     private route: Router,
     private router: ActivatedRoute,
     private cargaAcademicaService: CargaAcademicaService,
-    private userService: UserService
+    private userService: UserService,
+    private authenticationService: AuthenticationService
   ) {
     this.titulo = 'Carga Académica';
     this.subTitulo = 'Ver Carga Académica';
@@ -45,15 +47,27 @@ export class CargaAcademicaListComponent implements OnInit {
     );
   }
 
-  deleteUser(id) {
-    this.cargaAcademicaService.getDeleteId(id).subscribe(result => {
-
-    },
-      error => {
-        console.error(error.error);
-        window.alert(error.error);
-      }
-    );
+  deleteCarga(id) {
+    const confirm = window.confirm('¿Esta seguro que desea eliminar este campo? Esta Materia podría estar asociada a una carga academica.');
+    if (confirm) {
+      this.cargaAcademicaService.getDeleteId(id).subscribe(result => {
+        console.log(result);
+        window.alert('El campo seleccionado ha sido eliminado correctamente.');
+        location.reload();
+      },
+        error => {
+          console.error(error.error);
+        }
+      );
+    }
   }
 
+  logout() {
+    this.authenticationService.logout();
+    this.route.navigate(['/login']);
+  }
+
+  agregarCargaAcademica() {
+    this.route.navigate(['../add-cargaAcademica']);
+  }
 }

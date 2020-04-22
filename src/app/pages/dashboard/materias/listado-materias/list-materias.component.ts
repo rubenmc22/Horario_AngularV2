@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { MateriaService } from '../../../../services/materiaService';
 import { Materia } from '../../../../entities/materia';
 import { UserService } from '../../../../services/userService';
+import { AuthenticationService } from 'src/app/services/authenticationService';
 
 @Component({
   selector: 'app-materias-list',
@@ -21,6 +22,7 @@ export class MateriasListComponent implements OnInit {
     private router: ActivatedRoute,
     private materiaService: MateriaService,
     private userService: UserService,
+    private authenticationService: AuthenticationService
   ) {
     this.titulo = 'Materias';
     this.subTitulo = 'Listado de Materias';
@@ -75,8 +77,8 @@ export class MateriasListComponent implements OnInit {
   }
 
   logout() {
-    this.userService.logout();
-    this.userService.currentUserValue;
+    this.authenticationService.logout();
+    this.route.navigate(['/login']);
   }
 
   agregarMateria() {

@@ -1,10 +1,5 @@
-<!------ Include the above in your HEAD tag ---------->
-
-<!DOCTYPE html>
-<html>
-
 <head>
-  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>Login Page</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -12,11 +7,20 @@
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
 </head>
 <!--Coded with love by Mutiullah Samim-->
 
-<body>
+<body scroll=no>
+  <nav id="navbar2" class="col-lg-12">
+    <ul>
+      <li id="titulo">U.E INSTITUTO "ELENA DE BUENO"</li>
+    </ul>
+  </nav>
+  <!-- <div style="margin-left: 100px" align="left">
+    <img src="assets/Images/home2.jpg" style="width: 111%; height: 350px; margin-left: -118px;">
+  </div>-->
+
+  <br><br>
   <div class="content">
     <div class="container h-100">
       <div class="d-flex justify-content-center h-100">
@@ -32,8 +36,8 @@
                 <div class="input-group-append">
                   <span class="input-group-text"><i class="fas fa-user"></i></span>
                 </div>
-                <input type="text" name="user" #user class="form-control input_user" placeholder="Introduzca su cedula"
-                  pattern="+[0-9]*" minlength="6" maxlength="8" required>
+                <input type="text" name="user" #user class="form-control input_user" style="color: black; !important"
+                  placeholder="Introduzca su cedula" pattern="+[0-9]*" minlength="6" maxlength="8" required>
               </div>
               <div class="input-group mb-2">
                 <div class="input-group-append">
@@ -42,30 +46,31 @@
                 <input type="password" name="pass" #pass class="form-control input_pass" pattern="[a-zA-Z0-9]*"
                   minlength="6" maxlength="15" placeholder="Contraseña" required>
               </div>
-              <div class="form-group">
-                <div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" id="customControlInline">
-                  <label class="custom-control-label" for="customControlInline">Recuerdame</label>
-                </div>
-              </div>
               <div class="d-flex justify-content-center mt-3 login_container">
                 <button type="submit" [disabled]="!formLogin.form.valid" (click)="logIn(user.value, pass.value, $event)"
-                  class="btn btn-primary" style="background-color: rgb(0, 70, 122); width: 160px;">Entrar
+                  class="btn btn-primary"
+                  style="background-color: #6c7059; width: 160px; border-color: #6c7059 !important;">Entrar
                 </button>
               </div>
               <div class="mt-4">
                 <div class="d-flex justify-content-center links">
-                  ¿No tienes una cuenta? <button type="menu" (click)="navigateRegistro()" class="ml-2"
-                    class="btn-alert">Registrate</button>
+                  ¿No tienes una cuenta?
                 </div>
 
               </div>
+              <div>
+                <button
+                  style="background-color: #6c7059; width: 160px; border-color: #6c7059 !important; margin-left: 40px;"
+                  type="menu" (click)="navigateRegistro()" class="ml-2" class="btn btn-primary">
+                  Registrate
+                </button>
+              </div>
+
             </form>
           </div>
         </div>
       </div>
     </div>
   </div>
-</body>
 
-</html>
+</body>

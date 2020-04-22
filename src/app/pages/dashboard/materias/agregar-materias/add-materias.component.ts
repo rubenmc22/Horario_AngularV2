@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MateriaService } from '../../../../services/materiaService';
 import { Materia } from '../../../../entities/materia';
-import { UserService } from '../../../../services/userService';
+import { AuthenticationService } from 'src/app/services/authenticationService';
 
 @Component({
   selector: 'app-materias-add',
@@ -20,36 +20,15 @@ export class MateriasAddComponent implements OnInit {
     private route: Router,
     private router: ActivatedRoute,
     private materiaService: MateriaService,
-    private userService: UserService,
+    private authenticationService: AuthenticationService
   ) {
     this.titulop = 'Materias';
     this.subTitulo = 'Listado de Materias';
     this.materia = new Materia('', '', true);
-
-
-
   }
 
 
   ngOnInit() {
-    let arr = [{
-      name: 'jon', year: 1990
-    },
-    { name: 'samuel', year: 1996 },
-    { name: 'josue', year: 1980 },
-    { name: 'grecia', year: 1970 },
-    { name: 'victoria', year: 1940 }
-    ]
-    arr.sort((a, b) => {
-      console.log(arr);
-
-
-      var Resultado = a.year - b.year;
-      console.log('Resultado: ' + Resultado);
-      return Resultado;
-    }
-    )
-
   }
 
   onSubmit() {
@@ -78,8 +57,8 @@ export class MateriasAddComponent implements OnInit {
   }
 
   logout() {
-    this.userService.logout();
-    this.userService.currentUserValue;
+    this.authenticationService.logout();
+    this.route.navigate(['/login']);
   }
 
 }

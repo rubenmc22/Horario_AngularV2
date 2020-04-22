@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ModificarUsuarioService } from '../../../../services/modificarUserService';
 import { ModificarUsuario } from '../../../../entities/modificarUser';
-import { LoginService } from '../../../../services/loginService';
 import { Users } from '../../../../entities/user';
 import { UserService } from '../../../../services/userService';
+import { AuthenticationService } from 'src/app/services/authenticationService';
 
 @Component({
   selector: 'app-administracion',
@@ -18,14 +17,14 @@ export class ModificacionUserComponent implements OnInit {
   public titulo: string;
   public subTitulo: string;
   public modificarUsuario: ModificarUsuario;
-  private admin = new Users('', '');
+  private admin = new Users();
 
   constructor(
     private route: Router,
     private router: ActivatedRoute,
     private modificarUsuarioService: ModificarUsuarioService,
-    private adminService: LoginService,
     private userService: UserService,
+    private authenticationService: AuthenticationService
 
   ) {
     this.titulo = 'Administración';
@@ -60,30 +59,8 @@ export class ModificacionUserComponent implements OnInit {
     }
   }
 
-
-  /*form = new FormGroup({
-    usuario: new FormControl('', Validators.required),
-    pass: new FormControl('', Validators.required),
-    rPass: new FormControl('', Validators.required),
-  });
-
-  registroForm = new FormGroup({
-    pass: this.pass,
-    rPass: this.rPass
-  })
-
-  adminForm(formModificarUser) {
-    let pass = this.form.pass.value;
-    let rPass = this.rPass;
-  }*/
-
-
   logout() {
-    this.userService.logout();
-    this.userService.currentUserValue;
+    this.authenticationService.logout();
+    this.route.navigate(['/login']);
   }
-
-
-
-
 }

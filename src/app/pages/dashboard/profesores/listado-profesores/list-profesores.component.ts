@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ProfesorService } from '../../../../services/profesorService';
 import { Profesor } from '../../../../entities/profesor';
 import { UserService } from '../../../../services/userService';
+import { AuthenticationService } from 'src/app/services/authenticationService';
 
 @Component({
   selector: 'app-profesores-list',
@@ -16,7 +17,8 @@ export class ProfesoresListComponent implements OnInit {
     private route: Router,
     private router: ActivatedRoute,
     private profesorService: ProfesorService,
-    private userService: UserService
+    private userService: UserService,
+    private authenticationService: AuthenticationService
   ) {
     this.titulo = 'Profesores';
     this.subTitulo = 'Listado de Profesores';
@@ -63,6 +65,11 @@ export class ProfesoresListComponent implements OnInit {
 
   refresh() {
     location.reload();
+  }
+
+  logout() {
+    this.authenticationService.logout();
+    this.route.navigate(['/login']);
   }
 
   agregarProfesor() {

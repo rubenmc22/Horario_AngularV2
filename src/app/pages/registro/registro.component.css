@@ -1,29 +1,73 @@
 .container {
-  margin-top: 110px;
-  margin-left: 330px;
+  margin-top: 60px;
+  margin-right: 400px;
+  margin-left: 16%;
   border-radius: 10px;
-  box-shadow: 0px 2px 5px;
+  box-shadow: 0px 2px 5px #ccc;
   padding: 30px;
   padding-top: 20px;
   max-width: 100%;
-  min-height: 60%;
+  min-height: 80%;
   width: 950px;
   overflow: hidden;
-  background-color:snow;
 }
 
 #titulo {
-  font-size: 30px;
-  width: 40px;
+  font-size: 26px;
 }
 
 #subtitulo {
   font-size: 20px;
 }
 
+#tit{
+   background-color: #f27935;
+    padding: 0px;
+    padding-left: 20px;
+    padding-top: 25px;
+    padding-bottom: 10px;
+    margin-left: -31px;
+    margin-top: -21px;
+    margin-right: -32px;
+}
+
 #botonguardar, #botonborrar {
   margin-top: 40px;
   margin-bottom: 10px;
   margin-right: 5px;
+}
 
+#piePagina{
+    background: #1abc9c;
+    margin-top: 17px;
+    padding: 5px;
+    padding-top: 20px;
+    color: white !important;
+    text-align: center;
+    font-size: 16px;
+    max-width: 100%;
+    width: 1360px;
+    margin-left: 3px;
+}
+#navbar2 {
+  padding: 1px;
+    background: #1abc9c;
+    min-width: 100vh;
+    max-width: 100%;
+    color: white;
+    margin-bottom: -10px;
+    width: 1360px;
+    margin-left: 3px;
+}
+
+#navbar2 ul {
+  list-style: none;
+  overflow: hidden;
+  text-align: center;
+  font-size: 25px;
+}
+#imgPrincipal{
+  width: 1331px; 
+  height: 350px; 
+  margin-left: -98px;
 }

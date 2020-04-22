@@ -1,11 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
-import {FormBuilder, FormGroup, FormArray, FormControl, Validators} from '@angular/forms';
-import {CursoService} from '../../../../services/cursoService';
-
-import {Curso} from '../../../../entities/cursos';
-import {UserService} from '../../../../services/userService';
-import {forEachComment} from "tslint";
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { CursoService } from '../../../../services/cursoService';
+import { Curso } from '../../../../entities/cursos';
+import { AuthenticationService } from 'src/app/services/authenticationService';
 
 @Component({
   selector: 'app-curso-add',
@@ -23,7 +20,7 @@ export class CursoAddComponent implements OnInit {
     private route: Router,
     private router: ActivatedRoute,
     private cursoService: CursoService,
-    private userService: UserService
+    private authenticationService: AuthenticationService
   ) {
     this.tituloCurso = 'Curso';
     this.subTituloCurso = 'Agregar Curso';
@@ -42,7 +39,7 @@ export class CursoAddComponent implements OnInit {
         this.cursos = result; // Matriz
         console.log(this.cursos);
         window.alert('Informacion Almacenada.');
-         this.refresh();
+        this.refresh();
       },
       error => {
         console.log(error);
@@ -65,5 +62,14 @@ export class CursoAddComponent implements OnInit {
 
   refresh() {
     location.reload();
+  }
+
+  irAtras() {
+    this.route.navigate(['../list-cursos']);
+  }
+
+  logout() {
+    this.authenticationService.logout();
+    this.route.navigate(['/login']);
   }
 }

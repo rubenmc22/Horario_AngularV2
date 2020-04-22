@@ -33,13 +33,7 @@ body {
   }
 }
 
-p {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.1em;
-  font-weight: 300;
-  line-height: 1.7em;
-  color: #999;
-}
+
 
 a, a:hover, a:focus {
   color: inherit;
@@ -107,11 +101,14 @@ a[data-toggle="collapse"] {
 }
 
 #navbar {
-  padding: 3px;
-  background: rgb(0, 70, 122);
-  min-width: 100vh;
-  max-width: 200vh;
-  color: white;
+  padding: 1px;
+    background: #1abc9c;
+    min-width: 100vh;
+    max-width: 100%;
+    color: white;
+    margin-bottom: -10px;
+    margin-left: 3px;
+    width: 1338px;
 }
 
 #navbar ul {
@@ -125,3 +122,90 @@ a[data-toggle="collapse"] {
   padding-top: 8px;
 }
 
+#imgPrincipal{
+  width: 1338px;
+  height: 350px;
+  margin-left: -98px;
+}
+
+
+#app
+{
+	background: #1abc9c;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+  color: white;
+  min-width: 100vh;
+  max-width: 100%;
+  margin-left: 3px;
+  width: 1338px;
+}
+#app ul li
+{
+	
+}
+#app ul li a
+{
+	padding: 20px 30px;
+  color:white;
+  font-size: 20px;
+}
+
+.dropdown-menu{
+  margin: auto;
+}
+
+.dropdown-item1
+{
+	padding: 15px 0px;
+  padding-right: 0px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-top: -10px;
+  margin-bottom: 0px;
+  font-size: 20px;
+  background: #1abc9c !important;
+
+}
+
+.dropdown-item2
+{
+    padding: 15px 0px;
+    padding-right: 0px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-top: -0px;
+    margin-bottom: -15px;
+    font-size: 20px;
+    background: #1abc9c !important;
+
+}
+
+#op1 :hover{
+  background-color: #0c9076;
+  padding-right: 30px;
+}
+
+#op2 :hover{
+  background-color: #0c9076;
+  padding-right: 60px;
+  width: auto;
+}
+
+#app  ul li a:hover
+{
+	background-color: #0c9076;
+  color:white;
+}	
+
+#piePagina{
+  background: #1abc9c;
+  margin-top: 17px;
+    padding: 5px;
+    padding-top: 20px;
+    color: white !important;
+    text-align: center;
+    font-size: 16px;
+    max-width: 99%; 
+}

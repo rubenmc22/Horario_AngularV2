@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { HorarioService } from '../../../services/horarioService';
 import { Horario } from '../../../entities/horarios';
-import { UserService } from '../../../services/userService';
 import { Curso } from '../../../entities/cursos';
 import { CursoService } from '../../../services/cursoService';
 import { BloqueHorarios } from '../../../entities/bloqueHorario';
 import { BloqueHorarioService } from '../../../services/BloqueHorarioService';
+import { AuthenticationService } from 'src/app/services/authenticationService';
 
 @Component({
   selector: 'app-horarios',
@@ -29,11 +29,11 @@ export class HorariosComponent implements OnInit {
 
   constructor(
     private route: Router,
-    private router: ActivatedRoute,
     private horarioService: HorarioService,
     private cursoService: CursoService,
-    private userService: UserService,
-    private bloqueHorarioService: BloqueHorarioService
+    private bloqueHorarioService: BloqueHorarioService,
+    private authenticationService: AuthenticationService
+
   ) {
     this.titulo = 'Horarios';
     this.subTitulo = 'Procesar Horarios';
@@ -90,9 +90,11 @@ export class HorariosComponent implements OnInit {
           this.obtenerHorarios = result.body;
           console.log(this.obtenerHorarios);
           this.obtenerBloqueHorario();
+          this.ngOnInit();
         } else {
           window.alert('No se ha generado el horario de este curso');
         }
+
       },
       error => {
         console.log(error.error);
@@ -116,16 +118,14 @@ export class HorariosComponent implements OnInit {
   }
 
   generarHorarioPorCurso() {
-
-    console.log('Id curso:' + this.curso.id);
-    //  console.log(this.horario.bloqueHorario);
     return this.horarioService.postHorarioPorCurso(this.curso.id).subscribe(
       result => {
-        // this.producto.push(result);
-        this.horario = result; // Matriz
+        this.horario = result;
         console.log(result);
         window.alert('Se ha generado el horario correctamente.');
-        this.refresh();
+        // this.refresh();
+        this.ngOnInit();
+        this.obtenerHorarioPorCurso();
       },
       error => {
         console.log(error);
@@ -154,14 +154,14 @@ export class HorariosComponent implements OnInit {
     let horarioGet = this.obtenerHorarios.find(b => b.bloqueHorario === bloqueHorario
       && b.dia === dia);
 
-    if (horarioGet !== null || horarioGet !== undefined) {
-      console.log();
-
-    }
     return (horarioGet ? horarioGet.asignatura + ' / ' + horarioGet.docente : "");
 
   }
 
+  logout() {
+    this.authenticationService.logout();
+    this.route.navigate(['/login']);
+  }
 
 
 

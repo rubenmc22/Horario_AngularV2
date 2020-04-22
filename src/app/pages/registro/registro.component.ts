@@ -23,7 +23,7 @@ export class RegistroComponent implements OnInit {
     private userService: UserService
   ) {
     this.titulo = 'Registro de Usuarios';
-    this.usuario = new Users('', '');
+    this.usuario = new Users();
   }
 
   onSubmits(password: string, rPassword: string) {
@@ -33,12 +33,12 @@ export class RegistroComponent implements OnInit {
       // location.reload();
 
     } else {
-      return this.userService.postUser(this.usuario).subscribe(
+      return this.userService.register(this.usuario).subscribe(
         result => {
           // this.producto.push(result);
           this.usuario = result;
           window.alert('Usuario Registrado.');
-          this.route.navigate(['../login']);
+          this.navigateLogin();
         },
         error => {
           console.log(error);

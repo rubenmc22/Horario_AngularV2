@@ -12,6 +12,11 @@
   overflow: hidden;
 }
 
+#botonAgregar{
+  margin-left: 79%;
+  margin-top: -42px; 
+}
+
 #titulo {
   font-size: 30px;
 }

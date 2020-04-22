@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
-import {CursoService} from '../../../../services/cursoService';
-import {Curso} from '../../../../entities/cursos';
-import {UserService} from '../../../../services/userService';
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { CursoService } from '../../../../services/cursoService';
+import { Curso } from '../../../../entities/cursos';
+import { UserService } from '../../../../services/userService';
+import { AuthenticationService } from 'src/app/services/authenticationService';
 
 @Component({
   selector: 'app-curso-list',
@@ -20,7 +21,8 @@ export class CursoListComponent implements OnInit {
     private route: Router,
     private router: ActivatedRoute,
     private cursoService: CursoService,
-    private userService: UserService
+    private userService: UserService,
+    private authenticationService: AuthenticationService
   ) {
     this.tituloCurso = 'Cursos';
     this.subTituloCurso = 'Listado de Cursos';
@@ -47,9 +49,9 @@ export class CursoListComponent implements OnInit {
     const confirm = window.confirm('¿Esta seguro que desea eliminar este campo? Este Curso podría estar asociado a una carga academica.');
     if (confirm) {
       this.cursoService.getDeleteId(id).subscribe(result => {
-          window.alert('El campo seleccionado ha sido eliminado correctamente.');
-          this.refresh();
-        },
+        window.alert('El campo seleccionado ha sido eliminado correctamente.');
+        this.refresh();
+      },
         error => {
           console.error(error.error);
           window.alert(error.error);
@@ -71,26 +73,37 @@ export class CursoListComponent implements OnInit {
           diasStr += 'Lunes,';
           break;
         case 2:
-          diasStr += ' Martes,';
+          diasStr += '  Martes,';
           break;
         case 3:
-          diasStr += ' Miercoles,';
+          diasStr += '  Miercoles,';
           break;
         case 4:
-          diasStr += ' Jueves,';
+          diasStr += '  Jueves,';
           break;
         case 5:
-          diasStr += ' Viernes,';
+          diasStr += '  Viernes,';
           break;
         case 6:
-          diasStr += ' Sabado,';
+          diasStr += '  Sabado,';
           break;
         default:
-          diasStr += ' Domingo,';
+          diasStr += '  Domingo,';
           break;
       }
     });
     diasStr = diasStr.substr(0, diasStr.length - 1);
     return diasStr;
   }
+
+  logout() {
+    this.authenticationService.logout();
+    this.route.navigate(['/login']);
+  }
+
+  agregarCurso() {
+    this.route.navigate(['../add-curso']);
+  }
+
+
 }

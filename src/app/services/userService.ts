@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Users } from '../entities/user';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Global } from './global';
 
@@ -11,18 +12,18 @@ export class UserService {
   public userLogged: Users;
   private currentUserSubject: BehaviorSubject<Users>;
   public currentUser: Observable<Users>;
-  public url: string;
+  private baseUrl = Global.url;
 
   constructor(
-    public http: HttpClient
+    public http: HttpClient,
+    private router: Router
   ) {
     this.isUserLoggedIn = false;
     this.currentUserSubject = new BehaviorSubject<Users>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
-    this.url = Global.url;
-
 
   }
+
   public get currentUserValue(): Users {
     return this.currentUserSubject.value;
   }
@@ -34,25 +35,28 @@ export class UserService {
 
   }
 
-  getUserLoggedIn() {
-    return JSON.parse(localStorage.getItem('currentUser'));
+  getAll() {
+    return this.http.get<Users[]>(this.baseUrl + '/api/v1/usuarios');
   }
 
-  logout() {
-    localStorage.removeItem('currentUser');
-    this.currentUserSubject.next(null);
-  }
-
-  postUser(user: Users) {
+  register(user: Users) {
     const json = JSON.stringify(user);
     const params = json;
     const headers = new HttpHeaders({
       'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/json'
     });
-    return this.http.post<Users>(this.url + '/api/v1/usuarios',
+    return this.http.post<Users>(this.baseUrl + '/api/v1/usuarios',
       params, {
       headers
     });
+  }
+
+  delete(id: number) {
+    return this.http.delete(this.baseUrl + '/api/v1/usuarios/' + id);
+  }
+
+  logout() {
+
   }
 }

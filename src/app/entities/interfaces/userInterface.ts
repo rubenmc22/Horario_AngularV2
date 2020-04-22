@@ -1,8 +1,11 @@
 export interface UserInterface {
   id: number;
-  cedula: string;
+  nombre: string;
+  apellido: string;
+  username: string;
   email: string;
   password: string;
   rPassword: string;
+  token: string;
 
 }

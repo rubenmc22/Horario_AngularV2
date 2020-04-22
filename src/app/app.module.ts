@@ -26,6 +26,7 @@ import { CursoAddComponent } from './pages/dashboard/cursos/agregar-curso/add-cu
 import { CursoListComponent } from './pages/dashboard/cursos/list-curso/list-curso.component';
 import { ModificacionUserComponent } from './pages/dashboard/administracion/modificacion_user/modificacion-user.component';
 import { FormsModule } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { CursoService } from './services/cursoService';
 import { ProfesorService } from './services/profesorService';
 import { MateriaService } from './services/materiaService';

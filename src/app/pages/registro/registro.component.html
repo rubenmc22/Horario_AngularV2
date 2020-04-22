@@ -1,20 +1,26 @@
+<nav id="navbar2" class="col-lg-12">
+  <ul>
+    <li id="titulo">U.E INSTITUTO "ELENA DE BUENO"</li>
+  </ul>
+</nav>
+<!--<div style="margin-left: 100px" align="left">
+  <img id="imgPrincipal" src="assets/Images/home2.jpg">
+</div>-->
+
+<br>
 <div class="container">
-  <!-- TITULO Y BUSCADOR -->
-  <div class="row">
-    <!-- Titulo -->
-    <div class="col-md-4">
-      <h4>Registro de Usuarios</h4>
-    </div>
+
+  <div id="tit">
+    <h4 style="color:white">Registro de Usuarios</h4>
   </div>
-  <hr>
-  <hr>
+  <br>
 
   <p id="subtitulo" class="btn btn-default" data-toggle="modal">Registrar un Nuevo Usuario</p><br>
 
   <form #formRegistro="ngForm" (ngSubmit)="onSubmits(usuario.password, usuario.rPassword)"
     style="padding-left: 30px; padding-top: 15px">
     <div class="row">
-      <div class="form-group col-md-6">
+      <div class="form-group col-md-4">
         <label>
           Usuario
           <span *ngIf="!user.valid && user.touched" class="badge badge-danger">
@@ -24,7 +30,7 @@
         <input type="text" class="form-control" id="user" #user="ngModel" name="user" [(ngModel)]="usuario.cedula"
           pattern="[0-9]+" minlength="6" maxlength="8" placeholder="Introduzca su cedula..">
       </div>
-      <div class="form-group col-md-6">
+      <div class="form-group col-md-4">
         <label>
           Correo Electronico
           <span *ngIf="!email.valid && email.touched" class="badge badge-danger">
@@ -34,7 +40,7 @@
         <input type="email" class="form-control" id="email" #email="ngModel" name="email" [(ngModel)]="usuario.email"
           pattern="[a-zA-Z0-9@.]*" minlength="6" placeholder="Introduzca su email..">
       </div>
-      <div class="form-group col-md-6">
+      <div class="form-group col-md-4">
         <label>
           Contraseña
           <span *ngIf="!clave.valid && clave.touched" class="badge badge-danger">
@@ -46,23 +52,15 @@
           placeholder="Introduzca su contraseña..">
       </div>
 
-      <div class="form-group col-md-6">
-        <label>
-          Verificar Contraseña
-          <span *ngIf="!rPassword.valid && rPassword.touched" class="badge badge-danger">
-            Este campo no puede estar vacio.
-          </span>
-        </label>
-        <input type="password" class="form-control" id="rPassword" #rPassword="ngModel" name="rPassword"
-          [(ngModel)]="usuario.rPassword" pattern="[a-zA-Z0-9]*" minlength="8" required
-          placeholder="Introduzca nuevamente su contraseña">
-      </div>
-
       <div align="left" class="bttn">
-        <button id="botonguardar" type="submit" [disabled]="!formRegistro.form.valid"
-          class="btn btn-primary">Registrar</button>
+        <button id="botonguardar" type="submit" [disabled]="!formRegistro.form.valid" class="btn btn-primary"
+          style="background-color: #28a745; border-color: #28a745;">Registrar</button>
         <button id="botonborrar" type="reset" class="btn btn-danger" (click)="navigateLogin()">Cancelar</button>
       </div>
     </div>
   </form>
-</div>
+</div><br><br>
+
+<footer id="piePagina" class="fixed-bottom" aling="center" style="color:white;">
+  <p>All content copyright &copy; 2020, Sistema de Gestión de Horarios.</p>
+</footer>
