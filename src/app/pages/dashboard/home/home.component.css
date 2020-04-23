@@ -70,7 +70,7 @@
 #texTit{
 font-size: 21px !important;
 color: white;
-font-family: 'Poppins', sans-serif;
+font-family: Arial !important;
 }
 
 .text{
@@ -80,7 +80,7 @@ font-family: 'Poppins', sans-serif;
     text-align: justify;
     font-size: 20px;
     text-decoration: none;
-    font-family: 'Poppins', sans-serif;
+    font-family: Arial !important;
     font-weight: 300;
     line-height: 1.7em;
 }

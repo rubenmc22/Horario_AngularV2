@@ -7,6 +7,7 @@ html {
   background: white !important;
   border-radius: 30px;
   overflow-y: hidden !important;
+  font-family: Arial !important;
 }
 
 .user_card {
