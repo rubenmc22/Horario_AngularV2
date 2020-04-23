@@ -1,28 +1,68 @@
-.container {
+.container1 {
   margin-top: 60px;
-  margin-right: 50px;
-  margin-left: 70px;
+  margin-left: 9%;
   border-radius: 10px;
   box-shadow: 0px 2px 5px #ccc;
   padding: 30px;
   padding-top: 20px;
-  max-width: 100%;
   min-height: 80%;
-  width: 1150px;;
+  max-width: 82%;
+  min-width: 0%;
+
   overflow: hidden;
 }
 
+.container2 {
+ margin-top: 3%;
+    margin-right: 50px;
+    margin-left: 2%;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px green;
+    padding: 30px;
+    padding-top: 20px;
+    max-width: 100%;
+    min-height: 80%;
+    width: 30%;
+    overflow: hidden;
+    float: left;
+}
+
+.container3 {
+ margin-top: 6%;
+    margin-right: 2%;
+    margin-left: 0%;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px green;
+    padding: 30px;
+    padding-top: 20px;
+    padding-right: 0%;
+    padding-left: 0%;
+    max-width: 100%;
+    min-height: 80%;
+    min-width: 50%;
+    overflow: hidden;
+    float: right;
+}
+
 #titulo {
-  padding-top: 6px;
+ 
+  
 }
 
 #subtitulo {
-  font-size: 20px;
+  font-size: 25px;
+    padding-left: 3%;
+    padding-top: 0%;
 }
 
 #botonAgregar {
-  margin-left: 80%;
-  margin-top: -42px;
+ margin-top: 5px;
+    height: 40px;
+    margin-left: 10%;
+    max-width: 700%;
+    min-width: 80%;
+    width: 660%;
+
 }
 
 .imgEdit {

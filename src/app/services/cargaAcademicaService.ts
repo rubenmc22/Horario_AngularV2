@@ -30,16 +30,23 @@ export class CargaAcademicaService {
         });
     }
 
-    getCargaAcademicaId() {
+    getCargaAcademicaId(id) {
         return this.http.get<CargaAcademica[]>(
-            this.url + '/api/v1/cargas_academicas/{id}', {
+            this.url + '/api/v1/cargas_academicas/' + id, {
+            observe: 'response',
+            responseType: 'json',
+        });
+    }
+
+    getCargaPorCurso(id) {
+        return this.http.get<CargaAcademica[]>(
+            this.url + '/api/v1/cargas_academicas/curso/' + id, {
             observe: 'response',
             responseType: 'json',
         });
     }
 
     postCargaAcademica(cargaAcademica: CargaAcademica) {
-        // debugger;
         const json = JSON.stringify(cargaAcademica);
         const params = json;
         const headers = new HttpHeaders({
@@ -52,15 +59,20 @@ export class CargaAcademicaService {
         });
     }
 
-    updateCargaAcademica() {
-
-    }
-
-    getDeleteId(id): Observable<CargaAcademica> {
+    updateCargaAcademica(id, infoCargaAcademica) {
+        const json = JSON.stringify(infoCargaAcademica);
+        const params = json;
         const headers = new HttpHeaders({
             'Access-Control-Allow-Origin': '*',
             'Content-Type': 'application/json'
         });
+        return this.http.put<CargaAcademica>(this.url + '/api/v1/cargas_academicas/' + id,
+            params, {
+            headers
+        });
+    }
+
+    getDeleteId(id): Observable<CargaAcademica> {
         return this.http.delete<CargaAcademica>(this.url + '/api/v1/cargas_academicas/' + id);
     }
 }

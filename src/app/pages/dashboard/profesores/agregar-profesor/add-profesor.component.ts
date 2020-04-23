@@ -30,10 +30,9 @@ export class ProfesoresAddComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmits() {
+  guardar() {
     return this.profesorService.postProfesor(this.profesor).subscribe(
       result => {
-        // this.producto.push(result);
         if (result.correo !== null) {
           this.profesor = result;
           console.log(result);
@@ -57,6 +56,10 @@ export class ProfesoresAddComponent implements OnInit {
   }
 
   irAtras() {
+    this.route.navigate(['../list-profesores']);
+  }
+
+  verProfesor() {
     this.route.navigate(['../list-profesores']);
   }
 }

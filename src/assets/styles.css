@@ -122,12 +122,6 @@ a[data-toggle="collapse"] {
   padding-top: 8px;
 }
 
-#imgPrincipal{
-  width: 1338px;
-  height: 350px;
-  margin-left: -98px;
-}
-
 
 #app
 {
@@ -136,10 +130,13 @@ a[data-toggle="collapse"] {
 	padding: 0;
 	margin: 0;
   color: white;
-  min-width: 100vh;
-  max-width: 100%;
-  margin-left: 3px;
-  width: 1338px;
+  background: #1abc9c;
+  color: white;
+  margin-bottom: -10px;
+  margin-left: 6px;
+  margin-right: 5px;
+  min-width: 99%;
+  max-width: 99%; 
 }
 #app ul li
 {
@@ -206,6 +203,32 @@ a[data-toggle="collapse"] {
     padding-top: 20px;
     color: white !important;
     text-align: center;
-    font-size: 16px;
+    font-size: 22px;
     max-width: 99%; 
+    margin-left: 6px;
+}
+
+
+#imgPrincipal{
+  
+  height: 350px;
+  min-width: 99%;
+   max-width: 99%; 
+   margin-left: 6px;
+}
+
+#botonAgregar {
+ margin-top: 5px;
+  height: 40px;
+   width: 710%; 
+   margin-left: 6%;
+   font-size: 20px;
+  }
+
+#botonguardar{
+  margin-left:33%;
+   padding-left:3%;
+ background-color: #28a745;
+  border-color: #28a745;
+
 }

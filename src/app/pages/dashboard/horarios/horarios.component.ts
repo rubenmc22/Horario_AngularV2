@@ -38,8 +38,7 @@ export class HorariosComponent implements OnInit {
     this.titulo = 'Horarios';
     this.subTitulo = 'Procesar Horarios';
     this.horario = new Horario();
-    this.curso = new Curso('', '', [], true);
-    this.tipo = ['horarios', 'horas', 'tipo'];
+    this.curso = new Curso('', '', [], '');
 
     this.cursoService.getCursos().subscribe(
       result => {

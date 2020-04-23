@@ -1,4 +1,4 @@
-<div style="margin-left: 100px" align="left">
+<div>
   <img id="imgPrincipal" src="assets/Images/home2.jpg">
 </div>
 
@@ -27,124 +27,114 @@
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['/horarios']" [routerLinkActive]="['activado']">Horarios</a>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">
-          Perfil
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-      <li class="dropdown-item1">
-        <a id="op1" [routerLink]="['/modificar_user']" [routerLinkActive]="['activado']">Usuario</a>
-      </li>
-      <li class="dropdown-item2">
-        <a id="op2" (click)="logout()" [routerLinkActive]="['activado']">Salir</a>
-      </li>
-  </div>
-  </li>
-  </ul>
+
+    </ul>
   </div>
 </nav>
 
-<div class="container">
-  <!-- TITULO Y BUSCADOR -->
-  <div class="row">
-    <!-- Titulo -->
-    <div class="col-md-2">
-      <h4 id="titulo"><b>{{titulo}}</b></h4>
-    </div>
-    <div id="botonAgregar" class="col-md-2">
-      <button type="button" (click)="irAtras()" class="btn btn-danger" style="height: 40px; width: 180px;">
-        Cancelar
-      </button>
-    </div>
+<div class="container1" aling="center">
+
+  <div class="col-md-4">
+    <h4 id="titulo"><b>Profesores</b></h4>
   </div>
   <hr>
+  <div class="col-md-2">
+    <button id="botonAgregar" type="button" (click)="verProfesor()" class="btn btn-success">
+      Ver Profesores
+    </button>
+  </div>
 
-  <p id="subtitulo" class="btn btn-default" data-toggle="modal">{{subTitulo}}</p><br>
-
-  <form #formProfesores="ngForm" id="form-profesores" (ngSubmit)="onSubmits()"
-    style="padding-left: 30px; padding-top: 15px">
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label>
-          Nombre
-          <span *ngIf="!nombre.valid && nombre.touched" class="badge badge-danger">
-            Este campo no puede estar vacio.
-          </span>
-        </label>
-        <input type="text" class="form-control" #nombre="ngModel" name="nombre" [(ngModel)]="profesor.nombre"
-          pattern="[a-zA-Z\s]*" minlength="2" placeholder="Introduzca el nombre del Profesor" required>
+  <div class="container2">
+    <p id="subtitulo" data-toggle="modal">{{subTitulo}}</p>
+    <hr>
+    <form #formAddProfesores="ngForm" id="form-Addprofesores" (ngSubmit)="onSubmits()"
+      style="padding-left: 30px; padding-top: 15px">
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label>
+            Nombre
+            <span *ngIf="!nombre.valid && nombre.touched" class="badge badge-danger">
+              Este campo no puede estar vacio.
+            </span>
+          </label>
+          <input type="text" class="form-control" #nombre="ngModel" name="nombre" [(ngModel)]="profesor.nombre"
+            pattern="[a-zA-ZÀ-ú0-9\s]*" minlength="2" placeholder="Introduzca el nombre del Profesor" required>
+        </div>
+        <div class="form-group col-md-6">
+          <label>
+            Apellido
+            <span *ngIf="!apellido.valid && apellido.touched" class="badge badge-danger">
+              Este campo no puede estar vacio.
+            </span>
+          </label>
+          <input type="text" class="form-control" #apellido="ngModel" name="apellido" [(ngModel)]="profesor.apellido"
+            pattern="[a-zA-ZÀ-ú0-9\s]*" minlength="2" placeholder="Introduzca el apellido del Profesor" required>
+        </div>
       </div>
-      <div class="form-group col-md-6">
-        <label>
-          Apellido
-          <span *ngIf="!apellido.valid && apellido.touched" class="badge badge-danger">
-            Este campo no puede estar vacio.
-          </span>
-        </label>
-        <input type="text" class="form-control" #apellido="ngModel" name="apellido" [(ngModel)]="profesor.apellido"
-          pattern="[a-zA-Z\s]*" minlength="2" placeholder="Introduzca el apellido del Profesor" required>
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label>
+            Cedula
+            <span *ngIf="!cedula.valid && cedula.touched" class="badge badge-danger">
+              Este campo no puede estar vacio.
+            </span>
+          </label>
+          <input type="text" class="form-control" #cedula="ngModel" name="cedula" [(ngModel)]="profesor.cedula"
+            pattern="[0-9]*" minlength="6" maxlength="8" placeholder="Introduzca la cedula del Profesor" required>
+        </div>
+        <div class="form-group col-md-6">
+          <label>
+            Teléfono
+            <span *ngIf="!telefono.valid && telefono.touched" class="badge badge-danger">
+              Este campo no puede estar vacio.
+            </span>
+          </label>
+          <input type="text" class="form-control" #telefono="ngModel" name="telefono" [(ngModel)]="profesor.telefono"
+            pattern="[0-9]*" minlength="11" maxlength="11" placeholder="Introduzca el telefono del Profesor" required>
+        </div>
       </div>
-      <div class="form-group col-md-6">
-        <label>
-          Cedula
-          <span *ngIf="!cedula.valid && cedula.touched" class="badge badge-danger">
-            Este campo no puede estar vacio.
-          </span>
-        </label>
-        <input type="text" class="form-control" #cedula="ngModel" name="cedula" [(ngModel)]="profesor.cedula"
-          pattern="[0-9]*" minlength="6" maxlength="8" placeholder="Introduzca la cedula del Profesor" required>
-      </div>
-      <div class="form-group col-md-6">
-        <label>
-          Teléfono
-          <span *ngIf="!telefono.valid && telefono.touched" class="badge badge-danger">
-            Este campo no puede estar vacio.
-          </span>
-        </label>
-        <input type="text" class="form-control" #telefono="ngModel" name="telefono" [(ngModel)]="profesor.telefono"
-          pattern="[0-9]*" minlength="11" maxlength="11" placeholder="Introduzca el telefono del Profesor" required>
-      </div>
-      <div class="form-group col-md-6">
-        <label for="correo">
-          Email
-          <span *ngIf="!correo.valid && correo.touched" class="badge badge-danger">
-            Este campo no puede estar vacio.
-          </span>
-        </label>
-        <input type="email" class="form-control" #correo="ngModel" name="correo" [(ngModel)]="profesor.correo"
-          minlength="5" pattern="[0-9a-zA-z@.-]*" placeholder="Introduzca el email del Profesor" required>
-      </div>
-      <div class="form-group col-md-6">
-        <label>Status</label>
-        <div class="form-group">
-          <div class="form-check-inline">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="activo" value="activo"
-              [(ngModel)]="profesor.status" checked>
-            <label class="form-check-label" for="activo">
-              Activo
-            </label>
-          </div>
-          <div class="form-check-inline">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="inactivo" value="inactivo">
-            <label class="form-check-label" for="inactivo">
-              Inactivo
-            </label>
+      <div class="row">
+        <div class="form-group col-md-12">
+          <label for="correo">
+            Email
+            <span *ngIf="!correo.valid && correo.touched" class="badge badge-danger">
+              Este campo no puede estar vacio.
+            </span>
+          </label>
+          <input type="email" class="form-control" #correo="ngModel" name="correo" [(ngModel)]="profesor.correo"
+            minlength="5" pattern="[0-9a-zA-z@.-]*" placeholder="Introduzca el correo electronico del Profesor"
+            required>
+        </div>
+        <div class="form-group col-md-6">
+          <label>Status</label>
+          <div class="form-group">
+            <div class="form-check-inline">
+              <input class="form-check-input" type="radio" name="exampleRadios" id="activo" value="activo"
+                #activo="ngModel" name="activo" [(ngModel)]="profesor.status" checked>
+              <label class="form-check-label" for="activo">
+                Activo
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <input class="form-check-input" type="radio" name="exampleRadios" id="inactivo" value="inactivo"
+                #inactivo="ngModel" name="inactivo" [(ngModel)]="profesor.status" checked>
+              <label class="form-check-label" for="inactivo">
+                Inactivo
+              </label>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </form><br>
     <div align="left" class="bttn">
-      <button id="botonguardar" type="submit" class="btn btn-info"
-        [disabled]="!formProfesores.form.valid">Guardar</button>
-      <button id="botonborrar" type="reset" class="btn btn-danger">Borrar</button>
+      <button id="botonguardar" type="submit" [disabled]="!formAddProfesores.form.valid" class="btn btn-info"
+        style="margin-left:33%; padding-left:3%" (click)="guardar()">Guardar</button>
+      <button id="botonborrar" style="margin-left:3%; padding-left:2%" type="reset"
+        class="btn btn-danger">Borrar</button>
     </div>
-
-  </form>
-
+  </div>
 </div>
 
-<br><br>
 <footer id="piePagina" class="" aling="center" style="color:white;">
   <p>All content copyright &copy; 2020, Sistema de Gestión de Horarios.</p>
 </footer>

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+
 // Componentes
 import { Materia } from '../entities/materia';
 import { Global } from './global';
@@ -9,6 +10,7 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class MateriaService {
   public url: string;
+  public materia: Materia;
 
   constructor(
     public http: HttpClient,
@@ -50,14 +52,14 @@ export class MateriaService {
     });
   }
 
-  updateMateria(materia: Materia) {
-    const json = JSON.stringify(materia);
+  updateMateria(id, infoMateria) {
+    const json = JSON.stringify(infoMateria);
     const params = json;
     const headers = new HttpHeaders({
       'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/json'
     });
-    return this.http.put<Materia>(this.url + '/api/v1/asignaturas' + materia.id,
+    return this.http.put<Materia>(this.url + '/api/v1/asignaturas/' + id,
       params, {
       headers
     });

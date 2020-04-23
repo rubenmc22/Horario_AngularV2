@@ -16,6 +16,8 @@ export class MateriasListComponent implements OnInit {
   public titulo: string;
   public subTitulo: string;
   public materia: Materia[] = [];
+  public infoMateria: Materia[] = [];
+  public materias: Materia;
 
   constructor(
     private route: Router,
@@ -26,6 +28,7 @@ export class MateriasListComponent implements OnInit {
   ) {
     this.titulo = 'Materias';
     this.subTitulo = 'Listado de Materias';
+    this.materias = new Materia('', '', '');
   }
 
   ngOnInit() {
@@ -43,19 +46,17 @@ export class MateriasListComponent implements OnInit {
 
   }
 
-  updateMateria(id, nombre, descripcion, status) {
-    this.route.navigate(['../add-materia']);
-
-    this.materiaService.getMateriaId(id).subscribe(
+  updateMateria(id) {
+    this.materiaService.updateMateria(id, this.infoMateria).subscribe(
       result => {
-        this.materia = result.body; // Matriz
-        console.log(result.body);
+        this.materias = result;
+        console.log(result);
+        window.alert('Informacion modificada correctamente.');
       },
       error => {
-        console.log(error);
+        console.log(error.error);
       })
   }
-
 
   deleteMateria(id) {
     const confirm = window.confirm('¿Esta seguro que desea eliminar este campo? Esta Materia podría estar asociada a una carga academica.');
@@ -63,7 +64,7 @@ export class MateriasListComponent implements OnInit {
       this.materiaService.getDeleteId(id).subscribe(result => {
         console.log(result);
         window.alert('El campo seleccionado ha sido eliminado correctamente.');
-        location.reload();
+        this.refresh();
       },
         error => {
           console.error(error.error);
@@ -84,5 +85,20 @@ export class MateriasListComponent implements OnInit {
   agregarMateria() {
     this.route.navigate(['../add-materia']);
   }
+
+  cargaInfo(id) {
+    this.materiaService.getMateriaId(id).subscribe(
+      result => {
+        this.infoMateria = result.body;
+        console.log(result.body);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+
+  }
+
+
 }
 

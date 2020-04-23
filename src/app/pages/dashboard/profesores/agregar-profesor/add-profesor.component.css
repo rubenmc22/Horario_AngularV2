@@ -1,34 +1,66 @@
-.container {
-  margin-top: 50px;
-  margin-left: 100px;
-  border-radius: 10px;
-  box-shadow: 0px 2px 5px #ccc;
-  padding: 30px;
-  padding-top: 20px;
-  max-width: 100%;
-  min-height: 80%;
-  height: 60%;
-  width: 60%;
-  overflow: hidden;
+.container1 {
+  margin-top: 60px;
+    margin-left: 5%;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px #ccc;
+    padding: 30px;
+    padding-top: 20px;
+    min-height: 80%;
+    max-width: 50%;
+    min-width: 50%;
+    overflow: hidden;
+    margin-left: 25%;
 }
 
-#botonAgregar{
-  margin-left: 76%;
-  margin-top: -42px; 
-  }
+.container2 {
+    margin-top: 7%;
+    margin-right: 50px;
+    margin-left: 0%;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px green;
+    padding: 30px;
+    padding-top: 20px;
+    max-width: 100%;
+    min-height: 80%;
+    min-width: 50%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.container3 {
+ margin-top: -106%;
+    margin-right: 5%;
+    margin-left: 0%;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px green;
+    padding: 30px;
+    padding-top: 20px;
+    padding-right: 0%;
+    padding-left: 0%;
+    max-width: 100%;
+    min-height: 80%;
+    min-width: 50%;
+    overflow: hidden;
+   
+}
 
 #titulo {
+ 
   
 }
 
 #subtitulo {
   font-size: 20px;
+    padding-left: 3%;
+    padding-top: 0%;
 }
 
-#botonguardar, #botonborrar {
-  margin-top: 40px;
-  margin-bottom: 10px;
-  margin-right: 5px;
+#botonAgregar {
+ margin-top: 5px;
+  height: 40px;
+   width: 710%; 
+   margin-left: 6%;
+   font-size: 20px;
 
 }
 

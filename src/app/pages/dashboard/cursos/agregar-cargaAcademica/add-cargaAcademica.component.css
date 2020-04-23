@@ -1,43 +1,70 @@
-.container {
+.container1 {
   margin-top: 60px;
-  margin-right: 50px;
-  margin-left: 70px;
-  border-radius: 10px;
-  box-shadow: 0px 2px 5px #ccc;
-  padding: 30px;
-  padding-top: 20px;
-  max-width: 100%;
-  min-height: 80%;
-  width: 1150px;
-  overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px #ccc;
+    padding: 30px;
+    padding-top: 20px;
+    min-height: 80%;
+    max-width: 72%;
+    min-width: 50%;
+    overflow: hidden;
+    margin-left: 14%;
 }
 
-#botonAgregar{
-  margin-left: 79%;
-  margin-top: -42px; 
+.container2 {
+margin-top: 4%;
+    margin-right: 50px;
+    margin-left: 5%;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px green;
+    padding: 30px;
+    padding-top: 20px;
+    max-width: 100%;
+    min-height: 80%;
+    min-width: 50%;
+    width: 91%;
+    overflow: hidden;
+}
+
+.container3 {
+ margin-top: -106%;
+    margin-right: 5%;
+    margin-left: 0%;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px green;
+    padding: 30px;
+    padding-top: 20px;
+    padding-right: 0%;
+    padding-left: 0%;
+    max-width: 100%;
+    min-height: 80%;
+    min-width: 50%;
+    overflow: hidden;
+   
 }
 
 #titulo {
-  font-size: 30px;
+ 
+  
 }
 
 #subtitulo {
   font-size: 20px;
+    padding-left: 3%;
+    padding-top: 0%;
 }
 
-.bttnCurso {
-  padding-top: 10px;
-  margin-left: 18%;
-  margin-bottom: -28px;
+#botonAgregar {
+ margin-top: 5px;
+  height: 40px;
+   width: 710%; 
+   margin-left: -9%;
+
 }
 
-.bttnCurso #b1, #b2, #b3, #b4, #b5 {
-  padding-right: 15px;
-  margin-right: 5px;
+.imgEdit {
 }
-#botonguardar, #botonborrar {
-  margin-top: 40px;
-  margin-bottom: 10px;
-  margin-right: 5px;
 
+.imgDelete {
+  padding-left: 40px;
 }

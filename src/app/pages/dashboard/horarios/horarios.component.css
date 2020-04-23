@@ -1,16 +1,16 @@
 .container {
-  margin-top: 60px;
-  margin-right: 50px;
-  margin-left: 70px;
-  border-radius: 10px;
-  box-shadow: 0px 2px 5px;
-  padding: 30px;
-  padding-top: 20px;
-  max-width: 100%;
-  min-height: 80%;
-  width: 1050px;
-  overflow: hidden;
-  background-color:snow;
+  margin-top: 4%;
+    margin-right: 00px;
+    margin-left: 70px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px;
+    padding: 30px;
+    padding-top: 20px;
+    max-width: 100%;
+    min-height: 80%;
+    width: 91%;
+    overflow: hidden;
+    background-color: white;
 }
 
 #tit{
@@ -47,6 +47,16 @@
 
 #select{
 margin-left: 30px;
+}
 
-
+#piePagina{
+  background: #1abc9c;
+  margin-top: 15%;
+    padding: 5px;
+    padding-top: 20px;
+    color: white !important;
+    text-align: center;
+    font-size: 16px;
+    max-width: 99%; 
+    margin-left: 6px;
 }

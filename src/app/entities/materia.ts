@@ -1,4 +1,4 @@
-import {MateriaInterface} from './interfaces/materiaInterface';
+import { MateriaInterface } from './interfaces/materiaInterface';
 
 export class Materia implements MateriaInterface {
 
@@ -7,14 +7,14 @@ export class Materia implements MateriaInterface {
   constructor(
     public nombre: string,
     public descripcion: string,
-    public status: boolean
+    public status: string
   ) {
     this
       .nombre = '';
     this
       .descripcion = '';
     this
-      .status = true;
+      .status = 'true';
   }
 
 }

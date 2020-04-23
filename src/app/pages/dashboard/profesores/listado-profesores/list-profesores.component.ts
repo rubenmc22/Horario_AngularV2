@@ -27,7 +27,8 @@ export class ProfesoresListComponent implements OnInit {
   public titulo: string;
   public subTitulo: string;
   public profesor: Profesor[] = [];
-
+  public infoProfesor: Profesor[] = [];
+  public profesores = new Profesor('');
 
   ngOnInit() {
     console.log('Se cargo el componente Profesores list');
@@ -39,6 +40,7 @@ export class ProfesoresListComponent implements OnInit {
         } else {
           // this.profesor.push(result.body);
           this.profesor = result.body; // Matriz
+          console.log(result.body);
         }
       },
       error => {
@@ -61,6 +63,32 @@ export class ProfesoresListComponent implements OnInit {
         }
       );
     }
+  }
+
+  updateProfesor(id) {
+    this.profesorService.updateProfesor(id, this.infoProfesor).subscribe(
+      result => {
+        this.profesores = result;
+        console.log(result);
+        window.alert('Informacion modificada correctamente.');
+        this.refresh();
+      },
+      error => {
+        console.log(error.error);
+      })
+  }
+
+  cargaInfo(id) {
+    this.profesorService.getProfesorId(id).subscribe(
+      result => {
+        this.infoProfesor = result.body;
+        console.log(result.body);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+
   }
 
   refresh() {

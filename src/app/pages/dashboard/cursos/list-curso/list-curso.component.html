@@ -45,53 +45,156 @@
   </div>
 </nav>
 
-<div class="container">
-  <!-- TITULO Y BUSCADOR -->
-  <div class="row">
-    <!-- Titulo -->
-    <div class="col-md-2">
-      <h4 id="">{{tituloCurso}}</h4>
-    </div>
-    <div id="botonAgregar" class="col-md-2">
-      <button type="button" (click)="agregarCurso()" class="btn btn-success" style="height: 40px; width: 180px;">
-        Agregar
-      </button>
-    </div>
+<div class="container1" aling="center">
+
+  <div class="col-md-4">
+    <h4 id="titulo"><b>Cursos Escolares</b></h4>
   </div>
   <hr>
-
-
-  <p id="subtitulo" class="btn btn-default" data-toggle="modal">{{subTituloCurso}}</p>
-
-  <div class="table-responsive-xl">
-    <table class="table table-striped table-hover">
-      <thead class="thead-dark">
-        <tr align="center">
-          <th class="name">Nombre</th>
-          <th class="description">Descripción</th>
-          <th class="description">Dias Académicos</th>
-          <th class="estatus">Estatus</th>
-          <th class="accion">Acción</th>
-        </tr>
-      </thead>
-      <tbody *ngFor="let curso of cursos" align="center">
-        <tr>
-          <td>{{ curso.nombre }}</td>
-          <td>{{ curso.descripcion }}</td>
-          <td>{{ printDays(curso.dias) }}</td>
-          <td>{{ curso.status }}</td>
-          <td>
-            <span class="imgEdit">
-              <img src="assets/Images/editar.png" style="height: 24px">
-            </span>
-            <span class="imgDelete">
-              <img (click)="deleteUser(curso.id)" src="assets/Images/eliminar.png" style="height: 24px;">
-            </span>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="col-md-2">
+    <button id="botonAgregar" type="button" (click)="agregarCurso()" class="btn btn-success">
+      Agregar
+    </button>
   </div>
+
+  <div class="container2">
+    <p id="subtitulo" data-toggle="modal">Listado de Cursos</p>
+    <div class="table-responsive-lg  max-height: 200px ">
+      <div *ngIf="!cursos">
+        <p>Cargando listado de Cursos..</p>
+      </div>
+      <div *ngIf="cursos">
+        <table class="table table-sm">
+          <tbody *ngFor="let curso of cursos" align="center">
+            <tr>
+              <td style="text-align: left;"> <button class="btn btn-default" data-toggle="modal"
+                  (click)="cargaInfo(curso.id)">{{ curso.nombre }}</button>
+              </td>
+              <td>
+                <img (click)="deleteCurso(curso.id)" src="assets/Images/eliminar.png" style="height: 24px;">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="container3">
+    <p id="subtitulo" data-toggle="modal">Detalles</p>
+    <hr>
+
+    <form #formCurso="ngForm" id="form-Curso"
+      style="padding-left: 3%; padding-top: 0%; padding-bottom: 0%; margin-bottom: 2%;">
+      <span>
+        <div class="row">
+          <div class="form-group col-md-11">
+            <label>
+              Nombre
+              <span *ngIf="!nombre.valid && nombre.touched" class="badge badge-danger">
+                Este campo no puede estar vacio.
+              </span>
+            </label>
+            <input type="text" ty class="form-control" id="nombre" #nombre="ngModel" name="nombre"
+              [(ngModel)]="infoCursos.nombre" pattern="[a-zA-ZÀ-ú0-9\s°]*" minlength="2">
+          </div>
+        </div>
+        <div class="row"></div>
+        <div class="form-group col-md-12">
+          <label>
+            Dias Académicas
+          </label>
+          <div class="form-group">
+            <div class="form-check-inline">
+              <input class="form-check-input" [(ngModel)]="infoCursos.dias" (click)="setDay(0,$event)" type="checkbox"
+                id="lunes" name="lunes" value="lunes" checked>
+              <label class="form-check-label" for="lunes">
+                Lunes
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <input class="form-check-input" [(ngModel)]="infoCursos.dias" (click)="setDay(1,$event)" type="checkbox"
+                id="martes" name="martes" value="martes">
+              <label class="form-check-label" for="martes">
+                Martes
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <input class="form-check-input" [(ngModel)]="infoCursos.dias" (click)="setDay(2,$event)" type="checkbox"
+                name="miercoles" id="miercoles" value="miercoles">
+              <label class="form-check-label" for="miercoles">
+                Miercoles
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <input class="form-check-input" [(ngModel)]="infoCursos.dias" (click)="setDay(3,$event)" type="checkbox"
+                name="jueves" id="jueves" value="jueves">
+              <label class="form-check-label" for="jueves">
+                Jueves
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <input class="form-check-input" [(ngModel)]="infoCursos.dias" (click)="setDay(4,$event)" type="checkbox"
+                name="viernes" id="viernes" value="viernes">
+              <label class="form-check-label" for="viernes">
+                Viernes
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <input class="form-check-input" [(ngModel)]="infoCursos.dias" (click)="setDay(5,$event)" type="checkbox"
+                name="sabado" id="sabado" value="sabado">
+              <label class="form-check-label" for="sabado">
+                Sabado
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <input class="form-check-input" [(ngModel)]="infoCursos.dias" (click)="setDay(6,$event)" type="checkbox"
+                name="domingo" id="domingo" value="domingo">
+              <label class="form-check-label" for="domingo">
+                Domingo
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-11">
+            <label for="descripcion">Descripción <b>(Opcional)</b></label>
+            <textarea class="form-control" id="descripcion" rows="3" #descripcion="ngModel" name="descripcion"
+              [(ngModel)]="infoCursos.descripcion"></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label>Status</label>
+            <div class="form-group">
+              <div class="form-check-inline">
+                <input class="form-check-input" [(ngModel)]="infoCursos.status" type="radio" name="exampleRadios"
+                  id="activo" value="option1" checked>
+                <label class="form-check-label" for="activo">
+                  Activo
+                </label>
+              </div>
+              <div class="form-check-inline">
+                <input class="form-check-input" [(ngModel)]="infoCursos.status" type="radio" name="exampleRadios"
+                  id="inactivo" value="option2">
+                <label class="form-check-label" for="inactivo">
+                  Inactivo
+                </label>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </span>
+    </form>
+    <div align="left" class="bttn">
+      <button id="botonguardar" type="submit" [disabled]="!formCurso.form.valid" class="btn btn-info"
+        style="margin-left:33%; padding-left:3%" (click)="updateCurso(infoCursos.id)">Actualizar
+        Información</button>
+    </div>
+  </div>
+
+
 </div>
 
 <br><br>

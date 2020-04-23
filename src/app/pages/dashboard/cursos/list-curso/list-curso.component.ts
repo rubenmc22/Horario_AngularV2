@@ -16,6 +16,9 @@ export class CursoListComponent implements OnInit {
   public tituloCurso: string;
   public subTituloCurso: string;
   public cursos: Curso[] = [];
+  public infoCursos: Curso[] = [];
+  public infoCursos2: Curso;
+  public cursosDay: Curso;
 
   constructor(
     private route: Router,
@@ -60,6 +63,34 @@ export class CursoListComponent implements OnInit {
     }
   }
 
+  updateCurso(id) {
+    this.cursoService.updateCurso(id, this.infoCursos).subscribe(
+      result => {
+        this.cursosDay = result;
+        window.alert('Informacion modificada correctamente.');
+        this.refresh();
+        console.log(result);
+      },
+      error => {
+        console.log(error.error);
+      })
+  }
+
+  deleteCurso(id) {
+    const confirm = window.confirm('¿Esta seguro que desea eliminar este campo? Esta Materia podría estar asociada a una carga academica.');
+    if (confirm) {
+      this.cursoService.getDeleteId(id).subscribe(result => {
+        console.log(result);
+        window.alert('El campo seleccionado ha sido eliminado correctamente.');
+        this.refresh();
+      },
+        error => {
+          console.error(error.error);
+        }
+      );
+    }
+  }
+
   refresh() {
     location.reload();
   }
@@ -96,6 +127,18 @@ export class CursoListComponent implements OnInit {
     return diasStr;
   }
 
+  setDay(id: number, item) {
+
+    if (item.currentTarget.checked) {
+      this.cursosDay.dias.push(id + 1);
+    } else {
+      const index = this.cursosDay.dias.indexOf(id + 1);
+      if (index > -1)
+        this.cursosDay.dias.splice(index, 1);
+    }
+    console.log(this.cursosDay.dias);
+  }
+
   logout() {
     this.authenticationService.logout();
     this.route.navigate(['/login']);
@@ -105,5 +148,16 @@ export class CursoListComponent implements OnInit {
     this.route.navigate(['../add-curso']);
   }
 
+  cargaInfo(id) {
+    this.cursoService.getCursoId(id).subscribe(
+      result => {
+        this.infoCursos = result.body;
+        console.log(result.body);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
 
 }

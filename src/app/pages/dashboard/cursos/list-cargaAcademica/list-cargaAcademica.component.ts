@@ -4,6 +4,13 @@ import { CargaAcademicaService } from '../../../../services/cargaAcademicaServic
 import { CargaAcademica } from '../../../../entities/cargaAcademica';
 import { UserService } from '../../../../services/userService';
 import { AuthenticationService } from 'src/app/services/authenticationService';
+import { Curso } from 'src/app/entities/cursos';
+import { CursoService } from '../../../../services/cursoService';
+import { ProfesorService } from '../../../../services/profesorService';
+import { MateriaService } from '../../../../services/materiaService';
+import { Profesor } from '../../../../entities/profesor';
+import { Materia } from '../../../../entities/materia';
+
 
 
 @Component({
@@ -18,31 +25,72 @@ export class CargaAcademicaListComponent implements OnInit {
   public subTitulo: string;
   public curser: '';
   public cargaAcademica: CargaAcademica[] = [];
+  public cargaAcademicas: CargaAcademica;
+  public cursos: Curso[] = [];
+  public curso: Curso;
+  public profesores: Profesor[] = [];
+  public docente: Profesor = new Profesor('');
+  public materias: Materia[] = [];
+  public infoCargaAcademica: CargaAcademica[] = [];
 
   constructor(
     private route: Router,
     private router: ActivatedRoute,
     private cargaAcademicaService: CargaAcademicaService,
     private userService: UserService,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private cursoService: CursoService,
+    private profesorService: ProfesorService,
+    private materiaService: MateriaService
   ) {
     this.titulo = 'Carga Académica';
-    this.subTitulo = 'Ver Carga Académica';
-  }
+    this.subTitulo = 'Materias';
+    this.cargaAcademicas = new CargaAcademica(0, '', 0, '', 0, '', 0, '');
+    this.curso = new Curso('', '', [], '');
 
-  ngOnInit() {
-    this.cargaAcademicaService.getCargaAcademica().subscribe(
+    this.cursoService.getCursos().subscribe(
       result => {
-        if (result.status !== 200) {
-          console.log('Error al consumir el Servicio CursoService' + result);
-        } else {
-          // this.productos.push(result.body);
-          this.cargaAcademica = result.body; // Matriz
-          console.log(this.cargaAcademica);
-        }
+        this.cursos = result.body;
+        console.log(this.cursos);
       },
       error => {
         console.log(error);
+      });
+
+    this.profesorService.getProfesores().subscribe(
+      result => {
+        this.profesores = result.body;
+        console.log(this.profesores);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+
+    this.materiaService.getMateria().subscribe(
+      result => {
+        this.materias = result.body;
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  ngOnInit() {
+  }
+
+  obtenerCargaPorCurso() {
+    this.cargaAcademica = [];
+    this.cargaAcademicaService.getCargaPorCurso(this.curso.id).subscribe(
+      result => {
+        this.cargaAcademica = result.body;
+        console.log(this.cargaAcademica);
+        //this.obtenerBloqueHorario();
+        this.ngOnInit();
+      },
+      error => {
+        console.log(error.error);
       }
     );
   }
@@ -62,6 +110,26 @@ export class CargaAcademicaListComponent implements OnInit {
     }
   }
 
+  updateCarga(id) {
+    console.log(id);
+    this.cargaAcademicaService.updateCargaAcademica(id, this.infoCargaAcademica).subscribe(
+      result => {
+        this.cargaAcademicas = result;
+        console.log(result);
+        window.alert('Informacion modificada correctamente.');
+        this.refresh();
+      },
+      error => {
+        console.log(error.error);
+      })
+  }
+
+
+  refresh() {
+    location.reload();
+  }
+
+
   logout() {
     this.authenticationService.logout();
     this.route.navigate(['/login']);
@@ -69,5 +137,18 @@ export class CargaAcademicaListComponent implements OnInit {
 
   agregarCargaAcademica() {
     this.route.navigate(['../add-cargaAcademica']);
+  }
+
+  cargaInfo(id) {
+    this.cargaAcademicaService.getCargaAcademicaId(id).subscribe(
+      result => {
+        this.infoCargaAcademica = result.body;
+        console.log(result.body);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+
   }
 }

@@ -1,12 +1,11 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 // Componentes
-import {Curso} from '../entities/cursos';
-import {Global} from './global';
-import {Observable} from 'rxjs';
-import {Profesor} from '../entities/profesor';
-import {Horario} from "../entities/horarios";
+import { Curso } from '../entities/cursos';
+import { Global } from './global';
+import { Observable } from 'rxjs';
+import { Horario } from "../entities/horarios";
 
 @Injectable()
 export class CursoService {
@@ -26,17 +25,17 @@ export class CursoService {
   getCursos() {
     return this.http.get<Curso[]>(
       this.url + '/api/v1/cursos', {
-        observe: 'response',
-        responseType: 'json',
-      });
+      observe: 'response',
+      responseType: 'json',
+    });
   }
 
-  getCursoId() {
+  getCursoId(id) {
     return this.http.get<Curso[]>(
-      this.url + '/api/v1/cursos/{id}', {
-        observe: 'response',
-        responseType: 'json',
-      });
+      this.url + '/api/v1/cursos/' + id, {
+      observe: 'response',
+      responseType: 'json',
+    });
   }
 
   getHorarioByCurso(id: number) {
@@ -54,12 +53,21 @@ export class CursoService {
     });
     return this.http.post<Curso>(this.url + '/api/v1/cursos',
       params, {
-        headers
-      });
+      headers
+    });
   }
 
-  updateCurso() {
-
+  updateCurso(id, infoCursos) {
+    const json = JSON.stringify(infoCursos);
+    const params = json;
+    const headers = new HttpHeaders({
+      'Access-Control-Allow-Origin': '*',
+      'Content-Type': 'application/json'
+    });
+    return this.http.put<Curso>(this.url + '/api/v1/cursos/' + id,
+      params, {
+      headers
+    });
   }
 
   getDeleteId(id): Observable<Curso> {

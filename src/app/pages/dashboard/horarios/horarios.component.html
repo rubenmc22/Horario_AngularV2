@@ -45,53 +45,49 @@
   </div>
 </nav>
 <div class="container">
-  <!-- Titulo -->
-
   <div class="row">
     <div class="col-md-2">
       <h4 id="tit">{{titulo}}</h4>
     </div>
-    <div id="selectCursos" class="col-md-2">
-      <button type="button" (click)="generarHorarioPorCurso()" class="btn btn-primary"
-        style="height: 40px; width: 180px;">
-        Generar Horario
-      </button>
-
-    </div>
-    <div id="select" class=" col-md-2">
+    <div id="select" style="width:64%; height: 35px; margin-left: 66%;" class=" col-md-2">
       <label for="cursoAct">
-        Cursos
-      </label><br>
-      <select name="cursoAct" #cursoAct="ngModel" id="cursoAct" [(ngModel)]="curso.id"
-        (change)="obtenerHorarioPorCurso($event.target.selectedIndex)" style="width:190px; height: 35px">
+        <span style="font-size: 20px;">Por Curso </span>
+      </label>
+      <select name="cursoAct" style="width:93%; height: 35px;" #cursoAct="ngModel" id="cursoAct" [(ngModel)]="curso.id"
+        (change)="obtenerHorarioPorCurso($event.target.selectedIndex)">
         <option *ngFor="let curso of cursos" [value]="curso.id">{{ curso.nombre }}</option>
       </select>
     </div>
   </div>
   <hr>
-  <hr>
-  <p id="subtitulo" class="btn btn-default" data-toggle="modal">{{subTitulo}}</p><br>
+  <div class="col-md-12">
+    <button type="button" id="selectCursos" (click)="generarHorarioPorCurso()" class="btn btn-primary" style="height: 40px;
+    width: 100%; margin-left: 0%;color: white; background-color:  green; border-color:  green;">
+      <p style="font-size: 25px;">Generar Horario</p>
+    </button>
+  </div>
 
+  <br>
   <div class="table-responsive-xl">
     <div>
       <div>
         <p>{{curso.nombre}}</p>
-        <table class="table table-striped table-hover">
-          <thead class="thead-dark">
-            <tr>
-              <td thead class="thead-dark">Horas</td>
-              <td>Lunes</td>
-              <td>Martes</td>
-              <td>Miercoles</td>
-              <td>Jueves</td>
-              <td>Viernes</td>
+        <table class="table table-bordered table-sm" align="center">
+          <thead class="thead-dark" align="center">
+            <tr style="font-size: 16px;">
+              <td thead class="thead-dark"><b>Horas</b></td>
+              <td><b>Lunes</b></td>
+              <td><b>Martes</b></td>
+              <td><b>Miercoles</b></td>
+              <td><b>Jueves</b></td>
+              <td><b>Viernes</b></td>
             </tr>
           </thead>
 
-          <tbody>
+          <tbody class="table-sm">
             <tr *ngFor="let horas of bloqueDeHorario">
               <td align="center"> {{horas.inicioBloque}} a {{horas.finBloque}}</td>
-              <td *ngFor="let dia of [1, 2, 3, 4, 5]">{{hallar(horas.id, dia)}} </td>
+              <td align="center" *ngFor="let dia of [1, 2, 3, 4, 5]">{{hallar(horas.id, dia)}} </td>
             </tr>
           </tbody>
         </table>

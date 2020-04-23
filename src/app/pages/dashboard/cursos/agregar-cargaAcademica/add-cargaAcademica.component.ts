@@ -36,8 +36,8 @@ export class CargaAcademicaAddComponent implements OnInit {
     private authenticationService: AuthenticationService
 
   ) {
-    this.titulo = 'Carga Academica';
-    this.subTitulo = 'Agregar Carga Academica';
+    this.titulo = 'Carga Académica';
+    this.subTitulo = 'Agregar Carga Académica';
     this.cargaAcademica = new CargaAcademica(0, '', 0, '', 0, '', 1, '');
 
     this.cursoService.getCursos().subscribe(
@@ -75,11 +75,14 @@ export class CargaAcademicaAddComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit() {
+  guardar() {
     return this.cargaAcademicaService.postCargaAcademica(this.cargaAcademica).subscribe(
       result => {
         this.cargaAcademica = result;
-        console.log(this.cargaAcademica)
+        window.alert('Informacion Guardada.');
+        console.log(result);
+        this.refresh();
+
       },
       error => {
         console.log(error);
@@ -88,9 +91,11 @@ export class CargaAcademicaAddComponent implements OnInit {
     );
   }
 
+
   refresh() {
-    location.reload();
+    this.route.navigate(['../list-cargaAcademica']);
   }
+
 
   apellido(profesor) {
     this.docente = this.profesores[profesor];

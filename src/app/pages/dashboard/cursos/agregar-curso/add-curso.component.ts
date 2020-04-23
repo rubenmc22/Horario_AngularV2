@@ -24,22 +24,20 @@ export class CursoAddComponent implements OnInit {
   ) {
     this.tituloCurso = 'Curso';
     this.subTituloCurso = 'Agregar Curso';
-    this.cursos = new Curso('', '', [], true);
+    this.cursos = new Curso('', '', [], '');
   }
-
 
   ngOnInit() {
   }
 
-  onSubmit() {
+  guardar() {
     console.log(this.cursos);
     return this.cursoService.postCurso(this.cursos).subscribe(
       result => {
-        // this.producto.push(result);
-        this.cursos = result; // Matriz
+        this.cursos = result;
         console.log(this.cursos);
         window.alert('Informacion Almacenada.');
-        this.refresh();
+        this.irAtras();
       },
       error => {
         console.log(error);

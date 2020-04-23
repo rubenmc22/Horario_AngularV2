@@ -8,12 +8,12 @@ export class Curso implements CursosInterface {
     public nombre: string,
     public descripcion: string,
     public dias: number[],
-    public status: boolean
+    public status: string
   ) {
     this.nombre = '';
     this.descripcion = '';
     this.dias = [];
-    this.status = true;
+    this.status = '';
   }
 
 }

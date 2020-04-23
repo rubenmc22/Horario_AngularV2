@@ -1,4 +1,4 @@
-<div style="margin-left: 100px" align="left">
+<div>
   <img id="imgPrincipal" src="assets/Images/home2.jpg">
 </div>
 
@@ -27,91 +27,80 @@
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['/horarios']" [routerLinkActive]="['activado']">Horarios</a>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">
-          Perfil
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-      <li class="dropdown-item1">
-        <a id="op1" [routerLink]="['/modificar_user']" [routerLinkActive]="['activado']">Usuario</a>
-      </li>
-      <li class="dropdown-item2">
-        <a id="op2" (click)="logout()" [routerLinkActive]="['activado']">Salir</a>
-      </li>
-  </div>
-  </li>
-  </ul>
+
+    </ul>
   </div>
 </nav>
 
+<div class="container1" aling="center">
 
-<div class="container">
-  <!-- TITULO Y BUSCADOR -->
-  <div class="row">
-    <!-- Titulo -->
-    <div class="col-md-2">
-      <h4 id="titulo"><b>Materia</b></h4>
-    </div>
-    <div id="botonAgregar" class="col-md-2">
-      <button type="button" (click)="irAtras()" class="btn btn-danger" style="height: 40px; width: 180px;">
-        Cancelar
-      </button>
-    </div>
+  <div class="col-md-4">
+    <h4 id="titulo"><b>Materias</b></h4>
   </div>
   <hr>
+  <div class="col-md-2">
+    <button id="botonAgregar" type="button" (click)="verMaterias()" class="btn btn-success">
+      Ver Materias
+    </button>
+  </div>
 
-  <p id="subtitulo" class="btn btn-default" data-toggle="modal">Agregar nueva Materia</p><br>
-
-  <form #formMaterias="ngForm" id="form-materias" (ngSubmit)="onSubmit()" style="padding-left: 30px; padding-top: 15px">
-    <div class="row">
-      <div class="form-group col-md-6">
-        <label>
-          Materia
-          <span *ngIf="!nombre.valid && nombre.touched" class="badge badge-danger">
-            Este campo no puede estar vacio.
-          </span>
-        </label>
-        <input type="text" class="form-control" id="nombre" placeholder="Introduzca una Materia" #nombre="ngModel"
-          name="nombre" [(ngModel)]="materia.nombre" pattern="[a-zA-Z0-9 ]*" minlength="2" required>
+  <div class="container2">
+    <p id="subtitulo" data-toggle="modal" style="padding-left: 0%;">{{subTitulo}}</p>
+    <hr>
+    <form #formAddMaterias="ngForm" id="form-Addmaterias" (ngSubmit)="Guardar()" style="padding-left: 3%;
+        padding-top: 0%;
+        padding-bottom: 0%;
+        margin-bottom: 2%;">
+      <div class="row">
+        <div class="form-group col-md-10">
+          <label>
+            Materia
+            <span *ngIf="!nombre.valid && nombre.touched" class="badge badge-danger">
+              Este campo no puede estar vacio.
+            </span>
+          </label>
+          <input type="text" class="form-control" id="nombre" placeholder="Introduzca una Materia" #nombre="ngModel"
+            name="nombre" [(ngModel)]="materia.nombre" pattern="[a-zA-ZÀ-ú0-9\s]*" minlength="2" required>
+        </div>
       </div>
-      <div class="form-group col-md-6">
-        <label>Status</label>
-        <div class="form-group">
-          <div class="form-check-inline">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="activo" value="activo"
-              #activo="ngModel" name="activo" [(ngModel)]="materia.status" checked>
-            <label class="form-check-label" for="activo">
-              Activo
-            </label>
-          </div>
-          <div class="form-check-inline">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="inactivo" value="inactivo"
-              #inactivo="ngModel" name="inactivo" [(ngModel)]="materia.status" checked>
-            <label class="form-check-label" for="inactivo">
-              Inactivo
-            </label>
+      <div class="row">
+        <div class="form-group col-md-10">
+          <label for="descripcion">Descripción <b>(Opcional)</b></label>
+          <textarea class="form-control" id="descripcion" rows="3"
+            placeholder="Realize una breve descripción sobre la materia.." #descripcion="ngModel" name="descripcion"
+            [(ngModel)]="materia.descripcion"></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-8">
+          <label>Status</label>
+          <div class="form-group">
+            <div class="form-check-inline">
+              <input class="form-check-input" type="radio" name="exampleRadios" id="activo" value="activo"
+                #activo="ngModel" name="activo" [(ngModel)]="materia.status" checked>
+              <label class="form-check-label" for="activo">
+                Activo
+              </label>
+            </div>
+            <div class="form-check-inline">
+              <input class="form-check-input" type="radio" name="exampleRadios" id="inactivo" value="inactivo"
+                #inactivo="ngModel" name="inactivo" [(ngModel)]="materia.status" checked>
+              <label class="form-check-label" for="inactivo">
+                Inactivo
+              </label>
+            </div>
           </div>
         </div>
       </div>
-      <div class="form-group col-md-10">
-        <label for="descripcion">Descripción <b>(Opcional)</b></label>
-        <textarea class="form-control" id="descripcion" rows="5"
-          placeholder="Realize una breve descripción sobre la materia.." #descripcion="ngModel" name="descripcion"
-          [(ngModel)]="materia.descripcion"></textarea>
-      </div>
-    </div>
+    </form>
     <div align="left" class="bttn">
-      <button id="botonguardar" type="submit" [disabled]="!formMaterias.form.valid"
-        class="btn btn-info">Guardar</button>
-      <button id="botonborrar" type="reset" class="btn btn-danger">Borrar</button>
+      <button id="botonguardar" type="submit" [disabled]="!formAddMaterias.form.valid" class="btn btn-info"
+        style="margin-left:33%; padding-left:3%" (click)="Guardar()">Guardar</button>
+      <button id="botonborrar" style="margin-left:3%; padding-left:2%" type="reset"
+        class="btn btn-danger">Borrar</button>
     </div>
-
-  </form>
-
+  </div>
 </div>
-
-<br><br>
 
 <footer id="piePagina" class="" aling="center" style="color:white;">
   <p>All content copyright &copy; 2020, Sistema de Gestión de Horarios.</p>

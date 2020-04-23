@@ -29,9 +29,9 @@ export class ProfesorService {
     });
   }
 
-  getProfesorId() {
+  getProfesorId(id) {
     return this.http.get<Profesor[]>(
-      this.url + '/api/v1/docentes/{id}', {
+      this.url + '/api/v1/docentes/ ' + id, {
       observe: 'response',
       responseType: 'json',
     });
@@ -45,6 +45,19 @@ export class ProfesorService {
       'Content-Type': 'application/json'
     });
     return this.http.post<Profesor>(this.url + '/api/v1/docentes',
+      params, {
+      headers
+    });
+  }
+
+  updateProfesor(id, infoProfesor) {
+    const json = JSON.stringify(infoProfesor);
+    const params = json;
+    const headers = new HttpHeaders({
+      'Access-Control-Allow-Origin': '*',
+      'Content-Type': 'application/json'
+    });
+    return this.http.put<Profesor>(this.url + '/api/v1/docentes/' + id,
       params, {
       headers
     });

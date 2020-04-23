@@ -3,5 +3,5 @@ export interface CursosInterface {
     nombre: string;
     descripcion: string;
     dias: number[];
-    status: boolean;
+    status: string;
 }

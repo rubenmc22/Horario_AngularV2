@@ -15,6 +15,7 @@ export class MateriasAddComponent implements OnInit {
   public titulop: string;
   public subTitulo: string;
   public materia: Materia;
+  public materias: Materia[] = [];
 
   constructor(
     private route: Router,
@@ -23,17 +24,15 @@ export class MateriasAddComponent implements OnInit {
     private authenticationService: AuthenticationService
   ) {
     this.titulop = 'Materias';
-    this.subTitulo = 'Listado de Materias';
-    this.materia = new Materia('', '', true);
+    this.subTitulo = 'Agregar Materia';
+    this.materia = new Materia('', '', '');
   }
 
 
   ngOnInit() {
   }
 
-  onSubmit() {
-    console.log(this.materia);
-
+  Guardar() {
     return this.materiaService.postMateria(this.materia).subscribe(
       result => {
         // this.producto.push(result);
@@ -59,6 +58,10 @@ export class MateriasAddComponent implements OnInit {
   logout() {
     this.authenticationService.logout();
     this.route.navigate(['/login']);
+  }
+
+  verMaterias() {
+    this.route.navigate(['../list-materias']);
   }
 
 }
