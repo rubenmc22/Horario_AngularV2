@@ -1,7 +1,10 @@
 export interface ModificarUsuarioInterface {
     id: number;
-    usuario: string;
+    nombre: string;
+    apellido: string;
     email: string;
-    pass: string;
-    rPass: string;
+    cedula: string;
+    password: string;
+    rPassword: string;
+    status: boolean;
 }

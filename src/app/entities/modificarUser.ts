@@ -3,20 +3,14 @@ import { ModificarUsuarioInterface } from './interfaces/modificarUserInterface';
 export class ModificarUsuario implements ModificarUsuarioInterface {
 
     public id: number;
+    public nombre: string;
+    public apellido: string;
+    public email: string;
+    public cedula: string;
+    public password: string;
+    public rPassword: string;
+    public status: boolean
 
-    constructor(
-        public usuario: string,
-        public email: string,
-        public pass: string,
-        public rPass: string,
-        public status: boolean
-    ) {
-        this.usuario = '';
-        this.email = '';
-        this.pass = '';
-        this.rPass = '';
-        this.status = true;
-
-    }
+    constructor() { }
 
 }

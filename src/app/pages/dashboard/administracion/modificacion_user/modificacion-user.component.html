@@ -1,4 +1,4 @@
-<div style="margin-left: 100px" align="left">
+<div>
   <img id="imgPrincipal" src="assets/Images/home2.jpg">
 </div>
 
@@ -45,69 +45,63 @@
   </div>
 </nav>
 
-<div class="container">
-  <!-- TITULO Y BUSCADOR -->
-  <div class="row">
-    <!-- Titulo -->
-    <div class="col-md-2">
-      <h4>Administración</h4>
-    </div>
+<div class="container1" aling="center">
+
+  <div class="col-md-4">
+    <h4 id="titulo"><b>Perfil de Usuario</b></h4>
   </div>
   <hr>
-  <hr>
 
-  <p id="subtitulo" class="btn btn-default" data-toggle="modal">Modificar Usuario de Login</p><br>
 
-  <form #formModifUser="ngForm" (ngSubmit)="onSubmit()" style="padding-left: 30px; padding-top: 15px">
-    <div class="row">
-      <div class="form-group col-md-6">
-        <label for="nombre">Usuario</label>
-        <input type="text" class="form-control" id="usuario" name="usuario" [(ngModel)]="modificarUsuario.usuario"
-          pattern="[0-9]+" minlength="6" maxlength="8" required>
-      </div>
-      <div class="form-group col-md-6">
-        <label>
-          Correo Electronico
-          <span *ngIf="!email.valid && email.touched" class="badge badge-danger">
-            Este campo no puede estar vacio.
-          </span>
-        </label>
-        <input type="email" class="form-control" id="email" #email="ngModel" name="email"
-          [(ngModel)]="modificarUsuario.email" pattern="[a-zA-Z0-9@.]*" minlength="6"
-          placeholder="Introduzca su nuevo email..">
-      </div>
-      <div class="form-group col-md-6">
-        <label>
-          Contraseña
-          <span *ngIf="!pass.valid && pass.touched" class="badge badge-danger">
-            Este campo no puede estar vacio.
-          </span>
-        </label>
-        <input type="password" class="form-control" id="pass" #pass="ngModel" name="pass"
-          [(ngModel)]="modificarUsuario.pass" pattern="[a-zA-Z0-9]*" minlength="8" required
-          placeholder="Introduzca su nueva contraseña">
-      </div>
-      <div class="form-group col-md-6">
-        <label>
-          Verificar Contraseña
-          <span *ngIf="!rPass.valid && rPass.touched" class="badge badge-danger">
-            Este campo no puede estar vacio.
-          </span>
-        </label>
-        <input type="password" class="form-control" id="rPass" #rPass="ngModel" name="rPass"
-          [(ngModel)]="modificarUsuario.rPass" pattern="[a-zA-Z0-9]*" minlength="8" required
-          placeholder="Introduzca nuevamente su contraseña">
-      </div>
+  <div class="container2">
+    <p id="subtitulo" data-toggle="modal">Modificar</p>
+    <hr>
 
-      <div align="left" class="bttn">
-        <button id="botonguardar" type="submit"
-          (click)="updateModifUser(modificarUsuario.pass, modificarUsuario.rPass, modificarUsuario.usuario)"
-          [disabled]="!formModifUser.form.valid" class="btn btn-primary">Actualizar</button>
-        <button id="botonborrar" type="reset" class="btn btn-danger">Borrar</button>
+
+    <form #formModifUser="ngForm" (ngSubmit)="onSubmit()">
+
+      <div class="row">
+        <div class="form-group col-md-12">
+          <label for="nombre">Usuario</label>
+          <input type="text" class="form-control" id="usuario" name="usuario" [(ngModel)]="modificarUsuario.usuario"
+            pattern="[0-9]+" minlength="6" maxlength="8" required>
+        </div>
       </div>
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label>
+            Contraseña
+            <span *ngIf="!pass.valid && pass.touched" class="badge badge-danger">
+              Este campo no puede estar vacio.
+            </span>
+          </label>
+          <input type="password" class="form-control" id="pass" #pass="ngModel" name="pass"
+            [(ngModel)]="modificarUsuario.pass" pattern="[a-zA-Z0-9]*" minlength="8" required
+            placeholder="Introduzca su nueva contraseña">
+        </div>
+
+        <div class="form-group col-md-6">
+          <label>
+            Verificar Contraseña
+            <span *ngIf="!rPass.valid && rPass.touched" class="badge badge-danger">
+              Este campo no puede estar vacio.
+            </span>
+          </label>
+          <input type="password" class="form-control" id="rPass" #rPass="ngModel" name="rPass"
+            [(ngModel)]="modificarUsuario.rPass" pattern="[a-zA-Z0-9]*" minlength="8" required
+            placeholder="Introduzca nuevamente su contraseña">
+        </div>
+
+      </div>
+    </form><br>
+    <div align="left" class="bttn">
+      <button id="botonguardar" type="submit" [disabled]="!formModifUser.form.valid" class="btn btn-info"
+        style="margin-left:33%; padding-left:3%"
+        (click)="updateUsuario(modificarUsuario.pass, modificarUsuario.rPass)">Actualizar
+        Información</button>
     </div>
-  </form>
 
+  </div>
 </div>
 
 

@@ -153,7 +153,7 @@ export class HorariosComponent implements OnInit {
     let horarioGet = this.obtenerHorarios.find(b => b.bloqueHorario === bloqueHorario
       && b.dia === dia);
 
-    return (horarioGet ? horarioGet.asignatura + ' / ' + horarioGet.docente : "");
+    return (horarioGet ? horarioGet.asignatura + ' / ' + 'Prof. ' + horarioGet.docente : "");
 
   }
 

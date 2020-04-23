@@ -16,6 +16,7 @@
       <li id="titulo">U.E INSTITUTO "ELENA DE BUENO"</li>
     </ul>
   </nav>
+
   <!-- <div style="margin-left: 100px" align="left">
     <img src="assets/Images/home2.jpg" style="width: 111%; height: 350px; margin-left: -118px;">
   </div>-->
@@ -36,7 +37,7 @@
                 <div class="input-group-append">
                   <span class="input-group-text"><i class="fas fa-user"></i></span>
                 </div>
-                <input type="text" name="user" #user class="form-control input_user" style="color: black; !important"
+                <input type="text" name="user" #user class="form-control input_user" style="color: black; "
                   placeholder="Introduzca su cedula" pattern="+[0-9]*" minlength="6" maxlength="8" required>
               </div>
               <div class="input-group mb-2">
@@ -49,7 +50,7 @@
               <div class="d-flex justify-content-center mt-3 login_container">
                 <button type="submit" [disabled]="!formLogin.form.valid" (click)="logIn(user.value, pass.value, $event)"
                   class="btn btn-primary"
-                  style="background-color: #6c7059; width: 160px; border-color: #6c7059 !important;">Entrar
+                  style="background-color: #1abc9c; width: 160px; border-color: #1abc9c !important;">Entrar
                 </button>
               </div>
               <div class="mt-4">
@@ -60,7 +61,7 @@
               </div>
               <div>
                 <button
-                  style="background-color: #6c7059; width: 160px; border-color: #6c7059 !important; margin-left: 40px;"
+                  style="background-color: #1abc9c; width: 160px; border-color: #1abc9c !important; margin-left: 40px;"
                   type="menu" (click)="navigateRegistro()" class="ml-2" class="btn btn-primary">
                   Registrate
                 </button>

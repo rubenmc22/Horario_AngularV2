@@ -1,7 +1,7 @@
 .container {
   margin-top: 60px;
   margin-right: 400px;
-  margin-left: 16%;
+  margin-left: 17%;
   border-radius: 10px;
   box-shadow: 0px 2px 5px #ccc;
   padding: 30px;
@@ -17,7 +17,7 @@
 }
 
 #subtitulo {
-  font-size: 20px;
+  font-size: 22px;
 }
 
 #tit{
@@ -38,16 +38,16 @@
 }
 
 #piePagina{
-    background: #1abc9c;
-    margin-top: 17px;
-    padding: 5px;
-    padding-top: 20px;
-    color: white !important;
-    text-align: center;
-    font-size: 16px;
-    max-width: 100%;
-    width: 1360px;
-    margin-left: 3px;
+  background: #1abc9c;
+  margin-top: 17px;
+  padding: 5px;
+  padding-top: 20px;
+  color: white !important;
+  text-align: center;
+  font-size: 22px;
+  max-width: 99%; 
+  margin-left: 6px;
+
 }
 #navbar2 {
   padding: 1px;

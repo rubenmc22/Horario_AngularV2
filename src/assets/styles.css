@@ -102,13 +102,13 @@ a[data-toggle="collapse"] {
 
 #navbar {
   padding: 1px;
-    background: #1abc9c;
-    min-width: 100vh;
-    max-width: 100%;
-    color: white;
-    margin-bottom: -10px;
-    margin-left: 3px;
-    width: 1338px;
+  background: #1abc9c;
+  min-width: 100vh;
+  max-width: 100%;
+  color: white;
+  margin-bottom: -10px;
+  margin-left: 6px;
+  width: 99%;
 }
 
 #navbar ul {
@@ -146,7 +146,7 @@ a[data-toggle="collapse"] {
 {
 	padding: 20px 30px;
   color:white;
-  font-size: 20px;
+  font-size: 24px;
 }
 
 .dropdown-menu{
@@ -210,7 +210,6 @@ a[data-toggle="collapse"] {
 
 
 #imgPrincipal{
-  
   height: 350px;
   min-width: 99%;
    max-width: 99%; 

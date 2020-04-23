@@ -1,4 +1,4 @@
-<div style="margin-left: 100px" align="left">
+<div>
   <img id="imgPrincipal" src="assets/Images/home2.jpg">
 </div>
 
@@ -44,6 +44,7 @@
   </ul>
   </div>
 </nav>
+
 <div class="container">
   <div class="row">
     <div class="col-md-2">
@@ -61,9 +62,13 @@
   </div>
   <hr>
   <div class="col-md-12">
-    <button type="button" id="selectCursos" (click)="generarHorarioPorCurso()" class="btn btn-primary" style="height: 40px;
-    width: 100%; margin-left: 0%;color: white; background-color:  green; border-color:  green;">
-      <p style="font-size: 25px;">Generar Horario</p>
+    <button type="button" id="selectCursos" (click)="generarHorarioPorCurso()" class="btn btn-primary" style="height: 43px;
+    width: 100%;
+    margin-left: 0%;
+    color: white;
+    background-color: green; border-color: green;
+    padding-top: 2px; padding-top: 0px;">
+      <p style="font-size: 24px;">Generar Horario</p>
     </button>
   </div>
 
@@ -74,7 +79,7 @@
         <p>{{curso.nombre}}</p>
         <table class="table table-bordered table-sm" align="center">
           <thead class="thead-dark" align="center">
-            <tr style="font-size: 16px;">
+            <tr style="font-size: 16px;" style="font-family: Arial;">
               <td thead class="thead-dark"><b>Horas</b></td>
               <td><b>Lunes</b></td>
               <td><b>Martes</b></td>
@@ -86,8 +91,10 @@
 
           <tbody class="table-sm">
             <tr *ngFor="let horas of bloqueDeHorario">
-              <td align="center"> {{horas.inicioBloque}} a {{horas.finBloque}}</td>
-              <td align="center" *ngFor="let dia of [1, 2, 3, 4, 5]">{{hallar(horas.id, dia)}} </td>
+              <td align="center" style="font-family: Arial;"> {{horas.inicioBloque}} a
+                {{horas.finBloque}}</td>
+              <td align="center" style="font-family: Arial;" *ngFor="let dia of [1, 2, 3, 4, 5]">
+                {{hallar(horas.id, dia)}} </td>
             </tr>
           </tbody>
         </table>
@@ -96,7 +103,6 @@
     </div>
   </div>
 </div>
-<br><br>
 
 <footer id="piePagina" class="" aling="center" style="color:white;">
   <p>All content copyright &copy; 2020, Sistema de Gestión de Horarios.</p>

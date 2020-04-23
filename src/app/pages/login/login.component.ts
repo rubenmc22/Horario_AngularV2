@@ -4,7 +4,6 @@ import { FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from '../../services/authenticationService';
 import { UserService } from '../../services/userService';
 import { Users } from '../../entities/user';
-import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -18,6 +17,7 @@ export class LoginComponent implements OnInit {
   public loading = false;
   public submitted = false;
   public returnUrl: string;
+  public user: Users[] = [];
 
   constructor(
     private route: Router,
@@ -38,12 +38,13 @@ export class LoginComponent implements OnInit {
     this.returnUrl = this.router.snapshot.queryParams['returnUrl'] || '/home';
   }
 
-  logIn(user: string, pass: string, event: Event) {
+  logIn(username: string, password: string, event: Event) {
 
     event.preventDefault(); // Avoid default action for the submit button of the login form
-    this.authenticationService.login(user, pass).subscribe(
+    this.authenticationService.login(username, password).subscribe(
       result => {
         console.log(result);
+        this.user = result;
         alert('Bienvenido..');
         this.navigate();
       },

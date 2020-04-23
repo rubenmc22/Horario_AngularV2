@@ -6,7 +6,7 @@ export class Users implements UserInterface {
   public nombre: string;
   public apellido: string;
   public email: string;
-  public username: string;
+  public cedula: string;
   public password: string;
   public rPassword: string;
   public token: string;

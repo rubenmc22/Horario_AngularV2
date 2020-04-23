@@ -35,8 +35,19 @@ export class UserService {
 
   }
 
-  getAll() {
-    return this.http.get<Users[]>(this.baseUrl + '/api/v1/usuarios');
+  getUsuarios() {
+    return this.http.get<Users[]>(this.baseUrl + '/api/v1/usuarios', {
+      observe: 'response',
+      responseType: 'json',
+    });
+  }
+
+  getrUsuarioId(id) {
+    return this.http.get<Users[]>(
+      this.baseUrl + '/api/v1/usuarios/' + id, {
+      observe: 'response',
+      responseType: 'json',
+    });
   }
 
   register(user: Users) {
@@ -47,6 +58,19 @@ export class UserService {
       'Content-Type': 'application/json'
     });
     return this.http.post<Users>(this.baseUrl + '/api/v1/usuarios',
+      params, {
+      headers
+    });
+  }
+
+  updateUser(id, user) {
+    const json = JSON.stringify(user);
+    const params = json;
+    const headers = new HttpHeaders({
+      'Access-Control-Allow-Origin': '*',
+      'Content-Type': 'application/json'
+    });
+    return this.http.put<Users>(this.baseUrl + '/api/v1/usuarios/' + id,
       params, {
       headers
     });

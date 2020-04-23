@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { LoginService } from '../../services/loginService';
 import { UserService } from '../../services/userService';
 import { Users } from '../../entities/user';
-import { format } from 'url';
-
 
 @Component({
   selector: 'app-registro',
@@ -19,7 +16,6 @@ export class RegistroComponent implements OnInit {
   constructor(
     private route: Router,
     private router: ActivatedRoute,
-    private loginService: LoginService,
     private userService: UserService
   ) {
     this.titulo = 'Registro de Usuarios';

@@ -37,15 +37,13 @@ export class CursoListComponent implements OnInit {
         if (result.status !== 200) {
           console.log('Error al consumir el Servicio CursoService' + result);
         } else {
-          // this.productos.push(result.body);
-          this.cursos = result.body; // Matriz
+          this.cursos = result.body;
         }
       },
       error => {
         console.log(error);
       }
     );
-    console.log(this.cursos);
   }
 
   deleteUser(id) {

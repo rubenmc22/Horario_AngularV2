@@ -1,4 +1,4 @@
-<nav id="navbar2" class="col-lg-12">
+<nav id="navbar" class="col-lg-12">
   <ul>
     <li id="titulo">U.E INSTITUTO "ELENA DE BUENO"</li>
   </ul>
@@ -15,7 +15,8 @@
   </div>
   <br>
 
-  <p id="subtitulo" class="btn btn-default" data-toggle="modal">Registrar un Nuevo Usuario</p><br>
+  <p id="subtitulo" class="btn btn-default" data-toggle="modal">Registrar un nuevo Usuario</p>
+  <hr style="margin-top: -7px;"><br>
 
   <form #formRegistro="ngForm" (ngSubmit)="onSubmits(usuario.password, usuario.rPassword)"
     style="padding-left: 30px; padding-top: 15px">
@@ -51,15 +52,15 @@
           [(ngModel)]="usuario.password" pattern="[a-zA-Z0-9@.]*" minlength="6"
           placeholder="Introduzca su contraseña..">
       </div>
-
-      <div align="left" class="bttn">
-        <button id="botonguardar" type="submit" [disabled]="!formRegistro.form.valid" class="btn btn-primary"
-          style="background-color: #28a745; border-color: #28a745;">Registrar</button>
-        <button id="botonborrar" type="reset" class="btn btn-danger" (click)="navigateLogin()">Cancelar</button>
-      </div>
     </div>
   </form>
-</div><br><br>
+  <div align="left" class="bttn" style="padding-right: 11%;">
+    <button id="botonguardar" type="submit" [disabled]="!formRegistro.form.valid" class="btn btn-primary"
+      style="background-color: #28a745; border-color: #28a745; width: 22%;">Registrar</button>
+    <button id="botonborrar" style="width: 18%;" type="reset" class="btn btn-danger"
+      (click)="navigateLogin()">Cancelar</button>
+  </div>
+</div><br><br><br><br>
 
 <footer id="piePagina" class="fixed-bottom" aling="center" style="color:white;">
   <p>All content copyright &copy; 2020, Sistema de Gestión de Horarios.</p>
