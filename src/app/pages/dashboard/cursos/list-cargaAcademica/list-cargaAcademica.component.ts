@@ -48,6 +48,10 @@ export class CargaAcademicaListComponent implements OnInit {
     this.cargaAcademicas = new CargaAcademica(0, '', 0, '', 0, '', 0, '');
     this.curso = new Curso('', '', [], '');
 
+
+  }
+
+  ngOnInit() {
     this.cursoService.getCursos().subscribe(
       result => {
         this.cursos = result.body;
@@ -77,9 +81,6 @@ export class CargaAcademicaListComponent implements OnInit {
     );
   }
 
-  ngOnInit() {
-  }
-
   obtenerCargaPorCurso() {
     this.cargaAcademica = [];
     this.cargaAcademicaService.getCargaPorCurso(this.curso.id).subscribe(
@@ -101,7 +102,7 @@ export class CargaAcademicaListComponent implements OnInit {
       this.cargaAcademicaService.getDeleteId(id).subscribe(result => {
         console.log(result);
         window.alert('El campo seleccionado ha sido eliminado correctamente.');
-        location.reload();
+        this.ngOnInit();
       },
         error => {
           console.error(error.error);
@@ -117,18 +118,12 @@ export class CargaAcademicaListComponent implements OnInit {
         this.cargaAcademicas = result;
         console.log(result);
         window.alert('Informacion modificada correctamente.');
-        this.refresh();
+        this.ngOnInit();
       },
       error => {
         console.log(error.error);
       })
   }
-
-
-  refresh() {
-    location.reload();
-  }
-
 
   logout() {
     this.authenticationService.logout();

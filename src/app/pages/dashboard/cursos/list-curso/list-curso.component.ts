@@ -35,7 +35,7 @@ export class CursoListComponent implements OnInit {
     this.cursoService.getCursos().subscribe(
       result => {
         if (result.status !== 200) {
-          console.log('Error al consumir el Servicio CursoService' + result);
+          console.log('Error al consumir el Servicio CursoService', result);
         } else {
           this.cursos = result.body;
         }
@@ -51,7 +51,7 @@ export class CursoListComponent implements OnInit {
     if (confirm) {
       this.cursoService.getDeleteId(id).subscribe(result => {
         window.alert('El campo seleccionado ha sido eliminado correctamente.');
-        this.refresh();
+
       },
         error => {
           console.error(error.error);
@@ -66,7 +66,7 @@ export class CursoListComponent implements OnInit {
       result => {
         this.cursosDay = result;
         window.alert('Informacion modificada correctamente.');
-        this.refresh();
+        this.ngOnInit();
         console.log(result);
       },
       error => {
@@ -80,7 +80,7 @@ export class CursoListComponent implements OnInit {
       this.cursoService.getDeleteId(id).subscribe(result => {
         console.log(result);
         window.alert('El campo seleccionado ha sido eliminado correctamente.');
-        this.refresh();
+        this.ngOnInit();
       },
         error => {
           console.error(error.error);
@@ -88,11 +88,6 @@ export class CursoListComponent implements OnInit {
       );
     }
   }
-
-  refresh() {
-    location.reload();
-  }
-
 
   printDays(dias: number[]): string {
     let diasStr = '';

@@ -52,6 +52,7 @@ export class MateriasListComponent implements OnInit {
         this.materias = result;
         console.log(result);
         window.alert('Informacion modificada correctamente.');
+        this.ngOnInit();
       },
       error => {
         console.log(error.error);
@@ -64,7 +65,8 @@ export class MateriasListComponent implements OnInit {
       this.materiaService.getDeleteId(id).subscribe(result => {
         console.log(result);
         window.alert('El campo seleccionado ha sido eliminado correctamente.');
-        this.refresh();
+        // this.refresh();
+        this.ngOnInit();
       },
         error => {
           console.error(error.error);

@@ -55,7 +55,7 @@ export class ProfesoresListComponent implements OnInit {
     if (result) {
       this.profesorService.getDeleteId(id).subscribe(result => {
         window.alert('Registro Eliminado');
-        this.refresh();
+        this.ngOnInit();
       },
         error => {
           console.error(error.error);
@@ -71,7 +71,7 @@ export class ProfesoresListComponent implements OnInit {
         this.profesores = result;
         console.log(result);
         window.alert('Informacion modificada correctamente.');
-        this.refresh();
+        this.ngOnInit();
       },
       error => {
         console.log(error.error);
