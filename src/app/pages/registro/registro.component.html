@@ -18,10 +18,9 @@
   <p id="subtitulo" class="btn btn-default" data-toggle="modal">Registrar un nuevo Usuario</p>
   <hr style="margin-top: -7px;"><br>
 
-  <form #formRegistro="ngForm" (ngSubmit)="onSubmits(usuario.password, usuario.rPassword)"
-    style="padding-left: 30px; padding-top: 15px">
+  <form #formRegistro="ngForm" (ngSubmit)="onSubmits()" style="padding-left: 0%; padding-top: 15px">
     <div class="row">
-      <div class="form-group col-md-4">
+      <div class="form-group col-md-6">
         <label>
           Usuario
           <span *ngIf="!user.valid && user.touched" class="badge badge-danger">
@@ -31,7 +30,7 @@
         <input type="text" class="form-control" id="user" #user="ngModel" name="user" [(ngModel)]="usuario.cedula"
           pattern="[0-9]+" minlength="6" maxlength="8" placeholder="Introduzca su cedula..">
       </div>
-      <div class="form-group col-md-4">
+      <div class="form-group col-md-6">
         <label>
           Correo Electronico
           <span *ngIf="!email.valid && email.touched" class="badge badge-danger">
@@ -41,7 +40,9 @@
         <input type="email" class="form-control" id="email" #email="ngModel" name="email" [(ngModel)]="usuario.email"
           pattern="[a-zA-Z0-9@.]*" minlength="6" placeholder="Introduzca su email..">
       </div>
-      <div class="form-group col-md-4">
+    </div>
+    <div class="row">
+      <div class="form-group col-md-6">
         <label>
           Contraseña
           <span *ngIf="!clave.valid && clave.touched" class="badge badge-danger">
@@ -52,10 +53,22 @@
           [(ngModel)]="usuario.password" pattern="[a-zA-Z0-9@.]*" minlength="6"
           placeholder="Introduzca su contraseña..">
       </div>
+      <div class="form-group col-md-6">
+        <label>
+          Repita su Contraseña
+          <span *ngIf="!rpass.valid && rpass.touched" class="badge badge-danger">
+            Este campo no puede estar vacio.
+          </span>
+        </label>
+        <input type="password" class="form-control" id="rpass" #rpass="ngModel" name="clave"
+          [(ngModel)]="usuario.rPassword" pattern="[a-zA-Z0-9@.]*" minlength="6"
+          placeholder="Introduzca su contraseña..">
+      </div>
     </div>
   </form>
   <div align="left" class="bttn" style="padding-right: 11%;">
-    <button id="botonguardar" type="submit" [disabled]="!formRegistro.form.valid" class="btn btn-primary"
+    <button (click)="registrar(usuario.password, usuario.rPassword)" id="botonguardar" type="submit"
+      [disabled]="!formRegistro.form.valid" class="btn btn-primary"
       style="background-color: #28a745; border-color: #28a745; width: 22%;">Registrar</button>
     <button id="botonborrar" style="width: 18%;" type="reset" class="btn btn-danger"
       (click)="navigateLogin()">Cancelar</button>

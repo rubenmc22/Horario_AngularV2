@@ -22,7 +22,7 @@ export class RegistroComponent implements OnInit {
     this.usuario = new Users();
   }
 
-  onSubmits(password: string, rPassword: string) {
+  registrar(password: string, rPassword: string) {
 
     if (password !== rPassword) {
       window.alert('Las contraseñas no coinciden, intente nuevamente.');
@@ -33,6 +33,7 @@ export class RegistroComponent implements OnInit {
         result => {
           // this.producto.push(result);
           this.usuario = result;
+          console.log(result);
           window.alert('Usuario Registrado.');
           this.navigateLogin();
         },
