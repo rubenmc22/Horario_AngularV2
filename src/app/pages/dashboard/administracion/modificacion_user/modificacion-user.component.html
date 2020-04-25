@@ -63,8 +63,8 @@
       <div class="row">
         <div class="form-group col-md-12">
           <label for="nombre">Usuario</label>
-          <input type="text" class="form-control" id="usuario" name="usuario" [(ngModel)]="modificarUsuario.usuario"
-            pattern="[0-9]+" minlength="6" maxlength="8" required>
+          <input type="text" class="form-control" id="usuario" name="usuario" [(ngModel)]="loggedUser.cedula"
+            pattern="[0-9]+" minlength="6" maxlength="8" readonly>
         </div>
       </div>
       <div class="row">
@@ -75,8 +75,8 @@
               Este campo no puede estar vacio.
             </span>
           </label>
-          <input type="password" class="form-control" id="pass" #pass="ngModel" name="pass"
-            [(ngModel)]="modificarUsuario.pass" pattern="[a-zA-Z0-9]*" minlength="8" required
+          <input type="text" class="form-control" id="pass" #pass="ngModel" name="pass"
+            [(ngModel)]="loggedUser.password" pattern="[a-zA-Z0-9]*" minlength="8" required
             placeholder="Introduzca su nueva contraseña">
         </div>
 
@@ -97,7 +97,7 @@
     <div align="left" class="bttn">
       <button id="botonguardar" type="submit" [disabled]="!formModifUser.form.valid" class="btn btn-info"
         style="margin-left:33%; padding-left:3%"
-        (click)="updateUsuario(modificarUsuario.pass, modificarUsuario.rPass)">Actualizar
+        (click)="updateUsuario(loggedUser.password, modificarUsuario.rPass, loggedUser.id )">Actualizar
         Información</button>
     </div>
 

@@ -43,14 +43,12 @@ export class LoginComponent implements OnInit {
     event.preventDefault(); // Avoid default action for the submit button of the login form
     this.authenticationService.login(username, password).subscribe(
       result => {
-        console.log(result);
         this.user = result;
         alert('Bienvenido al Sistema Generador de Horarios');
         this.navigate();
       },
       error => {
         alert(error.error);
-        // location.reload();
       }
     );
 

@@ -42,7 +42,7 @@ export class UserService {
     });
   }
 
-  getrUsuarioId(id) {
+  getUsuarioId(id) {
     return this.http.get<Users[]>(
       this.baseUrl + '/api/v1/usuarios/' + id, {
       observe: 'response',

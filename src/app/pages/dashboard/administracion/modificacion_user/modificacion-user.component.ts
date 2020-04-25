@@ -21,6 +21,7 @@ export class ModificacionUserComponent implements OnInit {
   private admin = new Users();
   private user: Users[] = [];
   private modificarUsuarios: ModificarUsuario[] = [];
+  private loggedUser: Users;
 
   constructor(
     private route: Router,
@@ -28,6 +29,7 @@ export class ModificacionUserComponent implements OnInit {
     private modificarUsuarioService: ModificarUsuarioService,
     private userService: UserService,
     private authenticationService: AuthenticationService,
+
 
   ) {
     this.titulo = 'Perfil';
@@ -53,28 +55,23 @@ export class ModificacionUserComponent implements OnInit {
 
   ngOnInit() {
     console.log('Se cargo el componente administracion');
-    console.log(this.admin.cedula);
-    console.log(this.modificarUsuario.cedula);
-
+    this.loggedUser = this.userService.currentUserValue;
+    console.log(this.loggedUser);
   }
 
   onSubmit() {
   }
 
-  updateUsuario(pass: string, rPass: string, id: number) {
-    console.log(pass);
-    console.log(rPass);
-    console.log(id);
-
+  updateUsuario(pass, rPass, id) {
     if (pass !== rPass) {
       window.alert('Las contraseñas no coinciden.')
     } else {
 
-      return this.userService.updateUser(id, this.user).subscribe(
+      return this.userService.updateUser(id, this.loggedUser).subscribe(
         result => {
-          this.admin = result; // Matriz
-          console.log(result);
-          console.log(this.modificarUsuario.id);
+          this.admin = result;
+          alert('Informacion actualizada correctamente');
+          this.ngOnInit();
         },
         error => {
           console.log(error);
