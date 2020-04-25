@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     // get return url from route parameters or default to '/'
-    this.returnUrl = this.router.snapshot.queryParams['returnUrl'] || '/home';
+    this.returnUrl = this.router.snapshot.queryParams['returnUrl'] || '/login';
   }
 
   logIn(username: string, password: string, event: Event) {
@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
       result => {
         console.log(result);
         this.user = result;
-        alert('Bienvenido..');
+        alert('Bienvenido al Sistema Generador de Horarios');
         this.navigate();
       },
       error => {

@@ -3,8 +3,6 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 
-
-
 // Rutas
 import { routing, appRoutingProviders } from './app.routing';
 
@@ -25,30 +23,31 @@ import { CargaAcademicaListComponent } from './pages/dashboard/cursos/list-carga
 import { CursoAddComponent } from './pages/dashboard/cursos/agregar-curso/add-curso.component';
 import { CursoListComponent } from './pages/dashboard/cursos/list-curso/list-curso.component';
 import { ModificacionUserComponent } from './pages/dashboard/administracion/modificacion_user/modificacion-user.component';
-import { FormsModule } from '@angular/forms';
-import { FormBuilder } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { CursoService } from './services/cursoService';
 import { ProfesorService } from './services/profesorService';
 import { MateriaService } from './services/materiaService';
 import { UserService } from './services/userService';
 import { BloqueHorarioService } from './services/bloqueHorarioService';
+import { AuthGuard } from '../app/services/authService';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'login', component: LoginComponent },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
   { path: 'registro-user', component: RegistroComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'horarios', component: HorariosComponent },
-  { path: 'add-profesor', component: ProfesoresAddComponent },
-  { path: 'list-profesores', component: ProfesoresListComponent },
-  { path: 'add-curso', component: CursoAddComponent },
-  { path: 'list-cursos', component: CursoListComponent },
-  { path: 'add-materia', component: MateriasAddComponent },
-  { path: 'list-materias', component: MateriasListComponent },
-  { path: 'add-cargaAcademica', component: CargaAcademicaAddComponent },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'horarios', component: HorariosComponent, canActivate: [AuthGuard] },
+  { path: 'add-profesor', component: ProfesoresAddComponent, canActivate: [AuthGuard] },
+  { path: 'list-profesores', component: ProfesoresListComponent, canActivate: [AuthGuard] },
+  { path: 'add-curso', component: CursoAddComponent, canActivate: [AuthGuard] },
+  { path: 'list-cursos', component: CursoListComponent, canActivate: [AuthGuard] },
+  { path: 'add-materia', component: MateriasAddComponent, canActivate: [AuthGuard] },
+  { path: 'list-materias', component: MateriasListComponent, canActivate: [AuthGuard] },
+  { path: 'add-cargaAcademica', component: CargaAcademicaAddComponent, canActivate: [AuthGuard] },
   { path: 'list-cargaAcademica', component: CargaAcademicaListComponent },
-  { path: 'modificar_user', component: ModificacionUserComponent },
+  { path: 'modificar_user', component: ModificacionUserComponent, canActivate: [AuthGuard] },
   // {path: '**', component: ErrorCompnent}
 ]
 
@@ -76,6 +75,7 @@ const appRoutes: Routes = [
     routing,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(
       appRoutes,
     ),

@@ -16,23 +16,24 @@ import { CursoAddComponent } from './pages/dashboard/cursos/agregar-curso/add-cu
 import { CursoListComponent } from './pages/dashboard/cursos/list-curso/list-curso.component';
 import { ModificacionUserComponent } from './pages/dashboard/administracion/modificacion_user/modificacion-user.component';
 import { RegistroComponent } from './pages/registro/registro.component';
+import { AuthGuard } from '../app/services/authService';
 
 const appRoutes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   // { path: 'login', component: LoginComponent },
   { path: 'registro-user', component: RegistroComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'horarios', component: HorariosComponent },
-  { path: 'add-profesor', component: ProfesoresAddComponent },
-  { path: 'list-profesores', component: ProfesoresListComponent },
-  { path: 'add-curso', component: CursoAddComponent },
-  { path: 'list-cursos', component: CursoListComponent },
-  { path: 'add-materia', component: MateriasAddComponent },
-  { path: 'list-materias', component: MateriasListComponent },
-  { path: 'add-cargaAcademica', component: CargaAcademicaAddComponent },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'horarios', component: HorariosComponent, canActivate: [AuthGuard] },
+  { path: 'add-profesor', component: ProfesoresAddComponent, canActivate: [AuthGuard] },
+  { path: 'list-profesores', component: ProfesoresListComponent, canActivate: [AuthGuard] },
+  { path: 'add-curso', component: CursoAddComponent, canActivate: [AuthGuard] },
+  { path: 'list-cursos', component: CursoListComponent, canActivate: [AuthGuard] },
+  { path: 'add-materia', component: MateriasAddComponent, canActivate: [AuthGuard] },
+  { path: 'list-materias', component: MateriasListComponent, canActivate: [AuthGuard] },
+  { path: 'add-cargaAcademica', component: CargaAcademicaAddComponent, canActivate: [AuthGuard] },
   { path: 'list-cargaAcademica', component: CargaAcademicaListComponent },
-  { path: 'modificar_user', component: ModificacionUserComponent },
+  { path: 'modificar_user', component: ModificacionUserComponent, canActivate: [AuthGuard] },
   // {path: '**', component: ErrorCompnent}
 ]
 
