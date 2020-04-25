@@ -38,8 +38,8 @@ export class RegistroComponent implements OnInit {
           this.navigateLogin();
         },
         error => {
-          console.log(error);
-          window.alert(error.error);
+          window.alert("El usuario que intenta registrar ya pertenece a este sistema, por favor inicie sesión");
+          this.navigateLogin();
         }
 
       );

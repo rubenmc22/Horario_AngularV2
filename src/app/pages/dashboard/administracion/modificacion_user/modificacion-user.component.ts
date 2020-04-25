@@ -51,12 +51,16 @@ export class ModificacionUserComponent implements OnInit {
       }
     );
 
+    this.loggedUser = this.userService.currentUserValue;
+    console.log(this.loggedUser);
+
   }
 
   ngOnInit() {
     console.log('Se cargo el componente administracion');
     this.loggedUser = this.userService.currentUserValue;
     console.log(this.loggedUser);
+
   }
 
   onSubmit() {
@@ -72,6 +76,7 @@ export class ModificacionUserComponent implements OnInit {
           this.admin = result;
           alert('Informacion actualizada correctamente');
           this.ngOnInit();
+
         },
         error => {
           console.log(error);
