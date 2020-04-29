@@ -79,7 +79,7 @@ export class CargaAcademicaAddComponent implements OnInit {
     return this.cargaAcademicaService.postCargaAcademica(this.cargaAcademica).subscribe(
       result => {
         this.cargaAcademica = result;
-        window.alert('Informacion Guardada.');
+        window.alert('Informacion Guardada, si desea ver los cambios reflejados en el horario, debe actualizar el mismo, si no generarlo.');
         console.log(result);
         this.refresh();
 

@@ -26,6 +26,7 @@ export class HorariosComponent implements OnInit {
   public tipo: string[] = [];
   public bloqueHorario: BloqueHorarios;
   public bloqueDeHorario: BloqueHorarios[] = [];
+  isPushed: boolean;
 
   constructor(
     private route: Router,
@@ -39,6 +40,8 @@ export class HorariosComponent implements OnInit {
     this.subTitulo = 'Procesar Horarios';
     this.horario = new Horario();
     this.curso = new Curso('', '', [], '');
+    this.isPushed = true;
+
 
     this.cursoService.getCursos().subscribe(
       result => {
@@ -50,16 +53,6 @@ export class HorariosComponent implements OnInit {
         console.log(error);
       }
     );
-
-    /* this.bloqueHorarioService.getBloquesHorario().subscribe(
-       result => {
-         this.bloqueDeHorario = result.body;
-         console.log(result.body);
-       },
-       error => {
-         console.log(error.error);
-       }
-     );*/
 
   }
 
@@ -89,7 +82,8 @@ export class HorariosComponent implements OnInit {
           this.obtenerHorarios = result.body;
           console.log(this.obtenerHorarios);
           this.obtenerBloqueHorario();
-          this.ngOnInit();
+          this.isPushed = false;
+
         } else {
           window.alert('No se ha generado el horario de este curso');
         }
@@ -117,6 +111,8 @@ export class HorariosComponent implements OnInit {
   }
 
   generarHorarioPorCurso() {
+    this.isPushed = false;
+
     return this.horarioService.postHorarioPorCurso(this.curso.id).subscribe(
       result => {
         this.horario = result;
@@ -125,9 +121,29 @@ export class HorariosComponent implements OnInit {
         // this.refresh();
         this.ngOnInit();
         this.obtenerHorarioPorCurso();
+
       },
       error => {
         console.log(error);
+        alert('ERROR: El horario ya se encuentra generado.')
+
+      }
+    );
+  }
+
+  UpdateHorarioPorCurso() {
+    return this.horarioService.postHorarioPorCurso(this.curso.id).subscribe(
+      result => {
+        this.horario = result;
+        console.log(result);
+        window.alert('Se ha actualizado el horario correctamente.');
+        // this.refresh();
+        this.ngOnInit();
+        this.obtenerHorarioPorCurso();
+      },
+      error => {
+        console.log(error);
+        alert('No se ha podido actualizar el horario, no hay Cargas Academicas pendientes.')
       }
     );
   }

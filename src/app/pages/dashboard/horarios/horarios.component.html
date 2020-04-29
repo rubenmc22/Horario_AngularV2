@@ -61,16 +61,19 @@
     </div>
   </div>
   <hr>
-  <div class="col-md-12">
-    <button type="button" id="selectCursos" (click)="generarHorarioPorCurso()" class="btn btn-primary" style="height: 43px;
-    width: 100%;
-    margin-left: 0%;
-    color: white;
-    background-color: green; border-color: green;
-    padding-top: 2px; padding-top: 0px;">
-      <p style="font-size: 24px;">Generar Horario</p>
-    </button>
-  </div>
+  <table>
+    <td class="col-md-8">
+      <button type="button" id="selectCursos" (click)="generarHorarioPorCurso()" class="btn btn-primary"
+        style="height: 43px; width: 100%; margin-left: -1%; margin-top: -2%; color: white; background-color: green; border-color: green; padding-top: 2px; padding-top: 0px; background-color: green; border-color: green; padding-top: 2px; padding-top: 0px;">
+        <p style="font-size: 24px;">Generar Horario</p>
+      </button>
+    </td>
+    <td class="col-md-2">
+      <button (click)="UpdateHorarioPorCurso()"
+        style="margin-top: 41%; margin-left: -20%; float: right; background-color: white;"><img
+          style="height: 28px; width: 40px;" src="assets/Images/update.png"></button>
+    </td>
+  </table>
 
   <br>
   <div class="table-responsive-xl">
